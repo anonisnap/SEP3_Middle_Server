@@ -15,7 +15,7 @@ public class StartServer {
 
     public static void main(String[] args) {
 
-
+        test();
         RestClient restClient = new RestClientImpl();
 
         SpikeModel spikeModel = new SpikeModelImpl(restClient);
@@ -29,7 +29,11 @@ public class StartServer {
     }
 
 
+    public static void test(){
+        ProjectUtil.TestPrint("Test methode called");
+        ProjectUtil.NotImplemented();
 
+    }
 
 
 }

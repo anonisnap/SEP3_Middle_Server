@@ -2,6 +2,7 @@ package com.group5.sep3.DataBaseCommunication;
 
 
 import com.group5.sep3.BusinessLogic.model.Spike;
+import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -13,7 +14,7 @@ public class RestClientImpl implements RestClient {
 
     @Override
     public void postSpike(Spike spike) {
-        System.out.println("We are about to post spike to REST SERVER MY DUDE" + spike.toString());
+        ProjectUtil.TestPrint("We are about to post spike to REST SERVER MY DUDE " + spike.toString());
     }
 
     @Override

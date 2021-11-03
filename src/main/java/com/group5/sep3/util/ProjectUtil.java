@@ -1,35 +1,53 @@
 package com.group5.sep3.util;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class ProjectUtil {
 
 
     public static void NotImplemented() {
 
+        String nameOfClass = getNameOfClass();
 
-        String nameofCurrMethod = new Throwable()
-                .getStackTrace()[1]
-                .getMethodName();
+        String nameofCurrMethod = getNameOfMethode();
 
-        String nameOfClass = new Throwable()
-                .getStackTrace()[1].getClassName();
-
-        System.out.println("NotImplemented: " + nameofCurrMethod + " in class " + nameOfClass);
+        System.out.println("NotImplemented: " + nameofCurrMethod + " in class: " + nameOfClass);
     }
 
 
     public static void TestPrint(String msg) {
+        String nameOfClass = getNameOfClass();
 
-        String nameofCurrMethod = new Throwable()
-                .getStackTrace()[1]
-                .getMethodName();
+        String nameofCurrMethod = getNameOfMethode();
 
-        String nameOfClass = new Throwable()
-                .getStackTrace()[1].getClassName();
-
-        int lineNumber = new Throwable()
-                .getStackTrace()[1].getLineNumber();
+        int lineNumber = getLineNumber();
 
         System.out.println(nameOfClass + "." + nameofCurrMethod + " (" + lineNumber + ") : " + msg);
     }
+
+
+    private static String getNameOfClass(){
+
+        String nameOfClass = new Throwable()
+                .getStackTrace()[2].getClassName();
+
+        String[] arr = nameOfClass.split("\\.", 4);
+
+        return arr[3];
+
+    }
+
+
+    private static String getNameOfMethode(){
+        return new Throwable()
+                .getStackTrace()[2]
+                .getMethodName();
+    }
+    private static int getLineNumber(){
+        return new Throwable().getStackTrace()[2].getLineNumber();
+    }
+
+
 
 }

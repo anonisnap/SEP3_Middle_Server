@@ -26,9 +26,11 @@ public class SpikeModelImpl implements SpikeModel {
         Spike returnSpike = null;
 
         if (request.getType() == RequestType.POST) {
-            postSpikeToDb((Spike) request.getArg());
+
+            postSpikeToDb(request.getArg(Spike.class));
+
         } else if (request.getType() == RequestType.GET){
-            returnSpike = getSpikeFromDb((String) request.getArg());
+            returnSpike = getSpikeFromDb(request.getArg(Spike.class));
         }
 
         return returnSpike;

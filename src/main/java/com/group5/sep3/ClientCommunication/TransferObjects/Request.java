@@ -1,6 +1,11 @@
 package com.group5.sep3.ClientCommunication.TransferObjects;
 
+import com.group5.sep3.BusinessLogic.model.Spike;
+import com.group5.sep3.util.JsonHelper;
+import com.group5.sep3.util.ProjectUtil;
+
 import java.io.Serializable;
+import java.lang.reflect.Type;
 
 public class Request implements Serializable {
 
@@ -24,8 +29,8 @@ public class Request implements Serializable {
 		return className;
 	}
 
-	public Object getArg() {
-		return arg;
+	public <T> T getArg(Type classType) {
+		return JsonHelper.fromJson(arg.toString(), classType);
 	}
 
 

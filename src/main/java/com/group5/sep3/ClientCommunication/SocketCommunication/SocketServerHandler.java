@@ -3,6 +3,7 @@ package com.group5.sep3.ClientCommunication.SocketCommunication;
 
 import com.group5.sep3.ClientCommunication.TransferObjects.Request;
 import com.group5.sep3.util.JsonHelper;
+import com.group5.sep3.util.ProjectUtil;
 
 import java.io.*;
 import java.net.Socket;
@@ -70,7 +71,7 @@ public class SocketServerHandler implements  Runnable {
         byte[] lenbytes = new byte[1024];
         int readLen = inFromClient.read(lenbytes,0,lenbytes.length);
         String message = new String(lenbytes,0,readLen);
-        System.out.println(message);
+        ProjectUtil.TestPrint(message);
         return JsonHelper.fromJson(message, Request.class);
     }
 
