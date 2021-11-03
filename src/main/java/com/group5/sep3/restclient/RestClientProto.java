@@ -1,6 +1,6 @@
 package com.group5.sep3.restclient;
 
-import com.group5.sep3.model.Spike;
+import com.group5.sep3.BusinessLogic.model.Spike;
 import org.springframework.web.client.RestTemplate;
 
 public class RestClientProto {

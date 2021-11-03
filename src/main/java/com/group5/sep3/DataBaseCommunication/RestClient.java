@@ -1,7 +1,7 @@
 package com.group5.sep3.DataBaseCommunication;
 
 
-import com.group5.sep3.model.Spike;
+import com.group5.sep3.BusinessLogic.model.Spike;
 
 public interface RestClient {
 

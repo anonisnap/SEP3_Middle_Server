@@ -1,4 +1,4 @@
-package com.group5.sep3.model;
+package com.group5.sep3.BusinessLogic.model;
 
 import com.group5.sep3.util.JsonHelper;
 

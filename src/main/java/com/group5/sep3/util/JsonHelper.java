@@ -13,6 +13,6 @@ public class JsonHelper {
 
 	public static String toJson(Object obj){
 		return gson.toJson(obj);
-
 	}
+
 }

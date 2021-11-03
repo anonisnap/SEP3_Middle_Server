@@ -1,6 +1,8 @@
-package com.group5.sep3.ClientCommunication.Networking;
-import com.group5.sep3.ClientCommunication.Networking.transferobjects.Request;
-import com.group5.sep3.util.Subject;
+package com.group5.sep3.ClientCommunication.SocketCommunication;
+import com.group5.sep3.BusinessLogic.RequestHandler;
+import com.group5.sep3.ClientCommunication.TransferObjects.Request;
+import com.group5.sep3.util.ProjectUtil;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
@@ -9,19 +11,19 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-public class SocketServerImpl implements SocketServer, Subject {
+public class SocketServerImpl implements SocketServer, PropertyChangeListener {
 
-
-    private final PropertyChangeListener propertyChangeListener;
+    private RequestHandler requestHandler;
     private ArrayList<SocketServerHandler> socketServerHandlers;
 
-    public SocketServerImpl(PropertyChangeListener propertyChangeListener) {
-        this.propertyChangeListener = propertyChangeListener;
+    public SocketServerImpl(RequestHandler requestHandler) {
+        this.requestHandler = requestHandler;
+        this.requestHandler.addListener(this);
         socketServerHandlers = new ArrayList<>();
-
     }
+
     @Override
-    public void startClientCom() {
+    public void startSocketServer() {
         try (ServerSocket serverSocket = new ServerSocket(1235)) {
             System.out.println("Server running");
 
@@ -48,13 +50,9 @@ public class SocketServerImpl implements SocketServer, Subject {
 
     }
 
-    @Override
-    public void broadCast(Object obj) {
-
-    }
 
 
-    @Override
+
     public void sendToClient(SocketServerHandler socketServerHandler, Request request) {
 
         try {
@@ -69,32 +67,18 @@ public class SocketServerImpl implements SocketServer, Subject {
 
     @Override
     public void handleRequest(Request request) {
-        propertyChangeListener.propertyChange(
-                new PropertyChangeEvent(this,request.getType().name(), null, request));
-    }
-
-
-    //subject
-    @Override
-    public void addListener(String name, PropertyChangeListener listener) {
-
+        ProjectUtil.TestPrint("Hallo im socketserimple it got this request" + request);
+        requestHandler.handleRequest(request);
     }
 
     @Override
-    public void addListener(PropertyChangeListener listener) {
-
+    public void broadCast(PropertyChangeEvent event) {
+        ProjectUtil.NotImplemented();
     }
 
     @Override
-    public void removeListener(String name, PropertyChangeListener listener) {
-
+    public void propertyChange(PropertyChangeEvent evt) {
+        ProjectUtil.NotImplemented();
+        ProjectUtil.TestPrint("got event from request handler" + evt);
     }
-
-    @Override
-    public void removeListener(PropertyChangeListener listener) {
-
-    }
-
-
-
 }

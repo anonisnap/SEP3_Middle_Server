@@ -1,7 +1,7 @@
-package com.group5.sep3.ClientCommunication.Networking;
+package com.group5.sep3.ClientCommunication.SocketCommunication;
 
 
-import com.group5.sep3.ClientCommunication.Networking.transferobjects.Request;
+import com.group5.sep3.ClientCommunication.TransferObjects.Request;
 import com.group5.sep3.util.JsonHelper;
 
 import java.io.*;
@@ -34,11 +34,10 @@ public class SocketServerHandler implements  Runnable {
             System.out.println("iteration: " + i++);
             try {
 
-                Request noget =  readFromClient();
-                System.out.println("did we get it ?");
-                System.out.println(noget);
+                Request request =  readFromClient();
+                System.out.println(request);
+                handleReceivedObject(request);
 
-               // handleReceivedObject(request);
                 Thread.sleep(500);
             } catch (SocketException e) {
                 e.printStackTrace();
@@ -71,9 +70,8 @@ public class SocketServerHandler implements  Runnable {
         byte[] lenbytes = new byte[1024];
         int readLen = inFromClient.read(lenbytes,0,lenbytes.length);
         String message = new String(lenbytes,0,readLen);
-
+        System.out.println(message);
         return JsonHelper.fromJson(message, Request.class);
     }
-
 
 }
