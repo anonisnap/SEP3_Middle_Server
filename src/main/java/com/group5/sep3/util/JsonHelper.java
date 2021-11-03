@@ -1,4 +1,4 @@
-package com.group5.sep3;
+package com.group5.sep3.util;
 
 import com.google.gson.Gson;
 

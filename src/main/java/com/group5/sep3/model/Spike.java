@@ -1,4 +1,6 @@
-package com.group5.sep3;
+package com.group5.sep3.model;
+
+import com.group5.sep3.util.JsonHelper;
 
 public class Spike {
 	private String spikeName;
