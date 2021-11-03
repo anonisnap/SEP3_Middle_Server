@@ -25,6 +25,6 @@ public class Spike {
 	}
 
 	public static Spike FromJson(String string) {
-		return JsonHelper.FromJson(string, Spike.class);
+		return JsonHelper.fromJson(string, Spike.class);
 	}
 }
