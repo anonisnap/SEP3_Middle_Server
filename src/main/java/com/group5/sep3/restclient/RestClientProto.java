@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Scanner;
 
 public class RestClientProto {
-	private static final String ROOT = "http://localhost:5000/";
+	private static final String ROOT = "http://localhost:5100/";
 	private final RestTemplate rest = new RestTemplate(); // IMPORTANT: THIS THROWS ERRORS IN THE CASE OF 4xx OR 5xx CODES BEING SENT FROM THE SERVER SIDE
 	// https://www.baeldung.com/spring-rest-template-error-handling <-- Information about Spring Rest Template Error Handling
 

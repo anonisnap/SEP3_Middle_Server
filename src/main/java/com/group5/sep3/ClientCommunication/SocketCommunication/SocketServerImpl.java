@@ -36,7 +36,6 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -51,8 +50,6 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
     }
 
 
-
-
     public void sendToClient(SocketServerHandler socketServerHandler, Request request) {
 
         try {
@@ -62,7 +59,6 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
         }
 
     }
-
 
 
     @Override

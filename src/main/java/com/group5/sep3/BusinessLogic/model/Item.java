@@ -1,11 +1,11 @@
 package com.group5.sep3.BusinessLogic.model;
 
-public class WarehouseItem {
+public class Item {
     private int itemId;
     private String itemName;
     private double length, width, height, weight;
 
-    public WarehouseItem(int itemId, String itemName, double length, double width, double height, double weight) {
+    public Item(int itemId, String itemName, double length, double width, double height, double weight) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.length = length;

@@ -9,7 +9,6 @@ public interface SpikeModel extends Subject {
 
     Object handleSpike(Request request);
 
-
     Spike getSpikeFromDb(String spikeName);
 
     void postSpikeToDb(Spike spike);

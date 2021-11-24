@@ -36,7 +36,6 @@ public class SocketServerHandler implements  Runnable {
             try {
 
                 Request request =  readFromClient();
-                System.out.println(request);
                 handleReceivedObject(request);
 
                 Thread.sleep(500);

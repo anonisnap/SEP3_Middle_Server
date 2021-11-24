@@ -1,13 +1,13 @@
 package com.group5.sep3.DataBaseCommunication;
 
 
-import com.group5.sep3.BusinessLogic.model.Spike;
-
 public interface RestClient {
 
 
-    void postSpike(Spike spike);
-    Spike getSpike(String spikeName);
+    void put(String restUrl, Object obj);
+    void post(String restUrl, Object obj);
+    Object get(String restUrl);
+    Object delete(String restUrl);
 
 
 }

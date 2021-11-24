@@ -38,15 +38,14 @@ public class SpikeModelImpl implements SpikeModel {
 
 
 
-
     @Override
     public Spike getSpikeFromDb(String spikeName) {
-        return restClient.getSpike(spikeName);
+       return null;
     }
 
     @Override
     public void postSpikeToDb(Spike spike) {
-        restClient.postSpike(spike);
+
     }
 
     @Override
