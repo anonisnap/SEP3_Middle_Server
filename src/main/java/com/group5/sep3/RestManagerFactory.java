@@ -2,8 +2,6 @@ package com.group5.sep3;
 
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.Location;
-import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemRestManagerImpl;
-import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.LocationRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.RestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 
@@ -15,7 +13,7 @@ public class RestManagerFactory {
 
     private static RestManagerFactory instance;
 
-    private final HashMap<String, RestManager> restManagers;
+    private final HashMap<String, RestManager<?>> restManagers;
 
     private RestManagerFactory() {
         restManagers = new HashMap<>();
@@ -30,7 +28,7 @@ public class RestManagerFactory {
         return instance;
     }
 
-    public RestManager getRestManager(String type){
+    public RestManager<?> getRestManager(String type){
         return restManagers.get(type);
     }
 

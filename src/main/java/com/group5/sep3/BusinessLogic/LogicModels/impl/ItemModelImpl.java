@@ -21,7 +21,7 @@ public class ItemModelImpl implements ItemModel {
     private final HashMap<RequestType, Method> requestTypeMethodHashMap;
 
     public ItemModelImpl() {
-        this.itemRestManager =  RestManagerFactory.getInstance().getRestManager("Item");
+        this.itemRestManager = (RestManager<Item>) RestManagerFactory.getInstance().getRestManager("Item");
 
         requestTypeMethodHashMap = new HashMap<>();
         try {

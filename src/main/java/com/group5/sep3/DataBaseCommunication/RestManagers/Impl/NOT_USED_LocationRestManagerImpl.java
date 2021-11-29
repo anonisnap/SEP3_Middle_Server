@@ -4,7 +4,7 @@ import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 
-public class LocationRestManagerImpl implements RestManager<Location> {
+public class NOT_USED_LocationRestManagerImpl implements RestManager<Location> {
 
 
     @Override

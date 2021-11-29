@@ -19,7 +19,7 @@ public class LocationModelImpl implements LocationModel {
 	private Map<RequestType, Method> requestTypeMethodMap;
 
 	public LocationModelImpl() {
-		locationRestManager = RestManagerFactory.getInstance().getRestManager("location");
+		locationRestManager = (RestManager<Location>) RestManagerFactory.getInstance().getRestManager("location");
 		requestTypeMethodMap = new HashMap<>();
 		try {
 			requestTypeMethodMap.put(RequestType.PUT, this.getClass().getDeclaredMethod("registerLocation", Location.class));
