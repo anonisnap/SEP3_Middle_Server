@@ -9,6 +9,7 @@ import com.group5.sep3.RestManagerFactory;
 
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 
 public class LocationModelImpl implements LocationModel {
@@ -16,7 +17,7 @@ public class LocationModelImpl implements LocationModel {
     private Map<RequestType, Method> requestTypeMethodMap;
     public LocationModelImpl() {
         locationRestManager = RestManagerFactory.getInstance().getRestManager("location");
-
+        requestTypeMethodMap = new HashMap<>();
         try {
             requestTypeMethodMap.put(RequestType.PUT, this.getClass().getDeclaredMethod("registerLocation", Location.class));
             requestTypeMethodMap.put(RequestType.POST, this.getClass().getDeclaredMethod("updateLocation", Location.class));
