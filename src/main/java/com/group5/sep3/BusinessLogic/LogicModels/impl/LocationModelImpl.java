@@ -62,14 +62,22 @@ public class LocationModelImpl implements LocationModel {
 	private boolean registerFullySpecifiedLocation(String locId, Location location) {
 		ProjectUtil.testPrint("Registering a Fully Specified Location at " + locId);
 		Location existing = locationRestManager.get(location);
+		if (existing == null) {
+			// Location has not been registered in Database
+			locationRestManager.put(location);
+			return true;
+		} else {
+			// Location has been registered in Database
 
-		return true;
+		}
+
+		return false;
 	}
 
 	private boolean registerLetterSpecifiedLocation(String locId, Location location) {
 		ProjectUtil.testPrint("Registering a Letter Specified Location at " + locId);
 
-		return true;
+		return false;
 	}
 
 	public Location updateLocation(Location location) {
