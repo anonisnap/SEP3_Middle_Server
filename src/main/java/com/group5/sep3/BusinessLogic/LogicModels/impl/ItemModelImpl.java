@@ -24,7 +24,7 @@ public class ItemModelImpl implements ItemModel {
         // if item has id ? check if already exist
         itemRestManager.put(item);
         //TODO: error handling
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
     }
 
 
@@ -34,11 +34,11 @@ public class ItemModelImpl implements ItemModel {
         if (request.getType() == RequestType.PUT) {
             registerItem(request.getArg(Item.class));
         } else if (request.getType() == RequestType.POST) {
-            ProjectUtil.NotImplemented();
+            ProjectUtil.notImplemented();
         } else if (request.getType() == RequestType.GET) {
-            ProjectUtil.NotImplemented();
+            ProjectUtil.notImplemented();
         } else if (request.getType() == RequestType.DELETE) {
-            ProjectUtil.NotImplemented();
+            ProjectUtil.notImplemented();
         }
 
     }

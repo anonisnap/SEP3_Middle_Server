@@ -22,14 +22,14 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 
     @Override
     public void handleRequest(Request request) {
-        ProjectUtil.TestPrint("Hallo im requestHandler imple boii, i got this");
+        ProjectUtil.testPrint("Hallo im requestHandler imple boii, i got this");
         requestHandlerMap.get(request.getClassName()).handleRequest(request);
     }
 
 
     @Override
     public void addListener(String name, PropertyChangeListener listener) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
     }
 
     @Override
@@ -39,16 +39,16 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 
     @Override
     public void removeListener(String name, PropertyChangeListener listener) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
     }
 
     @Override
     public void removeListener(PropertyChangeListener listener) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
     }
 }

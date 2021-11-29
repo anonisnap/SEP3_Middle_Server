@@ -18,19 +18,19 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 
     @Override
     public Item post(Item obj) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
         return null;
     }
 
     @Override
     public Item get(Item obj) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
         return null;
     }
 
     @Override
     public Item delete(Item obj) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
         return null;
     }
 
