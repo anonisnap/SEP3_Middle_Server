@@ -19,13 +19,13 @@ public class LocationModelImpl implements LocationModel {
 	private Map<RequestType, Method> requestTypeMethodMap;
 
 	public LocationModelImpl() {
-		locationRestManager = (RestManager<Location>) RestManagerFactory.getInstance().getRestManager("location");
+		locationRestManager = (RestManager<Location>) RestManagerFactory.getInstance().getRestManager("Location");
 		requestTypeMethodMap = new HashMap<>();
 		try {
-			requestTypeMethodMap.put(RequestType.PUT, this.getClass().getDeclaredMethod("registerLocation", Location.class));
-			requestTypeMethodMap.put(RequestType.POST, this.getClass().getDeclaredMethod("updateLocation", Location.class));
-			requestTypeMethodMap.put(RequestType.GET, this.getClass().getDeclaredMethod("getLocation", Location.class));
-			requestTypeMethodMap.put(RequestType.DELETE, this.getClass().getDeclaredMethod("removeLocation", Location.class));
+			requestTypeMethodMap.put(RequestType.PUT, this.getClass().getMethod("registerLocation", Location.class));
+			requestTypeMethodMap.put(RequestType.POST, this.getClass().getMethod("updateLocation", Location.class));
+			requestTypeMethodMap.put(RequestType.GET, this.getClass().getMethod("getLocation", Location.class));
+			requestTypeMethodMap.put(RequestType.DELETE, this.getClass().getMethod("removeLocation", Location.class));
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}
@@ -60,12 +60,14 @@ public class LocationModelImpl implements LocationModel {
 
 
 	private boolean registerFullySpecifiedLocation(String locId, Location location) {
+		ProjectUtil.testPrint("Registering a Fully Specified Location at " + locId);
 		Location existing = locationRestManager.get(location);
 
 		return true;
 	}
 
 	private boolean registerLetterSpecifiedLocation(String locId, Location location) {
+		ProjectUtil.testPrint("Registering a Letter Specified Location at " + locId);
 
 		return true;
 	}
@@ -92,8 +94,8 @@ public class LocationModelImpl implements LocationModel {
 	public void handleRequest(Request request) {
 		try {
 			Location loc = request.getArg(Location.class);
+			ProjectUtil.testPrint("Location: " + loc.getId());
 			requestTypeMethodMap.get(request.getType()).invoke(this, loc);
-			;
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
