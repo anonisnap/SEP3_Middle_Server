@@ -1,10 +1,11 @@
 package com.group5.sep3.BusinessLogic.LogicModels.impl;
 
 import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
+import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
+import com.group5.sep3.RestManagerFactory;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.ClientCommunication.TransferObjects.Request;
 import com.group5.sep3.ClientCommunication.TransferObjects.RequestType;
-import com.group5.sep3.DataBaseCommunication.RestManagers.ItemRestManager;
 import com.group5.sep3.util.ProjectUtil;
 
 import java.beans.PropertyChangeListener;
@@ -12,16 +13,16 @@ import java.beans.PropertyChangeListener;
 public class ItemModelImpl implements ItemModel {
 
 
-    private ItemRestManager itemRestManager;
+    private RestManager<Item> itemRestManager;
 
-    public ItemModelImpl(ItemRestManager itemRestManager) {
-        this.itemRestManager = itemRestManager;
+    public ItemModelImpl() {
+        this.itemRestManager =  RestManagerFactory.getInstance().getRestManager("item");
     }
 
     @Override
     public void registerItem(Item item) {
         // if item has id ? check if already exist
-        itemRestManager.registerItem(item);
+        itemRestManager.put(item);
         //TODO: error handling
         ProjectUtil.NotImplemented();
     }

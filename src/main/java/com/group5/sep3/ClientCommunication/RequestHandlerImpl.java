@@ -1,10 +1,6 @@
-package com.group5.sep3.BusinessLogic;
+package com.group5.sep3.ClientCommunication;
 
-import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
-import com.group5.sep3.BusinessLogic.LogicModels.SpikeModel;
-import com.group5.sep3.BusinessLogic.LogicModels.impl.ItemModelImpl;
-import com.group5.sep3.BusinessLogic.model.Item;
-import com.group5.sep3.BusinessLogic.model.Spike;
+import com.group5.sep3.LogicModelFactory;
 import com.group5.sep3.ClientCommunication.TransferObjects.Request;
 import com.group5.sep3.util.ProjectUtil;
 
@@ -15,36 +11,25 @@ import java.util.HashMap;
 public class RequestHandlerImpl implements RequestHandler, PropertyChangeListener {
 
     PropertyChangeListener propertyChangeListener;
-    private SpikeModel spikeModel;
-    private ItemModel itemModel;
 
-    //private HashMap<String, RequestHandler> requestHandlerMap;
+    private final HashMap<String, RequestHandler> requestHandlerMap;
 
 
-    public RequestHandlerImpl(ItemModel itemModel) {
-
-        this.itemModel = itemModel;
-       // requestHandlerMap.put("item", new ItemModelImpl());
-
-
+    public RequestHandlerImpl() {
+        requestHandlerMap = new HashMap<>();
+        requestHandlerMap.putAll(LogicModelFactory.getInstance().getAllLogicModels());
     }
 
     @Override
     public void handleRequest(Request request) {
         ProjectUtil.TestPrint("Hallo im requestHandler imple boii, i got this");
-        if (request.getType().name().equalsIgnoreCase("put")){
-            itemModel.handleRequest(request);
-        }else{
-            ProjectUtil.TestPrint(request.getType().name() + ": The request was not handled ");
-        }
-
-
+        requestHandlerMap.get(request.getClassName()).handleRequest(request);
     }
 
 
     @Override
     public void addListener(String name, PropertyChangeListener listener) {
-
+        ProjectUtil.NotImplemented();
     }
 
     @Override
@@ -54,12 +39,12 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 
     @Override
     public void removeListener(String name, PropertyChangeListener listener) {
-
+        ProjectUtil.NotImplemented();
     }
 
     @Override
     public void removeListener(PropertyChangeListener listener) {
-
+        ProjectUtil.NotImplemented();
     }
 
     @Override

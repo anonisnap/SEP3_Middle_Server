@@ -1,5 +1,5 @@
 package com.group5.sep3.ClientCommunication.SocketCommunication;
-import com.group5.sep3.BusinessLogic.RequestHandler;
+import com.group5.sep3.ClientCommunication.RequestHandler;
 import com.group5.sep3.ClientCommunication.TransferObjects.Request;
 import com.group5.sep3.util.ProjectUtil;
 
