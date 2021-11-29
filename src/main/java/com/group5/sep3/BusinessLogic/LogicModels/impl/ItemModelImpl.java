@@ -62,17 +62,18 @@ public class ItemModelImpl implements ItemModel {
         }
 
 
-        /*
-        if (request.getType() == RequestType.PUT) {
-            registerItem(request.getArg(Item.class));
 
-        } else if (request.getType() == RequestType.POST) {
-            ProjectUtil.notImplemented();
-        } else if (request.getType() == RequestType.GET) {
-            ProjectUtil.notImplemented();
-        } else if (request.getType() == RequestType.DELETE) {
-            ProjectUtil.notImplemented();
-        }
+
+//        if (request.getType() == RequestType.PUT) {
+//            registerItem(request.getArg(Item.class));
+//
+//        } else if (request.getType() == RequestType.POST) {
+//            ProjectUtil.notImplemented();
+//        } else if (request.getType() == RequestType.GET) {
+//            ProjectUtil.notImplemented();
+//        } else if (request.getType() == RequestType.DELETE) {
+//            ProjectUtil.notImplemented();
+//        }
 
     }
 
