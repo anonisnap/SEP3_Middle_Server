@@ -40,11 +40,9 @@ public class SocketServerHandler implements  Runnable {
 
                 Thread.sleep(500);
             } catch (SocketException e) {
-                e.printStackTrace();
+                System.out.println(socket + " disconnected");
                 break;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
 
