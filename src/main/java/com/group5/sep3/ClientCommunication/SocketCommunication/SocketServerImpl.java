@@ -63,18 +63,18 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
 
     @Override
     public void handleRequest(Request request) {
-        ProjectUtil.TestPrint("Hallo im socketserimple it got this request" + request);
+        ProjectUtil.testPrint("Request Received : " + request);
         requestHandler.handleRequest(request);
     }
 
     @Override
     public void broadCast(PropertyChangeEvent event) {
-        ProjectUtil.NotImplemented();
+        ProjectUtil.notImplemented();
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        ProjectUtil.NotImplemented();
-        ProjectUtil.TestPrint("got event from request handler" + evt);
+        ProjectUtil.notImplemented();
+        ProjectUtil.testPrint("got event from request handler" + evt);
     }
 }

@@ -1,5 +1,4 @@
 package com.group5.sep3.DataBaseCommunication;
-import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -8,9 +7,9 @@ public class RestClientImpl implements RestClient {
 
     private static RestClient instance;
 
-    private String ROOT = "http://localhost:5000/";
+    private final String ROOT = "http://localhost:5000/";
 
-    private RestTemplate rest = new RestTemplate();
+    private final RestTemplate rest = new RestTemplate();
 
     private RestClientImpl() {
     }
@@ -25,7 +24,6 @@ public class RestClientImpl implements RestClient {
 
         return instance;
     }
-
 
     @Override
     public Object put(String restUrl, Object obj) {

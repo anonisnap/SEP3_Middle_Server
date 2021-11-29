@@ -3,24 +3,24 @@ package com.group5.sep3.util;
 public class ProjectUtil {
 
 
-	public static void NotImplemented() {
+	public static void notImplemented() {
 
 		String nameOfClass = getNameOfClass();
 
-		String nameofCurrMethod = getNameOfMethode();
+		String nameOfCurrMethod = getNameOfMethod();
 
-		System.out.println("NotImplemented: " + nameofCurrMethod + " in class: " + nameOfClass);
+		System.out.println("notImplemented: " + nameOfCurrMethod + " in class: " + nameOfClass);
 	}
 
 
-	public static void TestPrint(String msg) {
+	public static void testPrint(String msg) {
 		String nameOfClass = getNameOfClass();
 
-		String nameofCurrMethod = getNameOfMethode();
+		String nameOfCurrMethod = getNameOfMethod();
 
 		int lineNumber = getLineNumber();
 
-		System.out.println(nameOfClass + "." + nameofCurrMethod + " (" + lineNumber + ") : " + msg);
+		System.out.println(nameOfClass + "." + nameOfCurrMethod + " (" + lineNumber + ") : " + msg);
 	}
 
 
@@ -36,7 +36,7 @@ public class ProjectUtil {
 	}
 
 
-	private static String getNameOfMethode() {
+	private static String getNameOfMethod() {
 		return new Throwable()
 				.getStackTrace()[2]
 				.getMethodName();

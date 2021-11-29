@@ -70,7 +70,7 @@ public class SocketServerHandler implements  Runnable {
         byte[] lenbytes = new byte[1024];
         int readLen = inFromClient.read(lenbytes,0,lenbytes.length);
         String message = new String(lenbytes,0,readLen);
-        ProjectUtil.TestPrint(message);
+        ProjectUtil.testPrint(message);
         return JsonHelper.fromJson(message, Request.class);
     }
 
