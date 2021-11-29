@@ -10,10 +10,12 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 
     @Override
     public Item put(Item obj) {
-        String restUrl =  obj.getClass().getName();
+
+        String restUrl = obj.getClass().getSimpleName();
+
         RestClientImpl.getInstance().put(restUrl, obj);
 
-        return null;
+        return obj;
     }
 
     @Override

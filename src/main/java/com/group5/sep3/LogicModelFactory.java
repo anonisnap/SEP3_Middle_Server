@@ -17,8 +17,8 @@ public class LogicModelFactory {
     private LogicModelFactory() {
         modelMap = new HashMap<>();
 
-        modelMap.put("item", new ItemModelImpl());
-        modelMap.put("location", new LocationModelImpl());
+        modelMap.put("Item", new ItemModelImpl());
+        modelMap.put("Location", new LocationModelImpl());
 
     }
 
@@ -41,9 +41,9 @@ public class LogicModelFactory {
 
 
     private enum models{
-        item,
-        order,
-        location
+        Item,
+        Order,
+        Location
     }
 
 }
