@@ -21,7 +21,7 @@ public class SpikeModelImpl implements SpikeModel {
 
     @Override
     public Object handleSpike(Request request) {
-        ProjectUtil.TestPrint("Handling: " + request);
+        ProjectUtil.testPrint("Handling: " + request);
 
         Spike returnSpike = null;
 

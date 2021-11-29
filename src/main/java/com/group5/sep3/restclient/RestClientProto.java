@@ -76,7 +76,7 @@ public class RestClientProto {
 			httpResponse = rest.getForEntity(ROOT + "Spike/" + arg, String.class);
 		} catch (RestClientException e) {
 			// Most likely going to be a 404 by the DB Server
-			ProjectUtil.TestPrint("Error in query\n\t" + e.getMessage());
+			ProjectUtil.testPrint("Error in query\n\t" + e.getMessage());
 			return;
 		}
 
@@ -86,9 +86,9 @@ public class RestClientProto {
 
 		// Assert Spike was not null
 		if (requestedSpike == null) {
-			ProjectUtil.TestPrint("Spike was null");
+			ProjectUtil.testPrint("Spike was null");
 		} else {
-			ProjectUtil.TestPrint(requestedSpike.toString());
+			ProjectUtil.testPrint(requestedSpike.toString());
 		}
 	}
 
@@ -103,7 +103,7 @@ public class RestClientProto {
 			httpResponse = rest.getForEntity(ROOT + "Spike/" + arg, String.class);
 			rest.delete(ROOT + "Spike/" + arg);
 		} catch (RestClientException e) {
-			ProjectUtil.TestPrint("Error in query\n\t" + e.getMessage());
+			ProjectUtil.testPrint("Error in query\n\t" + e.getMessage());
 			return; // return null;
 		}
 
@@ -113,9 +113,9 @@ public class RestClientProto {
 
 		// Assert Spike was not null
 		if (requestedSpike == null) {
-			ProjectUtil.TestPrint("Spike was null");
+			ProjectUtil.testPrint("Spike was null");
 		} else {
-			ProjectUtil.TestPrint(requestedSpike.toString());
+			ProjectUtil.testPrint(requestedSpike.toString());
 		}
 		//return null
 	}
@@ -128,7 +128,7 @@ public class RestClientProto {
 	private void testPost(String arg) {
 		String[] args = arg.split(",");
 		if (args.length < 2) {
-			ProjectUtil.TestPrint("Not enough arguments. Did you forget to comma separate the POST request?");
+			ProjectUtil.testPrint("Not enough arguments. Did you forget to comma separate the POST request?");
 			return;
 		}
 
@@ -138,11 +138,11 @@ public class RestClientProto {
 			httpResponse = rest.postForEntity(ROOT + "Spike/" + args[0], new Spike(args[1]), String.class);
 		} catch (
 				RestClientException e) {
-			ProjectUtil.TestPrint("Error in query\n\t" + e.getMessage());
+			ProjectUtil.testPrint("Error in query\n\t" + e.getMessage());
 			return; // return null;
 		}
 
-		ProjectUtil.TestPrint(httpResponse.getStatusCode().
+		ProjectUtil.testPrint(httpResponse.getStatusCode().
 
 				name()); // Check Status Code and Inform User if <Created> or <Updated>
 	}
