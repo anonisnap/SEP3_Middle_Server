@@ -12,7 +12,7 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 
     PropertyChangeListener propertyChangeListener;
 
-    private final HashMap<String, RequestHandler> requestHandlerMap;
+    private HashMap<String, RequestHandler> requestHandlerMap;
 
 
     public RequestHandlerImpl() {
@@ -22,7 +22,7 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 
     @Override
     public void handleRequest(Request request) {
-        ProjectUtil.testPrint("Hallo im requestHandler imple boii, i got this");
+        ProjectUtil.testPrint("Request Class: " + request.getClassName() + "\nRequest Handler Keys: " + requestHandlerMap.keySet());
         requestHandlerMap.get(request.getClassName()).handleRequest(request);
     }
 
