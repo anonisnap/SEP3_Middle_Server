@@ -4,7 +4,7 @@ import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 
-public class NOT_USED_LocationRestManagerImpl implements RestManager<Location> {
+public class LocationRestManagerImpl implements RestManager<Location> {
 
 
     @Override
@@ -22,7 +22,7 @@ public class NOT_USED_LocationRestManagerImpl implements RestManager<Location> {
 
     @Override
     public Location get(Location obj) {
-        String url = obj.getClass().getSimpleName();
+        String url = obj.getClass().getSimpleName() + obj.getId();
         return (Location) RestClientImpl.getInstance().get(url);
     }
 

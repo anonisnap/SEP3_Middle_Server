@@ -2,8 +2,13 @@ package com.group5.sep3.DataBaseCommunication.RestManagers.Impl;
 
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
+import com.group5.sep3.util.ProjectUtil;
 
-public class RestManagerImpl<T> implements RestManager<T> {
+public class NOT_USED_RestManagerImpl<T> implements RestManager<T> {
+	public NOT_USED_RestManagerImpl(T debugItem) {
+		ProjectUtil.testPrint("Manager Type Variable: " + debugItem.getClass().getSimpleName());
+	}
+
 	@Override
 	public T put(T obj) {
 		String url = obj.getClass().getSimpleName();
@@ -20,7 +25,7 @@ public class RestManagerImpl<T> implements RestManager<T> {
 	@Override
 	public T get(T obj) {
 		String url = obj.getClass().getSimpleName();
-		return (T) RestClientImpl.getInstance().post(url, obj);
+		return (T) RestClientImpl.getInstance().get(url);
 	}
 
 	@Override

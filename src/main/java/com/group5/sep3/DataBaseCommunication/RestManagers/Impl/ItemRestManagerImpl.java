@@ -5,7 +5,7 @@ import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.ProjectUtil;
 
-public class NOT_USED_ItemRestManagerImpl implements RestManager<Item> {
+public class ItemRestManagerImpl implements RestManager<Item> {
 
 
     @Override
