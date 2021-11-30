@@ -26,6 +26,9 @@ public class LocationModelImpl implements LocationModel {
 			requestTypeMethodMap.put(RequestType.POST, this.getClass().getMethod("updateLocation", Location.class));
 			requestTypeMethodMap.put(RequestType.GET, this.getClass().getMethod("getLocation", Location.class));
 			requestTypeMethodMap.put(RequestType.DELETE, this.getClass().getMethod("removeLocation", Location.class));
+//			requestTypeMethodMap.put(RequestType.DELETE, (loc) -> {
+//				removeLocation(loc);
+//			});
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}
