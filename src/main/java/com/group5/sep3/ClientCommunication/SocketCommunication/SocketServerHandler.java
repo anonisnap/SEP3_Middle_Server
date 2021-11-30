@@ -23,7 +23,6 @@ public class SocketServerHandler implements  Runnable {
         inFromClient = this.socket.getInputStream();
 
         this.socketServer = socketServer;
-
     }
 
 
@@ -50,16 +49,20 @@ public class SocketServerHandler implements  Runnable {
 
     }
 
-    private void handleReceivedObject(Request request) {
-        socketServer.handleRequest(request);
+    private void handleReceivedObject(Request request) throws IOException {
+        try {
+            socketServer.handleRequest(request);
+        } catch (Exception e) {
+            ProjectUtil.testPrint("Error: " + e.getMessage() + " of type " + e.getClass().getSimpleName());
+            send("Exception (ExceptionClass): " + e.getLocalizedMessage());
+        }
     }
 
-    public void send(Request request) throws IOException {
-        String requestAsJson = JsonHelper.toJson(request);
+    public void send(Serializable msg) throws IOException {
+        String requestAsJson = JsonHelper.toJson(msg);
 
         byte[] responseAsBytes = requestAsJson.getBytes();
         outToClient.write(responseAsBytes, 0, responseAsBytes.length);
-
     }
 
 

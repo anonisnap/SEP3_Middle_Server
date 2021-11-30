@@ -4,7 +4,7 @@ import com.group5.sep3.BusinessLogic.model.Item;
 
 public interface ItemModel extends LogicModel {
 
-    void registerItem(Item item);
+    void registerItem(Item item) throws Exception;
 
 
 

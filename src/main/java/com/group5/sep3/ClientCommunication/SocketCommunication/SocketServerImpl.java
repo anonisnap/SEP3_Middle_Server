@@ -41,12 +41,9 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
     @Override
     public void createSocketServerHandler(Socket socket) throws IOException {
         SocketServerHandler socketServerHandler = new SocketServerHandler(socket, this);
-
         socketServerHandlers.add(socketServerHandler);
-
         Thread socketThread = new Thread(socketServerHandler);
         socketThread.start();
-
     }
 
 
@@ -62,7 +59,7 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
 
 
     @Override
-    public void handleRequest(Request request) {
+    public void handleRequest(Request request) throws Exception {
         ProjectUtil.testPrint("Request Received : " + request);
         requestHandler.handleRequest(request);
     }

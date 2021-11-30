@@ -1,7 +1,10 @@
 package com.group5.sep3;
 
+import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.Location;
+import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemRestManagerImpl;
+import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.LocationRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.NOT_USED_RestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.ProjectUtil;
@@ -16,8 +19,8 @@ public class RestManagerFactory {
 
     private RestManagerFactory() {
         restManagers = new HashMap<>();
-        restManagers.put("Item", new NOT_USED_RestManagerImpl<Item>(new Item(0, "", 0,0,0,0)));
-        restManagers.put("Location", new NOT_USED_RestManagerImpl<Location>(new Location("A")));
+        restManagers.put("Item", new ItemRestManagerImpl());
+        restManagers.put("Location", new LocationRestManagerImpl());
         StringBuilder debug = new StringBuilder();
         for (String key : restManagers.keySet()) {
             debug.append("\n\t> ").append(key).append(" ").append(restManagers.get(key).getClass().getSimpleName());

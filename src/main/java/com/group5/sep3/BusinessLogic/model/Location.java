@@ -1,17 +1,27 @@
 package com.group5.sep3.BusinessLogic.model;
 
 public class Location {
-    private String id;
+	private int id;
+	private String description;
 
-    public Location(String id) {
-        this.id = id;
-    }
+	public Location(int id, String description) {
+		this.id = id;
+		this.description = description;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }

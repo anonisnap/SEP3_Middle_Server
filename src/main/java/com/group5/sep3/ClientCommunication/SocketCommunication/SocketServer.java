@@ -14,7 +14,7 @@ public interface SocketServer {
 
     void createSocketServerHandler(Socket socket) throws IOException;
 
-    void handleRequest(Request request);
+    void handleRequest(Request request) throws Exception;
 
     void broadCast(PropertyChangeEvent event);
 

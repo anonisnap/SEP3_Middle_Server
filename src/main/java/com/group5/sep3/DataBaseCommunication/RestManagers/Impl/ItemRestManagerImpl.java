@@ -5,6 +5,8 @@ import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.ProjectUtil;
 
+import java.util.Collection;
+
 public class ItemRestManagerImpl implements RestManager<Item> {
 
 
@@ -26,6 +28,12 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 
     @Override
     public Item get(Item obj) {
+        ProjectUtil.notImplemented();
+        return null;
+    }
+
+    @Override
+    public Collection<Item> getAll(Item obj) {
         ProjectUtil.notImplemented();
         return null;
     }
