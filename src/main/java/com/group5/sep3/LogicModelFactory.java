@@ -3,6 +3,7 @@ package com.group5.sep3;
 import com.group5.sep3.BusinessLogic.LogicModels.LogicModel;
 import com.group5.sep3.BusinessLogic.LogicModels.impl.ItemModelImpl;
 import com.group5.sep3.BusinessLogic.LogicModels.impl.LocationModelImpl;
+import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
 
 import java.util.HashMap;
@@ -13,14 +14,14 @@ public class LogicModelFactory {
 
 	public static LogicModelFactory instance;
 
-	private HashMap<String, LogicModel> modelMap;
+	private HashMap<EntityTypes, LogicModel> modelMap;
 
 	private LogicModelFactory() {
 		ProjectUtil.testPrint("+ New Logic Model Factory");
 		modelMap = new HashMap<>();
 
-		modelMap.put("Item", new ItemModelImpl());
-		modelMap.put("Location", new LocationModelImpl());
+		modelMap.put(EntityTypes.Item, new ItemModelImpl());
+		modelMap.put(EntityTypes.Location, new LocationModelImpl());
 
 	}
 
@@ -33,7 +34,7 @@ public class LogicModelFactory {
 	}
 
 
-	public Map<String, LogicModel> getAll() {
+	public Map<EntityTypes, LogicModel> getAll() {
 		return Map.copyOf(modelMap);
 	}
 
@@ -44,9 +45,6 @@ public class LogicModelFactory {
 	}
 
 
-	private enum models {
-		Item, Order, Location
-	}
 
 }
 

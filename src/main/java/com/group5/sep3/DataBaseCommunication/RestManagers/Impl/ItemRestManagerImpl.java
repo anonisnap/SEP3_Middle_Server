@@ -28,15 +28,19 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 
     @Override
     public Item get(Item obj) {
+
         ProjectUtil.notImplemented();
         return null;
     }
 
     @Override
     public Collection<Item> getAll(Item obj) {
+        String restUrl = obj.getClass().getSimpleName();
+        RestClientImpl.getInstance().get(restUrl);
         ProjectUtil.notImplemented();
         return null;
     }
+
 
     @Override
     public Item delete(Item obj) {

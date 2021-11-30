@@ -1,15 +1,17 @@
 package com.group5.sep3.BusinessLogic.model;
 
 public class ItemLocation {
+
     private Location location;
-    private Item warehouseItem;
+    private Item item;
     private int amount;
 
-    public ItemLocation(Location location, Item warehouseItem, int amount) {
+    public ItemLocation(Location location, Item Item, int amount) {
         this.location = location;
-        this.warehouseItem = warehouseItem;
+        this.item = Item;
         this.amount = amount;
     }
+
 
     public Location getLocation() {
         return location;
@@ -19,12 +21,12 @@ public class ItemLocation {
         this.location = location;
     }
 
-    public Item getWarehouseItem() {
-        return warehouseItem;
+    public Item getItem() {
+        return item;
     }
 
-    public void setWarehouseItem(Item warehouseItem) {
-        this.warehouseItem = warehouseItem;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public int getAmount() {
@@ -34,4 +36,5 @@ public class ItemLocation {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
 }

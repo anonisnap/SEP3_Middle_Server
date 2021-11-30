@@ -8,6 +8,7 @@ import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.ClientCommunication.TransferObjects.Request;
 import com.group5.sep3.ClientCommunication.TransferObjects.RequestType;
 import com.group5.sep3.LogicModelFactory;
+import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
 
 import java.beans.PropertyChangeEvent;
@@ -18,7 +19,7 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 
 	PropertyChangeListener propertyChangeListener;
 
-	private HashMap<String, LogicModel> requestHandlerMap;
+	private final HashMap<EntityTypes, LogicModel> requestHandlerMap;
 
 
 	public RequestHandlerImpl() {
@@ -27,19 +28,22 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 	}
 
 	@Override
-	public void handleRequest(Request request) throws Exception {
-		String objectClassName = request.getClassName();
-		ProjectUtil.testPrint("Request Class: " + objectClassName + "\nRequest Handler Keys: " + requestHandlerMap.keySet());
+	public void handleRequest(Request request)  {
 
-			switch (objectClassName.toLowerCase()) {
-				case "item" -> handleItem(request.getType(), request.getArg(Item.class));
-				case "location" -> handleLocation(request.getType(), request.getArg(Location.class));
+		String objectClassName = request.getClassName();
+
+		ProjectUtil.testPrint("Request Class: " + objectClassName +
+				"\nRequest Handler Keys: " + requestHandlerMap.keySet());
+
+			switch (objectClassName) {
+				case "Item" -> handleItem(request.getType(), request.getArg(Item.class));
+				case "Location" -> handleLocation(request.getType(), request.getArg(Location.class));
 			}
 
 	}
 
-	private void handleItem(RequestType requestType, Item item) throws Exception {
-		ItemModelImpl model = (ItemModelImpl) requestHandlerMap.get("Item");
+	private void handleItem(RequestType requestType, Item item) {
+		ItemModelImpl model = (ItemModelImpl) requestHandlerMap.get(EntityTypes.Item);
 		switch (requestType) {
 			case GET -> model.getItem(item);
 			case PUT -> model.registerItem(item);
@@ -48,8 +52,8 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 		}
 	}
 
-	private void handleLocation(RequestType requestType, Location loc) throws Exception {
-		LocationModelImpl model = (LocationModelImpl) requestHandlerMap.get("Location");
+	private void handleLocation(RequestType requestType, Location loc) {
+		LocationModelImpl model = (LocationModelImpl) requestHandlerMap.get(EntityTypes.Location);
 		switch (requestType) {
 			case GET -> model.getLocation(loc);
 			case PUT -> model.registerLocation(loc);

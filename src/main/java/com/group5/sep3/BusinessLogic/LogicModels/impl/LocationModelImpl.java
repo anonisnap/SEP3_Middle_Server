@@ -4,16 +4,17 @@ import com.group5.sep3.BusinessLogic.LogicModels.LocationModel;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.RestManagerFactory;
+import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.util.Collection;
 
 public class LocationModelImpl implements LocationModel {
-	private RestManager<Location> locationRestManager;
+	private final RestManager<Location> locationRestManager;
 
 	public LocationModelImpl() {
-		locationRestManager = (RestManager<Location>) RestManagerFactory.getInstance().getRestManager("Location");
+		locationRestManager = (RestManager<Location>) RestManagerFactory.getInstance().getRestManager(EntityTypes.Location);
 	}
 
 	@Override
