@@ -1,10 +1,16 @@
 package com.group5.sep3.DataBaseCommunication.RestManagers.Impl;
 
+import com.google.gson.reflect.TypeToken;
+import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
+import com.group5.sep3.util.JsonHelper;
+import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class LocationRestManagerImpl implements RestManager<Location> {
@@ -30,9 +36,15 @@ public class LocationRestManagerImpl implements RestManager<Location> {
 	}
 
 	@Override
-	public Collection<Location> getAll(Location obj) throws RestClientException {
-		String url = obj.getClass().getSimpleName();
-		return (Collection<Location>) RestClientImpl.getInstance().get(url);
+	public Collection<Location> getAll() throws RestClientException {
+		String restUrl = Location.class.getSimpleName();
+
+		String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
+
+		Type type = new TypeToken<ArrayList<Location>>(){}.getType();
+		ArrayList<Location> locations = JsonHelper.fromJson(jsonString, type);
+
+		return locations;
 	}
 
 	@Override

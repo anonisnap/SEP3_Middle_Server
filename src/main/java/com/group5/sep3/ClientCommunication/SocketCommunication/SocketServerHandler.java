@@ -78,11 +78,12 @@ public class SocketServerHandler implements  Runnable {
 
     private Request readFromClient() throws IOException {
 
-        byte[] lenbytes = new byte[1024];
+        byte[] lenbytes = new byte[65536];
         int readLen = inFromClient.read(lenbytes,0,lenbytes.length);
         String message = new String(lenbytes,0,readLen);
         ProjectUtil.testPrint(message);
         return JsonHelper.fromJson(message, Request.class);
+
     }
 
 }

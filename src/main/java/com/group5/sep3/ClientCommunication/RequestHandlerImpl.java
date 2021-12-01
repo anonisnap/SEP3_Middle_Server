@@ -17,95 +17,101 @@ import java.util.HashMap;
 
 public class RequestHandlerImpl implements RequestHandler, PropertyChangeListener {
 
-	PropertyChangeListener propertyChangeListener;
+    PropertyChangeListener propertyChangeListener;
 
-	private final HashMap<EntityTypes, LogicModel> requestHandlerMap;
-
-
-	public RequestHandlerImpl() {
-		requestHandlerMap = new HashMap<>();
-		requestHandlerMap.putAll(LogicModelFactory.getInstance().getAll());
-	}
-
-	@Override
-	public Object handleRequest(Request request) throws Exception {
-
-		String objectClassName = request.getClassName();
-
-		ProjectUtil.testPrint("Request Class: " + objectClassName + "\nRequest Handler Keys: " + requestHandlerMap.keySet());
-
-		switch (objectClassName) {
-			case "Item" -> {
-				return handleItem(request.getType(), request.getArg(Item.class));
-			}
-			case "Location" -> {
-				return handleLocation(request.getType(), request.getArg(Location.class));
-			}
-		}
-		throw new Exception("Object Class Not Found");
-	}
-
-	private Item handleItem(RequestType requestType, Item item) {
-		ItemModelImpl model = (ItemModelImpl) requestHandlerMap.get(EntityTypes.Item);
-		switch (requestType) {
-			case GET -> {
-				return model.getItem(item);
-			}
-			case PUT -> {
-				return model.registerItem(item);
-			}
-			case POST -> {
-				return model.updateItem(item);
-			}
-			case DELETE -> {
-				return model.removeItem(item);
-			}
-		}
-		return null;
-	}
-
-	private Location handleLocation(RequestType requestType, Location loc) {
-		LocationModelImpl model = (LocationModelImpl) requestHandlerMap.get(EntityTypes.Location);
-		switch (requestType) {
-			case GET -> {
-				return model.getLocation(loc);
-			}
-			case PUT -> {
-				return model.registerLocation(loc);
-			}
-			case POST -> {
-				return model.updateLocation(loc);
-			}
-			case DELETE -> {
-				return model.removeLocation(loc);
-			}
-		}
-		return null;
-	}
+    private final HashMap<EntityTypes, LogicModel> requestHandlerMap;
 
 
-	@Override
-	public void addListener(String name, PropertyChangeListener listener) {
-		ProjectUtil.notImplemented();
-	}
+    public RequestHandlerImpl() {
+        requestHandlerMap = new HashMap<>();
+        requestHandlerMap.putAll(LogicModelFactory.getInstance().getAll());
+    }
 
-	@Override
-	public void addListener(PropertyChangeListener listener) {
-		this.propertyChangeListener = listener;
-	}
+    @Override
+    public Object handleRequest(Request request) throws Exception {
 
-	@Override
-	public void removeListener(String name, PropertyChangeListener listener) {
-		ProjectUtil.notImplemented();
-	}
+        String objectClassName = request.getClassName();
 
-	@Override
-	public void removeListener(PropertyChangeListener listener) {
-		ProjectUtil.notImplemented();
-	}
+        ProjectUtil.testPrint("Request Class: " + objectClassName + "\nRequest Handler Keys: " + requestHandlerMap.keySet());
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		ProjectUtil.notImplemented();
-	}
+        switch (objectClassName) {
+            case "Item" -> {
+                return handleItem(request.getType(), request.getArg(Item.class));
+            }
+            case "Location" -> {
+                return handleLocation(request.getType(), request.getArg(Location.class));
+            }
+        }
+        throw new Exception("Object Class Not Found");
+    }
+
+    private Object handleItem(RequestType requestType, Item item) {
+        ItemModelImpl model = (ItemModelImpl) requestHandlerMap.get(EntityTypes.Item);
+        switch (requestType) {
+            case GET -> {
+                return model.get(item);
+            }
+            case GETALL -> {
+                return model.getAll();
+            }
+            case PUT -> {
+                return model.register(item);
+            }
+            case POST -> {
+                return model.update(item);
+            }
+            case DELETE -> {
+                return model.remove(item);
+            }
+        }
+        return null;
+    }
+
+    private Object handleLocation(RequestType requestType, Location loc) {
+        LocationModelImpl model = (LocationModelImpl) requestHandlerMap.get(EntityTypes.Location);
+        switch (requestType) {
+            case GET -> {
+                return model.get(loc);
+            }
+            case GETALL -> {
+                return model.getAll();
+            }
+            case PUT -> {
+                return model.register(loc);
+            }
+            case POST -> {
+                return model.update(loc);
+            }
+            case DELETE -> {
+                return model.remove(loc);
+            }
+        }
+        return null;
+    }
+
+
+    @Override
+    public void addListener(String name, PropertyChangeListener listener) {
+        ProjectUtil.notImplemented();
+    }
+
+    @Override
+    public void addListener(PropertyChangeListener listener) {
+        this.propertyChangeListener = listener;
+    }
+
+    @Override
+    public void removeListener(String name, PropertyChangeListener listener) {
+        ProjectUtil.notImplemented();
+    }
+
+    @Override
+    public void removeListener(PropertyChangeListener listener) {
+        ProjectUtil.notImplemented();
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        ProjectUtil.notImplemented();
+    }
 }

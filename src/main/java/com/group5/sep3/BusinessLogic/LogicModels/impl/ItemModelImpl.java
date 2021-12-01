@@ -7,6 +7,8 @@ import com.group5.sep3.RestManagerFactory;
 import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
 
+import java.util.Collection;
+
 public class ItemModelImpl implements ItemModel {
 
 
@@ -18,25 +20,33 @@ public class ItemModelImpl implements ItemModel {
 	}
 
 	@Override
-	public Item registerItem(Item item) {
-		// if item has id ? check if already exist
-		itemRestManager.put(item);
+	public Item register(Item entity)  {
+		itemRestManager.put(entity);
 		//TODO: error handling
-		return item;
+		return entity;
 	}
 
+	@Override
+	public Item update(Item entity) {
+		return null;
+	}
 
-	public Item getItem(Item item) {
-		Item tmp = itemRestManager.get(item);
+	@Override
+	public Collection<Item> getAll() {
+		return itemRestManager.getAll();
+	}
+
+	@Override
+	public Item get(Item entity) {
+		Item tmp = itemRestManager.get(entity);
 		ProjectUtil.testPrint(tmp.getItemName());
 		return tmp;
 	}
 
-	public Item updateItem(Item item) {
-		return item;
+	@Override
+	public Item remove(Item entity){
+		return null;
 	}
 
-	public Item removeItem(Item item) {
-		return item;
-	}
+
 }

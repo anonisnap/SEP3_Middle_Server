@@ -9,7 +9,7 @@ public interface RestManager<T> {
     T put(T obj) throws RestClientException;
     T post(T obj) throws RestClientException;
     T get(T obj) throws RestClientException;
-    Collection<T> getAll(T obj) throws RestClientException;
+    Collection<T> getAll() throws RestClientException;
     T delete(T obj) throws RestClientException;
 
 }

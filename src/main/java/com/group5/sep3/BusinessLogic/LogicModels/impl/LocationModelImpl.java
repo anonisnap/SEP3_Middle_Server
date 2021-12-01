@@ -18,7 +18,7 @@ public class LocationModelImpl implements LocationModel {
 	}
 
 	@Override
-	public Location registerLocation(Location location) { // TODO: Implement
+	public Location register(Location location) { // TODO: Implement
 		try {
 			return locationRestManager.put(location);
 		} catch (RestClientException e) {
@@ -28,22 +28,22 @@ public class LocationModelImpl implements LocationModel {
 	}
 
 	@Override
-	public Location updateLocation(Location location) {
+	public Location update(Location location) {
 		return locationRestManager.post(location);
 	}
 
 	@Override
-	public Collection<Location> getAll(Location location) {
-		return locationRestManager.getAll(location);
+	public Collection<Location> getAll() {
+		return locationRestManager.getAll();
 	}
 
 	@Override
-	public Location getLocation(Location location) {
+	public Location get(Location location) {
 		return locationRestManager.get(location);
 	}
 
 	@Override
-	public Location removeLocation(Location location) {
+	public Location remove(Location location) {
 		return locationRestManager.delete(location);
 	}
 
