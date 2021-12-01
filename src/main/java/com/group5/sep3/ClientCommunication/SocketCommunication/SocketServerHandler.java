@@ -39,7 +39,7 @@ public class SocketServerHandler implements  Runnable {
                 handleReceivedObject(request);
 
                 Thread.sleep(500);
-            } catch (SocketException e) {
+            } catch (SocketException | StringIndexOutOfBoundsException e) {
                 System.out.println(socket + " disconnected");
                 break;
             } catch (InterruptedException | IOException e) {
@@ -67,11 +67,11 @@ public class SocketServerHandler implements  Runnable {
         reply.setClassname(obj.getClass().getSimpleName());
         reply.setArg(obj);
 
-        String replyJson = JsonHelper.toJson(reply);
+        String requestAsJson = JsonHelper.toJson(reply);
 
         reply = null;
 
-        byte[] responseAsBytes = replyJson.getBytes();
+        byte[] responseAsBytes = requestAsJson.getBytes();
         outToClient.write(responseAsBytes, 0, responseAsBytes.length);
     }
 
