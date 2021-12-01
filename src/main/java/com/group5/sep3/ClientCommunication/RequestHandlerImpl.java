@@ -28,38 +28,59 @@ public class RequestHandlerImpl implements RequestHandler, PropertyChangeListene
 	}
 
 	@Override
-	public void handleRequest(Request request)  {
+	public Object handleRequest(Request request) throws Exception {
 
 		String objectClassName = request.getClassName();
 
-		ProjectUtil.testPrint("Request Class: " + objectClassName +
-				"\nRequest Handler Keys: " + requestHandlerMap.keySet());
+		ProjectUtil.testPrint("Request Class: " + objectClassName + "\nRequest Handler Keys: " + requestHandlerMap.keySet());
 
-			switch (objectClassName) {
-				case "Item" -> handleItem(request.getType(), request.getArg(Item.class));
-				case "Location" -> handleLocation(request.getType(), request.getArg(Location.class));
+		switch (objectClassName) {
+			case "Item" -> {
+				return handleItem(request.getType(), request.getArg(Item.class));
 			}
-
+			case "Location" -> {
+				return handleLocation(request.getType(), request.getArg(Location.class));
+			}
+		}
+		throw new Exception("Object Class Not Found");
 	}
 
-	private void handleItem(RequestType requestType, Item item) {
+	private Item handleItem(RequestType requestType, Item item) {
 		ItemModelImpl model = (ItemModelImpl) requestHandlerMap.get(EntityTypes.Item);
 		switch (requestType) {
-			case GET -> model.getItem(item);
-			case PUT -> model.registerItem(item);
-			case POST -> model.updateItem(item);
-			case DELETE -> model.removeItem(item);
+			case GET -> {
+				return model.getItem(item);
+			}
+			case PUT -> {
+				return model.registerItem(item);
+			}
+			case POST -> {
+				return model.updateItem(item);
+			}
+			case DELETE -> {
+				return model.removeItem(item);
+			}
 		}
+		return null;
 	}
 
-	private void handleLocation(RequestType requestType, Location loc) {
+	private Location handleLocation(RequestType requestType, Location loc) {
 		LocationModelImpl model = (LocationModelImpl) requestHandlerMap.get(EntityTypes.Location);
 		switch (requestType) {
-			case GET -> model.getLocation(loc);
-			case PUT -> model.registerLocation(loc);
-			case POST -> model.updateLocation(loc);
-			case DELETE -> model.removeLocation(loc);
+			case GET -> {
+				return model.getLocation(loc);
+			}
+			case PUT -> {
+				return model.registerLocation(loc);
+			}
+			case POST -> {
+				return model.updateLocation(loc);
+			}
+			case DELETE -> {
+				return model.removeLocation(loc);
+			}
 		}
+		return null;
 	}
 
 

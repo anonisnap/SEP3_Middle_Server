@@ -1,12 +1,12 @@
 package com.group5.sep3.BusinessLogic.model;
 
 public class Item {
-    private int itemId;
+    private int id;
     private String itemName;
     private double length, width, height, weight;
 
-    public Item(int itemId, String itemName, double length, double width, double height, double weight) {
-        this.itemId = itemId;
+    public Item(int id, String itemName, double length, double width, double height, double weight) {
+        this.id = id;
         this.itemName = itemName;
         this.length = length;
         this.width = width;
@@ -14,12 +14,12 @@ public class Item {
         this.weight = weight;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getId() {
+        return id;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getItemName() {

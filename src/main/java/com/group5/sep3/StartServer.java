@@ -12,14 +12,14 @@ public class StartServer {
 
     public static void main(String[] args) {
 
-        Item item = new Item();
+//        Item item = new Item(); TODO: Sander??
 
-        /*
+
         RequestHandler requestHandler = new RequestHandlerImpl();
 
         SocketServer socketServer = new SocketServerImpl(requestHandler);
 
-        socketServer.startSocketServer();*/
+        socketServer.startSocketServer();
 
     }
 

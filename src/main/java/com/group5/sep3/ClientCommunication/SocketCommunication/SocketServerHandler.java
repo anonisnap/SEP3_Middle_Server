@@ -31,7 +31,7 @@ public class SocketServerHandler implements  Runnable {
     public void run() {
         int i = 0;
         while (true) {
-            System.out.println("iteration: " + i++);
+            System.out.println("data transfer iteration: " + i++);
             try {
 
                 Request request =  readFromClient();
@@ -53,7 +53,8 @@ public class SocketServerHandler implements  Runnable {
         try {
             socketServer.handleRequest(request);
         } catch (Exception e) {
-            ProjectUtil.testPrint("Error: " + e.getMessage() + " of type " + e.getClass().getSimpleName());
+            e.printStackTrace();
+//            ProjectUtil.testPrint("Error: " + e.getMessage() + " of type " + e.getClass().getSimpleName());
             send("Exception (ExceptionClass): " + e.getLocalizedMessage());
         }
     }

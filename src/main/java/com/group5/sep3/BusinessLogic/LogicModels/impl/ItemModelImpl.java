@@ -2,13 +2,10 @@ package com.group5.sep3.BusinessLogic.LogicModels.impl;
 
 import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
 import com.group5.sep3.BusinessLogic.model.Item;
-import com.group5.sep3.ClientCommunication.TransferObjects.RequestType;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.RestManagerFactory;
 import com.group5.sep3.util.EntityTypes;
-
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import com.group5.sep3.util.ProjectUtil;
 
 public class ItemModelImpl implements ItemModel {
 
@@ -21,20 +18,25 @@ public class ItemModelImpl implements ItemModel {
 	}
 
 	@Override
-	public void registerItem(Item item) {
+	public Item registerItem(Item item) {
 		// if item has id ? check if already exist
 		itemRestManager.put(item);
 		//TODO: error handling
-
+		return item;
 	}
 
 
-	public void getItem(Item item) {
+	public Item getItem(Item item) {
+		Item tmp = itemRestManager.get(item);
+		ProjectUtil.testPrint(tmp.getItemName());
+		return tmp;
 	}
 
-	public void updateItem(Item item) {
+	public Item updateItem(Item item) {
+		return item;
 	}
 
-	public void removeItem(Item item) {
+	public Item removeItem(Item item) {
+		return item;
 	}
 }
