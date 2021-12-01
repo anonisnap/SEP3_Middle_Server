@@ -2,8 +2,8 @@ package com.group5.sep3.BusinessLogic.LogicModels.impl;
 
 import com.group5.sep3.BusinessLogic.LogicModels.SpikeModel;
 import com.group5.sep3.BusinessLogic.model.Spike;
-import com.group5.sep3.ClientCommunication.TransferObjects.Request;
-import com.group5.sep3.ClientCommunication.TransferObjects.RequestType;
+import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.Request;
+import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.RequestType;
 import com.group5.sep3.DataBaseCommunication.RestClient;
 import com.group5.sep3.util.ProjectUtil;
 
