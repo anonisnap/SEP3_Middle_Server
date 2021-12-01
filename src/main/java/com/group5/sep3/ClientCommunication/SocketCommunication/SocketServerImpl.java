@@ -6,6 +6,7 @@ import com.group5.sep3.util.ProjectUtil;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -59,9 +60,11 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
 
 
     @Override
-    public void handleRequest(Request request) throws Exception {
+    public Object handleRequest(Request request) throws Exception {
         ProjectUtil.testPrint("Request Received : " + request);
-        requestHandler.handleRequest(request);
+        Object tmp = requestHandler.handleRequest(request);
+        ProjectUtil.testPrint(this.getClass().getSimpleName() + " wishes to return Object; " + tmp.getClass().getSimpleName());
+        return tmp;
     }
 
     @Override

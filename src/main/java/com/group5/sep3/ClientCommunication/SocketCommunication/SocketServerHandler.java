@@ -2,6 +2,7 @@ package com.group5.sep3.ClientCommunication.SocketCommunication;
 
 
 import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.Request;
+import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.RequestReply;
 import com.group5.sep3.util.JsonHelper;
 import com.group5.sep3.util.ProjectUtil;
 
@@ -10,11 +11,11 @@ import java.net.Socket;
 import java.net.SocketException;
 
 public class SocketServerHandler implements  Runnable {
-
-    private Socket socket;
-    private OutputStream outToClient;
-    private InputStream inFromClient;
-    private SocketServer socketServer;
+    private final Socket socket;
+    private final OutputStream outToClient;
+    private final InputStream inFromClient;
+    private final SocketServer socketServer;
+    RequestReply reply;
 
 
     public SocketServerHandler(Socket socket, SocketServer socketServer) throws IOException {
@@ -51,7 +52,10 @@ public class SocketServerHandler implements  Runnable {
 
     private void handleReceivedObject(Request request) throws IOException {
         try {
-            socketServer.handleRequest(request);
+            reply = new RequestReply(request.getId());
+            ProjectUtil.testPrint("Created Reply: (Id) " + reply.getId());
+            Object retVal = socketServer.handleRequest(request);
+            send(retVal);
         } catch (Exception e) {
             e.printStackTrace();
 //            ProjectUtil.testPrint("Error: " + e.getMessage() + " of type " + e.getClass().getSimpleName());
@@ -59,10 +63,15 @@ public class SocketServerHandler implements  Runnable {
         }
     }
 
-    public void send(Serializable msg) throws IOException {
-        String requestAsJson = JsonHelper.toJson(msg);
+    public void send(Object obj) throws IOException {
+        reply.setClassname(obj.getClass().getSimpleName());
+        reply.setArg(obj);
 
-        byte[] responseAsBytes = requestAsJson.getBytes();
+        String replyJson = JsonHelper.toJson(reply);
+
+        reply = null;
+
+        byte[] responseAsBytes = replyJson.getBytes();
         outToClient.write(responseAsBytes, 0, responseAsBytes.length);
     }
 
