@@ -6,9 +6,9 @@ public class ItemLocation {
     private Item item;
     private int amount;
 
-    public ItemLocation(Location location, Item Item, int amount) {
+    public ItemLocation(Location location, Item item, int amount) {
         this.location = location;
-        this.item = Item;
+        this.item = item;
         this.amount = amount;
     }
 

@@ -1,5 +1,6 @@
 package com.group5.sep3;
 
+import com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.RequestHandelers.ItemLocationRequestHandlerImpl;
 import com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.RequestHandelers.ItemRequestHandlerImpl;
 import com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.RequestHandelers.LocationRequestHandlerImpl;
 import com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.RequestHandler;
@@ -19,7 +20,7 @@ public class RequestHandlerFactory {
 
         requestHandlerMap.put(EntityTypes.Item, new ItemRequestHandlerImpl());
         requestHandlerMap.put(EntityTypes.Location, new LocationRequestHandlerImpl());
-        requestHandlerMap.put(EntityTypes.ItemLocation, new ItemRequestHandlerImpl());
+        requestHandlerMap.put(EntityTypes.ItemLocation, new ItemLocationRequestHandlerImpl());
     }
 
     public static RequestHandlerFactory getInstance(){
