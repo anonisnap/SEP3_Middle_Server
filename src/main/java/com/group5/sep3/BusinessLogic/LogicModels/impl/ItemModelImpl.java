@@ -16,7 +16,6 @@ public class ItemModelImpl implements ItemModel {
 
 	public ItemModelImpl() {
 		this.itemRestManager = (RestManager<Item>) RestManagerFactory.getInstance().getRestManager(EntityTypes.Item);
-
 	}
 
 	@Override

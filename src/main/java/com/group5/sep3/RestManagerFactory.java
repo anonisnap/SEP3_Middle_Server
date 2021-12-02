@@ -1,5 +1,6 @@
 package com.group5.sep3;
 
+import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemLocationRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.LocationRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
@@ -18,6 +19,7 @@ public class RestManagerFactory {
         restManagers = new HashMap<>();
         restManagers.put(EntityTypes.Item, new ItemRestManagerImpl());
         restManagers.put(EntityTypes.Location, new LocationRestManagerImpl());
+        restManagers.put(EntityTypes.ItemLocation, new ItemLocationRestManagerImpl());
 
         StringBuilder debug = new StringBuilder();
         for (EntityTypes key : restManagers.keySet()) {

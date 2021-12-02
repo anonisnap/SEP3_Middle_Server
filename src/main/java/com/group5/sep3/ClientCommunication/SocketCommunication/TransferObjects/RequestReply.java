@@ -8,7 +8,9 @@ public class RequestReply implements Serializable {
 	public String classname;
 	public Object arg;
 
-	public RequestReply(int id) {
+	public RequestReply() {}
+
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -31,4 +33,5 @@ public class RequestReply implements Serializable {
 	public void setArg(Object arg) {
 		this.arg = arg;
 	}
+
 }

@@ -15,7 +15,6 @@ public class SocketServerHandler implements  Runnable {
     private final OutputStream outToClient;
     private final InputStream inFromClient;
     private final SocketServer socketServer;
-    RequestReply reply;
 
 
     public SocketServerHandler(Socket socket, SocketServer socketServer) throws IOException {
@@ -25,7 +24,6 @@ public class SocketServerHandler implements  Runnable {
 
         this.socketServer = socketServer;
     }
-
 
 
     @Override
@@ -38,11 +36,10 @@ public class SocketServerHandler implements  Runnable {
                 Request request =  readFromClient();
                 handleReceivedObject(request);
 
-                Thread.sleep(500);
             } catch (SocketException e) {
                 System.out.println(socket + " disconnected");
                 break;
-            } catch (InterruptedException | IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -52,10 +49,14 @@ public class SocketServerHandler implements  Runnable {
 
     private void handleReceivedObject(Request request) throws IOException {
         try {
-            reply = new RequestReply(request.getId());
-            ProjectUtil.testPrint("Created Reply: (Id) " + reply.getId());
+            ProjectUtil.testPrint("Received request: (Id) " + request.getId());
+            // sends request to request handler for a result
             Object retVal = socketServer.handleRequest(request);
-            send(retVal);
+            // result will be wrapped in a RequestReply
+            RequestReply reply = createReply(retVal);
+            reply.setId(request.getId());
+            // send the reply object to client
+            send(reply);
         } catch (Exception e) {
             e.printStackTrace();
 //            ProjectUtil.testPrint("Error: " + e.getMessage() + " of type " + e.getClass().getSimpleName());
@@ -63,14 +64,9 @@ public class SocketServerHandler implements  Runnable {
         }
     }
 
+
     public void send(Object obj) throws IOException {
-        reply.setClassname(obj.getClass().getSimpleName());
-        reply.setArg(obj);
-
-        String replyJson = JsonHelper.toJson(reply);
-
-        reply = null;
-
+        String replyJson = JsonHelper.toJson(obj);
         byte[] responseAsBytes = replyJson.getBytes();
         outToClient.write(responseAsBytes, 0, responseAsBytes.length);
     }
@@ -85,5 +81,14 @@ public class SocketServerHandler implements  Runnable {
         return JsonHelper.fromJson(message, Request.class);
 
     }
+
+    private RequestReply createReply(Object requestReturnValue){
+        RequestReply newRequestReply = new RequestReply();
+        newRequestReply.setClassname(requestReturnValue.getClass().getSimpleName());
+        newRequestReply.setArg(requestReturnValue);
+        return newRequestReply;
+    }
+
+
 
 }

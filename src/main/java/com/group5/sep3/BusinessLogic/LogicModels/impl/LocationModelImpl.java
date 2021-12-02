@@ -47,4 +47,6 @@ public class LocationModelImpl implements LocationModel {
 		return locationRestManager.delete(location);
 	}
 
+
+
 }

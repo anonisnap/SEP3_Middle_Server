@@ -1,12 +1,10 @@
 package com.group5.sep3.DataBaseCommunication.RestManagers.Impl;
 
 import com.google.gson.reflect.TypeToken;
-import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.JsonHelper;
-import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.lang.reflect.Type;

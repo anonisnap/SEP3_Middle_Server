@@ -5,5 +5,5 @@ public enum RequestType {
 	POST,
 	GET,
 	GETALL,
-	DELETE;
+	DELETE
 }

@@ -1,12 +1,12 @@
 package com.group5.sep3.ClientCommunication.SocketCommunication;
-import com.group5.sep3.ClientCommunication.RequestHandler;
+import com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.RequestHandler;
 import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.Request;
+import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.RequestReply;
 import com.group5.sep3.util.ProjectUtil;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
-import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -48,10 +48,12 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
     }
 
 
-    public void sendToClient(SocketServerHandler socketServerHandler, Request request) {
+    public void boardCastToClients(RequestReply replay) {
 
         try {
-            socketServerHandler.send(request);
+            for (SocketServerHandler socketServerHandler : socketServerHandlers) {
+                socketServerHandler.send(replay);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
