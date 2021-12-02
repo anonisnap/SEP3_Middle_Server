@@ -20,6 +20,7 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
     @Override
     public ItemLocation put(ItemLocation obj) throws RestClientException {
+        ProjectUtil.testPrint("Sending " + obj.toString());
         String restUrl = obj.getClass().getSimpleName();
         RestClientImpl.getInstance().put(restUrl, obj);
         return obj;

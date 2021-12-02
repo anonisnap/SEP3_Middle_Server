@@ -24,7 +24,7 @@ public class LocationRequestHandlerImpl implements RequestHandler {
 
         LocationRequestTypes requestType = LocationRequestTypes.valueOf(request.getType().name());
 
-        Location location = request.getArg(ItemLocation.class);
+        Location location = request.getArg(Location.class);
 
         switch (requestType) {
             case GET -> {
