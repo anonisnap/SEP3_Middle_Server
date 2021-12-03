@@ -21,6 +21,8 @@ public class SocketServerImpl implements SocketServer, PropertyChangeListener {
         this.requestHandler = requestHandler;
         this.requestHandler.addListener(this);
         socketServerHandlers = new ArrayList<>();
+
+
     }
 
     @Override

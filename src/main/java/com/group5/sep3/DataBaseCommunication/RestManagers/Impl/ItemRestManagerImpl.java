@@ -43,17 +43,11 @@ public class ItemRestManagerImpl implements RestManager<Item> {
     public Collection<Item> getAll() {
 
         String restUrl = Item.class.getSimpleName();
-
         String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
-        ProjectUtil.testPrint(jsonString);
         Type type = new TypeToken<ArrayList<Item>>(){}.getType();
-        ArrayList<Item> items = JsonHelper.fromJson(jsonString, type);
 
-        for (Item item : items) {
-            System.out.println(item.getItemName());
-        }
 
-        return items;
+        return JsonHelper.<ArrayList<Item>>fromJson(jsonString, type);
     }
 
 

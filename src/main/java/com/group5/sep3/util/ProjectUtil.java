@@ -5,42 +5,28 @@ public class ProjectUtil {
 
 	public static void notImplemented() {
 
-		String nameOfClass = getNameOfClass();
+		StackTraceElement nameOfClass = getNameOfClass();
 
-		String nameOfCurrMethod = getNameOfMethod();
-
-		System.out.println("notImplemented: " + nameOfCurrMethod + " in class: " + nameOfClass);
+		System.out.println("notImplemented: " + nameOfClass);
 	}
 
 
 	public static void testPrint(String msg) {
-		String nameOfClass = getNameOfClass();
-
-		String nameOfCurrMethod = getNameOfMethod();
+		StackTraceElement nameOfClass = getNameOfClass();
 
 		int lineNumber = getLineNumber();
 
-		System.out.println(nameOfClass + "." + nameOfCurrMethod + " (" + lineNumber + ") : " + msg);
+		System.out.println(nameOfClass + " (Line" + lineNumber + ") : " + msg);
 	}
 
 
-	private static String getNameOfClass() {
+	private static StackTraceElement getNameOfClass() {
 
-		String nameOfClass = new Throwable()
-				.getStackTrace()[2].getClassName();
-
-		String[] arr = nameOfClass.split("\\.", 4);
-
-		return arr[3];
-
-	}
-
-
-	private static String getNameOfMethod() {
 		return new Throwable()
-				.getStackTrace()[2]
-				.getMethodName();
+				.getStackTrace()[2];
 	}
+
+
 
 	private static int getLineNumber() {
 		return new Throwable().getStackTrace()[2].getLineNumber();
