@@ -6,6 +6,7 @@ import com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.
 import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.Request;
 import com.group5.sep3.LogicModelFactory;
 import com.group5.sep3.util.EntityTypes;
+import com.group5.sep3.util.ProjectUtil;
 
 import java.beans.PropertyChangeListener;
 
@@ -23,6 +24,8 @@ public class ItemLocationRequestHandlerImpl implements RequestHandler {
 
         ItemLocationRequestTypes requestType = ItemLocationRequestTypes.valueOf(request.getType().name());
         ItemLocation itemLocation = request.getArg(ItemLocation.class);
+
+        ProjectUtil.testPrint(requestType.toString());
 
         switch (requestType) {
             case GET -> {

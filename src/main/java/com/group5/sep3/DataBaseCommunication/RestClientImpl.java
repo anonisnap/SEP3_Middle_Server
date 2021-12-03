@@ -35,6 +35,7 @@ public class RestClientImpl implements RestClient {
 	@Override
 	public Object post(String restUrl, Object obj) throws RestClientException {
 		try {
+			//return rest.postForObject(ROOT + restUrl, obj, obj.getClass());
 			return rest.postForObject(ROOT + restUrl, obj, obj.getClass());
 		} catch (RestClientException e) {
 			e.printStackTrace();

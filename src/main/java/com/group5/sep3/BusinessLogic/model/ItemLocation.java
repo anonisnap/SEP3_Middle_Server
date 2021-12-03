@@ -2,16 +2,25 @@ package com.group5.sep3.BusinessLogic.model;
 
 public class ItemLocation {
 
+    private int id;
     private Location location;
     private Item item;
     private int amount;
 
-    public ItemLocation(Location location, Item item, int amount) {
+    public ItemLocation(int id, Location location, Item item, int amount) {
+        this.id = id;
         this.location = location;
         this.item = item;
         this.amount = amount;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Location getLocation() {
         return location;
