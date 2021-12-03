@@ -27,8 +27,9 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
     @Override
     public ItemLocation post(ItemLocation obj) throws RestClientException {
-        ProjectUtil.notImplemented();
-        return null;
+        String restUrl = obj.getClass().getSimpleName();
+        RestClientImpl.getInstance().put(restUrl, obj);
+        return obj;
     }
 
     @Override
