@@ -1,6 +1,5 @@
 package com.group5.sep3.DataBaseCommunication;
 
-
 import org.springframework.web.client.RestClientException;
 
 public interface RestClient {

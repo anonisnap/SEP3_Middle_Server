@@ -1,12 +1,6 @@
 package com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling;
 
-import com.group5.sep3.BusinessLogic.LogicModels.ItemLocationModel;
-import com.group5.sep3.BusinessLogic.LogicModels.impl.LocationModelImpl;
-import com.group5.sep3.BusinessLogic.model.Item;
-import com.group5.sep3.BusinessLogic.model.ItemLocation;
-import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.Request;
-import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.RequestType;
 import com.group5.sep3.RequestHandlerFactory;
 import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;

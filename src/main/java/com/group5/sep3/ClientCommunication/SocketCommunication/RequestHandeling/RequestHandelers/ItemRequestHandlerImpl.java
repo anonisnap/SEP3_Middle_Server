@@ -1,11 +1,9 @@
 package com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.RequestHandelers;
 
 import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
-import com.group5.sep3.BusinessLogic.LogicModels.impl.ItemModelImpl;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.ClientCommunication.SocketCommunication.RequestHandeling.RequestHandler;
 import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.Request;
-import com.group5.sep3.ClientCommunication.SocketCommunication.TransferObjects.RequestType;
 import com.group5.sep3.LogicModelFactory;
 import com.group5.sep3.util.EntityTypes;
 
