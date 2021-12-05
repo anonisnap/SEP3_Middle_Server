@@ -1,6 +1,19 @@
 package com.group5.sep3.GrpcCommunication.Services;
 
+import com.group5.sep3.BusinessLogic.LogicModels.ItemLocationModel;
+import com.group5.sep3.BusinessLogic.model.Item;
+import com.group5.sep3.BusinessLogic.model.ItemLocation;
+import com.group5.sep3.BusinessLogic.model.Location;
+import io.grpc.stub.StreamObserver;
+import protos.ItemLocationGrpc.ItemLocationImplBase;
+import protos.ItemLocationOuterClass.gItemLocation;
+import protos.ItemLocationOuterClass.gItemLocationList;
+import protos.ItemOuterClass.gItem;
+import protos.LocationOuterClass.gLocation;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class ItemLocationService extends ItemLocationImplBase {
 	ItemLocationModel model;
@@ -36,11 +49,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 		gItemLocation.Builder response = gItemLocation.newBuilder();
 
 		// Set Values Of Response Object | This Simply copies the itemLocation's information into the response.ItemLocation
-		try {
-			parseAndMergeItemLocation(response, returnItemLocation);
-		} catch (InvalidProtocolBufferException e) {
-			e.printStackTrace();
-		}
+		parseAndMergeItemLocation(response, returnItemLocation);
 
 		// Link the Response to the Observer | This tells the responseObserver, that when it is completed, it should send back the response (which is a gItemLocation object)
 		responseObserver.onNext(response.build());
@@ -76,11 +85,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 		gItemLocation.Builder response = gItemLocation.newBuilder();
 
 		// Set Values Of Response Object
-		try {
-			parseAndMergeItemLocation(response, itemLocation);
-		} catch (InvalidProtocolBufferException e) {
-			e.printStackTrace();
-		}
+		parseAndMergeItemLocation(response, itemLocation);
 
 		// Link the Response to the Observer
 		responseObserver.onNext(response.build());
@@ -150,11 +155,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 		gItemLocation.Builder response = gItemLocation.newBuilder();
 
 		// Add the gItemLocations to the Response
-		try {
-			parseAndMergeItemLocation(response, returnItemLocation);
-		} catch (InvalidProtocolBufferException e) {
-			e.printStackTrace();
-		}
+		parseAndMergeItemLocation(response, returnItemLocation);
 
 		// Link the Response to the Observer
 		responseObserver.onNext(response.build());
@@ -189,11 +190,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 		gItemLocation.Builder response = gItemLocation.newBuilder();
 
 		// Add the gItemLocations to the Response
-		try {
-			parseAndMergeItemLocation(response, returnItemLocation);
-		} catch (InvalidProtocolBufferException e) {
-			e.printStackTrace();
-		}
+		parseAndMergeItemLocation(response, returnItemLocation);
 
 		// Link the Response to the Observer
 		responseObserver.onNext(response.build());
@@ -212,7 +209,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 		return new ItemLocation(req.getId(), l, i, req.getAmount());
 	}
 
-	private void parseAndMergeItemLocation(gItemLocation.Builder builder, ItemLocation itemLocation) throws InvalidProtocolBufferException {
+	private void parseAndMergeItemLocation(gItemLocation.Builder builder, ItemLocation itemLocation) {
 		gItem x = parseAndMergeItem(gItem.newBuilder(), itemLocation.getItem()).build();
 		gLocation y = parseAndMergeLocation(gLocation.newBuilder(), itemLocation.getLocation()).build();
 		builder.setId(itemLocation.getId()).setItem(x).setLocation(y).setAmount(itemLocation.getAmount());
