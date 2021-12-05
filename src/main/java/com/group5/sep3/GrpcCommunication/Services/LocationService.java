@@ -97,7 +97,7 @@ public class LocationService extends LocationImplBase {
 
 		List<gLocation> returnLocations = new ArrayList<>();
 
-		Collection<Location> locations = new ArrayList<>();
+		Collection<Location> locations;
 
 		// Parse Model Locations to gRPC Locations
 		try {
