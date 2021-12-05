@@ -5,11 +5,8 @@ import org.springframework.web.client.RestTemplate;
 
 
 public class RestClientImpl implements RestClient {
-
 	private static RestClient instance;
-
 	private final String ROOT = "http://localhost:5000/";
-
 	private final RestTemplate rest = new RestTemplate();
 
 	private RestClientImpl() {

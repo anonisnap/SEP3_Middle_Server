@@ -12,6 +12,7 @@ import org.springframework.web.client.RestClientException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
@@ -66,16 +67,17 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
 
     @Override
-    public ItemLocation getByItemId(ItemLocation obj) throws RestClientException {
+    public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
         String restUrl = obj.getClass().getSimpleName() + "/itemId/" + obj.getItem().getId();
         Object restResponse = RestClientImpl.getInstance().get(restUrl);
         ProjectUtil.testPrint(restResponse.getClass() + "\n" + restResponse);
-        return JsonHelper.fromJson((String) restResponse, Item.class);
+        TypeToken<? extends List<ItemLocation>> typeToken = TypeToken.get(new ArrayList<ItemLocation>() {}.getClass());
+        return JsonHelper.fromJson((String) restResponse, typeToken.getType());
     }
 
 
     @Override
-    public ItemLocation getByLocationId(ItemLocation obj) throws RestClientException {
+    public List<ItemLocation> getByLocationId(ItemLocation obj) throws RestClientException {
         String restUrl = obj.getClass().getSimpleName() + "/locationId/" + obj.getLocation().getId();
         Object restResponse = RestClientImpl.getInstance().get(restUrl);
         ProjectUtil.testPrint(restResponse.getClass() + "\n" + restResponse);

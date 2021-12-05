@@ -39,7 +39,8 @@ public class LocationRestManagerImpl implements RestManager<Location> {
 
 		String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
 
-		Type type = new TypeToken<ArrayList<Location>>(){}.getType();
+		Type type = new TypeToken<ArrayList<Location>>() {
+		}.getType();
 		ArrayList<Location> locations = JsonHelper.fromJson(jsonString, type);
 
 		return locations;
