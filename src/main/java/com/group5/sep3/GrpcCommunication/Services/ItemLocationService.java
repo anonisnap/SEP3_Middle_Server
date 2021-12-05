@@ -102,7 +102,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 
 		List<gItemLocation> returnItemLocations = new ArrayList<>();
 
-		Collection<ItemLocation> itemLocations = new ArrayList<>();
+		Collection<ItemLocation> itemLocations;
 
 		// Parse Model ItemLocations to gRPC ItemLocations
 		try {
