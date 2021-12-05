@@ -1,6 +1,14 @@
 package com.group5.sep3.GrpcCommunication.Services;
 
+import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
+import com.group5.sep3.BusinessLogic.model.Item;
+import io.grpc.stub.StreamObserver;
+import protos.ItemGrpc.*;
+import protos.ItemOuterClass.*;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class ItemService extends ItemImplBase {
 	ItemModel model;

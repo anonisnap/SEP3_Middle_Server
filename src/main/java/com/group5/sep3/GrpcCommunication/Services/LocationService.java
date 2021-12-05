@@ -1,6 +1,14 @@
 package com.group5.sep3.GrpcCommunication.Services;
 
+import com.group5.sep3.BusinessLogic.LogicModels.LocationModel;
+import com.group5.sep3.BusinessLogic.model.Location;
+import io.grpc.stub.StreamObserver;
+import protos.LocationGrpc.*;
+import protos.LocationOuterClass.*;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class LocationService extends LocationImplBase {
 	LocationModel model;
