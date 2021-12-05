@@ -1,7 +1,6 @@
 package com.group5.sep3.DataBaseCommunication.RestManagers.Impl;
 
 import com.google.gson.reflect.TypeToken;
-import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.ItemLocation;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.ItemLocationRestManager;
@@ -69,20 +68,21 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
     @Override
     public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
         String restUrl = obj.getClass().getSimpleName() + "/itemId/" + obj.getItem().getId();
-        Object restResponse = RestClientImpl.getInstance().get(restUrl);
-        ProjectUtil.testPrint(restResponse.getClass() + "\n" + restResponse);
-        TypeToken<? extends List<ItemLocation>> typeToken = TypeToken.get(new ArrayList<ItemLocation>() {}.getClass());
-        return JsonHelper.fromJson((String) restResponse, typeToken.getType());
+        return getItemLocationsFromURL(restUrl);
     }
 
 
     @Override
     public List<ItemLocation> getByLocationId(ItemLocation obj) throws RestClientException {
         String restUrl = obj.getClass().getSimpleName() + "/locationId/" + obj.getLocation().getId();
-        Object restResponse = RestClientImpl.getInstance().get(restUrl);
-        ProjectUtil.testPrint(restResponse.getClass() + "\n" + restResponse);
-        return JsonHelper.fromJson((String) restResponse, Item.class);
+        return getItemLocationsFromURL(restUrl);
     }
 
+    private List<ItemLocation> getItemLocationsFromURL(String restUrl) {
+        Object restResponse = RestClientImpl.getInstance().get(restUrl);
+        ProjectUtil.testPrint(restResponse.getClass() + "\n" + restResponse);
+        TypeToken<? extends List<ItemLocation>> typeToken = TypeToken.get(new ArrayList<ItemLocation>() {}.getClass());
+        return JsonHelper.fromJson((String) restResponse, typeToken.getType());
+    }
 
 }
