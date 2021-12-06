@@ -5,14 +5,11 @@ import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.RestManagerFactory;
 import com.group5.sep3.util.EntityTypes;
-import com.group5.sep3.util.ProjectUtil;
 
 import java.util.Collection;
 import java.util.List;
 
 public class ItemModelImpl implements ItemModel {
-
-
 	private final RestManager<Item> itemRestManager;
 
 	public ItemModelImpl() {
@@ -20,15 +17,17 @@ public class ItemModelImpl implements ItemModel {
 	}
 
 	@Override
-	public Item register(Item entity)  {
-		itemRestManager.put(entity);
+	public Item register(Item entity) {
+		Item tmp = itemRestManager.put(entity);
 		//TODO: error handling
-		return entity;
+		return tmp;
 	}
 
 	@Override
 	public Item update(Item entity) {
-		return null;
+		Item tmp = itemRestManager.post(entity);
+		//TODO: error handling
+		return tmp;
 	}
 
 	@Override
@@ -39,15 +38,14 @@ public class ItemModelImpl implements ItemModel {
 	@Override
 	public Item get(Item entity) {
 		Item tmp = itemRestManager.get(entity);
-		ProjectUtil.testPrint(tmp.getItemName());
+		//TODO: error handling
 		return tmp;
 	}
 
 	@Override
-	public Item remove(Item entity){
+	public Item remove(Item entity) {
 		Item tmp = itemRestManager.delete(entity);
+		//TODO: error handling
 		return tmp;
 	}
-
-
 }

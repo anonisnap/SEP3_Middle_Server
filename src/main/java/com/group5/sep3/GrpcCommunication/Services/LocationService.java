@@ -2,9 +2,11 @@ package com.group5.sep3.GrpcCommunication.Services;
 
 import com.group5.sep3.BusinessLogic.LogicModels.LocationModel;
 import com.group5.sep3.BusinessLogic.model.Location;
+import com.group5.sep3.util.ProjectUtil;
 import io.grpc.stub.StreamObserver;
-import protos.LocationGrpc.*;
-import protos.LocationOuterClass.*;
+import protos.LocationGrpc.LocationImplBase;
+import protos.LocationOuterClass.gLocation;
+import protos.LocationOuterClass.gLocationList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,17 +27,23 @@ public class LocationService extends LocationImplBase {
 		// Extract Object from Request
 		Location requestLocation = getLocationFromRequest(request);
 
+		System.out.println("Location from the gLocation Request: " + requestLocation);
+
 		// Perform Model Call
 		Location returnLocation = null;
 		try {
 			returnLocation = model.register(requestLocation);
 		} catch (Exception e) {
+			System.out.println("Failed to Register an Location (" + requestLocation.getDescription() + ")");
 			e.printStackTrace();
 		}
 
 		if (returnLocation == null) {
+			System.out.println("<!> Location was null");
 			returnLocation = requestLocation;
 		}
+
+		System.out.println("\t>> Return Location :\n" + returnLocation);
 
 		// == == == == == == == == == == == ==
 
@@ -63,24 +71,25 @@ public class LocationService extends LocationImplBase {
 		Location requestLocation = getLocationFromRequest(request);
 
 		// Fetch the Location from the Server
-		Location location = null;
+		Location returnLocation = null;
 		try {
-			location = model.get(requestLocation);
+			returnLocation = model.get(requestLocation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		// Ensure Location was retrieved. If location is null, Echo back the Location requested. Optionally throw an Error
-		if (location == null) {
-			location = requestLocation;
+		if (returnLocation == null) {
+			returnLocation = requestLocation;
 //			throw new NullPointerException();
 		}
+		System.out.println("\t>> Return Location :\n" + returnLocation);
 
 		// Create Response Object
 		gLocation.Builder response = gLocation.newBuilder();
 
 		// Set Values Of Response Object
-		parseAndMergeLocation(response, location);
+		parseAndMergeLocation(response, returnLocation);
 
 		// Link the Response to the Observer
 		responseObserver.onNext(response.build());
@@ -105,7 +114,7 @@ public class LocationService extends LocationImplBase {
 			for (Location location : locations) {
 				gLocation.Builder builder = gLocation.newBuilder();
 				parseAndMergeLocation(builder, location);
-				returnLocations.add(builder.build()); // THIS LIKELY WON'T WORK. UNSURE OF HOW PARSEFROM IS IMPLEMENTED
+				returnLocations.add(builder.build());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -146,6 +155,8 @@ public class LocationService extends LocationImplBase {
 			returnLocation = requestLocation;
 		}
 
+		System.out.println("\t>> Return Location :\n" + returnLocation);
+
 		// Create Response Object
 		gLocation.Builder response = gLocation.newBuilder();
 
@@ -181,6 +192,8 @@ public class LocationService extends LocationImplBase {
 			returnLocation = requestLocation;
 		}
 
+		System.out.println("\t>> Return Location :\n" + returnLocation);
+
 		// Create Response Object
 		gLocation.Builder response = gLocation.newBuilder();
 
@@ -193,15 +206,16 @@ public class LocationService extends LocationImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Receiving Location");
+		System.out.println("- Removing Location");
 	}
 
 	private Location getLocationFromRequest(gLocation req) {
-		return new Location(req.getId(), req.getDescription());
+		Location tmp = new Location(req.getId(), req.getDescription());
+		ProjectUtil.testPrint("Temporary location : " + tmp);
+		return tmp;
 	}
 
 	private gLocation.Builder parseAndMergeLocation(gLocation.Builder builder, Location location) {
 		return builder.setId(location.getId()).setDescription(location.getDescription());
 	}
-
 }
