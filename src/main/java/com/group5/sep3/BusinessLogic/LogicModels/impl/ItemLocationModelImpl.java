@@ -9,7 +9,6 @@ import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.util.Collection;
-import java.util.List;
 
 public class ItemLocationModelImpl implements ItemLocationModel {
 
@@ -49,12 +48,12 @@ public class ItemLocationModelImpl implements ItemLocationModel {
     }
 
     @Override
-    public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
+    public Collection<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
         return itemLocationRestManager.getByItemId(obj);
     }
 
     @Override
-    public List<ItemLocation> getByLocationId(ItemLocation itemLocation) throws RestClientException {
+    public Collection<ItemLocation> getByLocationId(ItemLocation itemLocation) throws RestClientException {
         return itemLocationRestManager.getByLocationId(itemLocation);
     }
     
