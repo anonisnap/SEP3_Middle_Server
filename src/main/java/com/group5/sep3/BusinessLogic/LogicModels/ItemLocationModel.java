@@ -3,6 +3,7 @@ package com.group5.sep3.BusinessLogic.LogicModels;
 import com.group5.sep3.BusinessLogic.model.ItemLocation;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface ItemLocationModel extends LogicModel<ItemLocation>{
 
@@ -12,7 +13,7 @@ public interface ItemLocationModel extends LogicModel<ItemLocation>{
      * @return
      * @throws Exception
      */
-    Collection<ItemLocation> getByItemId(ItemLocation itemLocation) throws Exception;
+    List<ItemLocation> getByItemId(ItemLocation itemLocation) throws Exception;
 
     /**
      * Return all ItemLocations which feature the Location ID specified in the given ItemLocation
@@ -20,7 +21,7 @@ public interface ItemLocationModel extends LogicModel<ItemLocation>{
      * @return
      * @throws Exception
      */
-    Collection<ItemLocation> getByLocationId(ItemLocation itemLocation) throws Exception ;
+    List<ItemLocation> getByLocationId(ItemLocation itemLocation) throws Exception ;
 
 
 }

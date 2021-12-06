@@ -8,6 +8,7 @@ import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
 
 import java.util.Collection;
+import java.util.List;
 
 public class ItemModelImpl implements ItemModel {
 
@@ -31,7 +32,7 @@ public class ItemModelImpl implements ItemModel {
 	}
 
 	@Override
-	public Collection<Item> getAll() {
+	public List<Item> getAll() {
 		return itemRestManager.getAll();
 	}
 

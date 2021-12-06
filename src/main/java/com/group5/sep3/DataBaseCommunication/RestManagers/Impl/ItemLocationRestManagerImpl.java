@@ -39,7 +39,7 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
     }
 
     @Override
-    public Collection<ItemLocation> getAll() throws RestClientException {
+    public List<ItemLocation> getAll() throws RestClientException {
 
         String restUrl = ItemLocation.class.getSimpleName();
 

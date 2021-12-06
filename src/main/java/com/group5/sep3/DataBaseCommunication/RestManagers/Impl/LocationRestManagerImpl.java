@@ -10,6 +10,7 @@ import org.springframework.web.client.RestClientException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class LocationRestManagerImpl implements RestManager<Location> {
 
@@ -34,7 +35,7 @@ public class LocationRestManagerImpl implements RestManager<Location> {
 	}
 
 	@Override
-	public Collection<Location> getAll() throws RestClientException {
+	public List<Location> getAll() throws RestClientException {
 		String restUrl = Location.class.getSimpleName();
 
 		String jsonString = (String) RestClientImpl.getInstance().get(restUrl);

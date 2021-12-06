@@ -9,6 +9,7 @@ import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.util.Collection;
+import java.util.List;
 
 public class LocationModelImpl implements LocationModel {
 	private final RestManager<Location> locationRestManager;
@@ -33,7 +34,7 @@ public class LocationModelImpl implements LocationModel {
 	}
 
 	@Override
-	public Collection<Location> getAll() {
+	public List<Location> getAll() {
 		return locationRestManager.getAll();
 	}
 
