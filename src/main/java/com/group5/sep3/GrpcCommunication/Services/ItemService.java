@@ -94,7 +94,7 @@ public class ItemService extends ItemImplBase {
 			}
 
 	@Override
-	public void getAllItem(gItem request, StreamObserver<gItemList> responseObserver) {
+	public void getAllItems(gItem request, StreamObserver<gItemList> responseObserver) {
 
 		List<gItem> returnItems = new ArrayList<>();
 

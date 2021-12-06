@@ -92,35 +92,35 @@ public final class ItemGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.ItemOuterClass.gItem,
-      protos.ItemOuterClass.gItemList> getGetAllItemMethod;
+      protos.ItemOuterClass.gItemList> getGetAllItemsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetAllItem",
+      fullMethodName = SERVICE_NAME + '/' + "GetAllItems",
       requestType = protos.ItemOuterClass.gItem.class,
       responseType = protos.ItemOuterClass.gItemList.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<protos.ItemOuterClass.gItem,
-      protos.ItemOuterClass.gItemList> getGetAllItemMethod() {
-    io.grpc.MethodDescriptor<protos.ItemOuterClass.gItem, protos.ItemOuterClass.gItemList> getGetAllItemMethod;
-    if ((getGetAllItemMethod = ItemGrpc.getGetAllItemMethod) == null) {
+      protos.ItemOuterClass.gItemList> getGetAllItemsMethod() {
+    io.grpc.MethodDescriptor<protos.ItemOuterClass.gItem, protos.ItemOuterClass.gItemList> getGetAllItemsMethod;
+    if ((getGetAllItemsMethod = ItemGrpc.getGetAllItemsMethod) == null) {
       synchronized (ItemGrpc.class) {
-        if ((getGetAllItemMethod = ItemGrpc.getGetAllItemMethod) == null) {
-          ItemGrpc.getGetAllItemMethod = getGetAllItemMethod = 
+        if ((getGetAllItemsMethod = ItemGrpc.getGetAllItemsMethod) == null) {
+          ItemGrpc.getGetAllItemsMethod = getGetAllItemsMethod = 
               io.grpc.MethodDescriptor.<protos.ItemOuterClass.gItem, protos.ItemOuterClass.gItemList>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "Protos.Item", "GetAllItem"))
+                  "Protos.Item", "GetAllItems"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.ItemOuterClass.gItem.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.ItemOuterClass.gItemList.getDefaultInstance()))
-                  .setSchemaDescriptor(new ItemMethodDescriptorSupplier("GetAllItem"))
+                  .setSchemaDescriptor(new ItemMethodDescriptorSupplier("GetAllItems"))
                   .build();
           }
         }
      }
-     return getGetAllItemMethod;
+     return getGetAllItemsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.ItemOuterClass.gItem,
@@ -230,9 +230,9 @@ public final class ItemGrpc {
 
     /**
      */
-    public void getAllItem(protos.ItemOuterClass.gItem request,
+    public void getAllItems(protos.ItemOuterClass.gItem request,
         io.grpc.stub.StreamObserver<protos.ItemOuterClass.gItemList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAllItemMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getGetAllItemsMethod(), responseObserver);
     }
 
     /**
@@ -266,12 +266,12 @@ public final class ItemGrpc {
                 protos.ItemOuterClass.gItem>(
                   this, METHODID_GET_ITEM)))
           .addMethod(
-            getGetAllItemMethod(),
+            getGetAllItemsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 protos.ItemOuterClass.gItem,
                 protos.ItemOuterClass.gItemList>(
-                  this, METHODID_GET_ALL_ITEM)))
+                  this, METHODID_GET_ALL_ITEMS)))
           .addMethod(
             getUpdateItemMethod(),
             asyncUnaryCall(
@@ -326,10 +326,10 @@ public final class ItemGrpc {
 
     /**
      */
-    public void getAllItem(protos.ItemOuterClass.gItem request,
+    public void getAllItems(protos.ItemOuterClass.gItem request,
         io.grpc.stub.StreamObserver<protos.ItemOuterClass.gItemList> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getGetAllItemMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetAllItemsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -383,9 +383,9 @@ public final class ItemGrpc {
 
     /**
      */
-    public protos.ItemOuterClass.gItemList getAllItem(protos.ItemOuterClass.gItem request) {
+    public protos.ItemOuterClass.gItemList getAllItems(protos.ItemOuterClass.gItem request) {
       return blockingUnaryCall(
-          getChannel(), getGetAllItemMethod(), getCallOptions(), request);
+          getChannel(), getGetAllItemsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -439,10 +439,10 @@ public final class ItemGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.ItemOuterClass.gItemList> getAllItem(
+    public com.google.common.util.concurrent.ListenableFuture<protos.ItemOuterClass.gItemList> getAllItems(
         protos.ItemOuterClass.gItem request) {
       return futureUnaryCall(
-          getChannel().newCall(getGetAllItemMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetAllItemsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -464,7 +464,7 @@ public final class ItemGrpc {
 
   private static final int METHODID_REGISTER_ITEM = 0;
   private static final int METHODID_GET_ITEM = 1;
-  private static final int METHODID_GET_ALL_ITEM = 2;
+  private static final int METHODID_GET_ALL_ITEMS = 2;
   private static final int METHODID_UPDATE_ITEM = 3;
   private static final int METHODID_REMOVE_ITEM = 4;
 
@@ -493,8 +493,8 @@ public final class ItemGrpc {
           serviceImpl.getItem((protos.ItemOuterClass.gItem) request,
               (io.grpc.stub.StreamObserver<protos.ItemOuterClass.gItem>) responseObserver);
           break;
-        case METHODID_GET_ALL_ITEM:
-          serviceImpl.getAllItem((protos.ItemOuterClass.gItem) request,
+        case METHODID_GET_ALL_ITEMS:
+          serviceImpl.getAllItems((protos.ItemOuterClass.gItem) request,
               (io.grpc.stub.StreamObserver<protos.ItemOuterClass.gItemList>) responseObserver);
           break;
         case METHODID_UPDATE_ITEM:
@@ -568,7 +568,7 @@ public final class ItemGrpc {
               .setSchemaDescriptor(new ItemFileDescriptorSupplier())
               .addMethod(getRegisterItemMethod())
               .addMethod(getGetItemMethod())
-              .addMethod(getGetAllItemMethod())
+              .addMethod(getGetAllItemsMethod())
               .addMethod(getUpdateItemMethod())
               .addMethod(getRemoveItemMethod())
               .build();

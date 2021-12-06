@@ -76,7 +76,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 	}
 
 	@Override
-	public void getAllItemLocation(gItemLocation request, StreamObserver<gItemLocationList> responseObserver) {
+	public void getAllItemLocations(gItemLocation request, StreamObserver<gItemLocationList> responseObserver) {
 		List<gItemLocation> returnItemLocations = new ArrayList<>();
 		Collection<ItemLocation> itemLocations;
 		// Parse Model ItemLocations to gRPC ItemLocations

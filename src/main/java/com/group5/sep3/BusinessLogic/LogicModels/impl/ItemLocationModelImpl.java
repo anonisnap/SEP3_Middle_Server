@@ -35,15 +35,15 @@ public class ItemLocationModelImpl implements ItemLocationModel {
 
 	@Override
 	public ItemLocation get(ItemLocation itemLocation) throws Exception {
-		ProjectUtil.notImplemented();
-		return null;
+		return itemLocationRestManager.get(itemLocation);
 	}
 
 	@Override
 	public ItemLocation remove(ItemLocation itemLocation) throws Exception {
-		return null;
+		return itemLocationRestManager.delete(itemLocation);
 	}
 
+	// TODO: Mangler der ikke PROTO filer for disse?
 	@Override
 	public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
 		return itemLocationRestManager.getByItemId(obj);

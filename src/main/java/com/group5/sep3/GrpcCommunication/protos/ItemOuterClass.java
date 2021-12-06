@@ -1696,13 +1696,13 @@ public final class ItemOuterClass {
       "\005\022\020\n\010itemName\030\002 \001(\t\022\016\n\006length\030\003 \001(\001\022\r\n\005w" +
       "idth\030\004 \001(\001\022\016\n\006height\030\005 \001(\001\022\016\n\006weight\030\006 \001" +
       "(\001\"(\n\tgItemList\022\033\n\004item\030\001 \003(\0132\r.Protos.g" +
-      "Item2\345\001\n\004Item\022,\n\014RegisterItem\022\r.Protos.g" +
+      "Item2\346\001\n\004Item\022,\n\014RegisterItem\022\r.Protos.g" +
       "Item\032\r.Protos.gItem\022\'\n\007GetItem\022\r.Protos." +
-      "gItem\032\r.Protos.gItem\022.\n\nGetAllItem\022\r.Pro" +
-      "tos.gItem\032\021.Protos.gItemList\022*\n\nUpdateIt" +
-      "em\022\r.Protos.gItem\032\r.Protos.gItem\022*\n\nRemo" +
-      "veItem\022\r.Protos.gItem\032\r.Protos.gItemB\021\n\006" +
-      "protos\252\002\006myGrpcb\006proto3"
+      "gItem\032\r.Protos.gItem\022/\n\013GetAllItems\022\r.Pr" +
+      "otos.gItem\032\021.Protos.gItemList\022*\n\nUpdateI" +
+      "tem\022\r.Protos.gItem\032\r.Protos.gItem\022*\n\nRem" +
+      "oveItem\022\r.Protos.gItem\032\r.Protos.gItemB\021\n" +
+      "\006protos\252\002\006myGrpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
