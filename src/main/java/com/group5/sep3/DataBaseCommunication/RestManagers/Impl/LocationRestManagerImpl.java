@@ -15,25 +15,25 @@ public class LocationRestManagerImpl implements RestManager<Location> {
 	@Override
 	public Location put(Location obj) {
 		String restUrl = obj.getClass().getSimpleName();
-		String tmp = (String) RestClientImpl.getInstance().put(restUrl, obj);
+		String restResponse = (String) RestClientImpl.getInstance().put(restUrl, obj);
 
-		return JsonHelper.fromJson(tmp, Location.class);
+		return JsonHelper.fromJson(restResponse, Location.class);
 	}
 
 	@Override
 	public Location post(Location obj) {
 		String restUrl = obj.getClass().getSimpleName();
-		String tmp = (String) RestClientImpl.getInstance().post(restUrl, obj);
+		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
-		return JsonHelper.fromJson(tmp, Location.class);
+		return JsonHelper.fromJson(restResponse, Location.class);
 	}
 
 	@Override
 	public Location get(Location obj) {
 		String restUrl = obj.getClass().getSimpleName() + "/" + obj.getId();
-		Object restResponse = RestClientImpl.getInstance().get(restUrl);
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 
-		return JsonHelper.fromJson((String) restResponse, Location.class);
+		return JsonHelper.fromJson(restResponse, Location.class);
 	}
 
 	@Override

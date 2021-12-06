@@ -21,20 +21,18 @@ public class LocationService extends LocationImplBase {
 
 	@Override
 	public void registerLocation(gLocation request, StreamObserver<gLocation> responseObserver) {
-		System.out.println("+ Receiving Location from Client");
 
 		// METHOD CALLING
 		// Extract Object from Request
 		Location requestLocation = getLocationFromRequest(request);
 
-		System.out.println("Location from the gLocation Request: " + requestLocation);
 
 		// Perform Model Call
 		Location returnLocation = null;
 		try {
 			returnLocation = model.register(requestLocation);
 		} catch (Exception e) {
-			System.out.println("Failed to Register an Location (" + requestLocation.getDescription() + ")");
+			System.out.println("Failed to Register a Location (" + requestLocation.getDescription() + ")");
 			e.printStackTrace();
 		}
 
@@ -43,7 +41,6 @@ public class LocationService extends LocationImplBase {
 			returnLocation = requestLocation;
 		}
 
-		System.out.println("\t>> Return Location :\n" + returnLocation);
 
 		// == == == == == == == == == == == ==
 
@@ -60,12 +57,10 @@ public class LocationService extends LocationImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Receiving Location from Client");
-	}
+			}
 
 	@Override
 	public void getLocation(gLocation request, StreamObserver<gLocation> responseObserver) {
-		System.out.println("+ Sending Location to Client");
 
 		// Fetch the Location from Request
 		Location requestLocation = getLocationFromRequest(request);
@@ -83,7 +78,6 @@ public class LocationService extends LocationImplBase {
 			returnLocation = requestLocation;
 //			throw new NullPointerException();
 		}
-		System.out.println("\t>> Return Location :\n" + returnLocation);
 
 		// Create Response Object
 		gLocation.Builder response = gLocation.newBuilder();
@@ -97,12 +91,10 @@ public class LocationService extends LocationImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Sending Location to Client");
-	}
+			}
 
 	@Override
 	public void getAllLocation(gLocation request, StreamObserver<gLocationList> responseObserver) {
-		System.out.println("+ Sending all Locations from Client");
 
 		List<gLocation> returnLocations = new ArrayList<>();
 
@@ -132,12 +124,10 @@ public class LocationService extends LocationImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Sending all Locations from Client");
-	}
+			}
 
 	@Override
 	public void updateLocation(gLocation request, StreamObserver<gLocation> responseObserver) {
-		System.out.println("+ Updating Location");
 
 		// Fetch Location
 		Location requestLocation = getLocationFromRequest(request);
@@ -155,7 +145,6 @@ public class LocationService extends LocationImplBase {
 			returnLocation = requestLocation;
 		}
 
-		System.out.println("\t>> Return Location :\n" + returnLocation);
 
 		// Create Response Object
 		gLocation.Builder response = gLocation.newBuilder();
@@ -169,12 +158,10 @@ public class LocationService extends LocationImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Updating Location");
-	}
+			}
 
 	@Override
 	public void removeLocation(gLocation request, StreamObserver<gLocation> responseObserver) {
-		System.out.println("+ Removing Location");
 
 		// Fetch Location
 		Location requestLocation = getLocationFromRequest(request);
@@ -192,7 +179,6 @@ public class LocationService extends LocationImplBase {
 			returnLocation = requestLocation;
 		}
 
-		System.out.println("\t>> Return Location :\n" + returnLocation);
 
 		// Create Response Object
 		gLocation.Builder response = gLocation.newBuilder();
@@ -206,12 +192,10 @@ public class LocationService extends LocationImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Removing Location");
-	}
+			}
 
 	private Location getLocationFromRequest(gLocation req) {
 		Location tmp = new Location(req.getId(), req.getDescription());
-		ProjectUtil.testPrint("Temporary location : " + tmp);
 		return tmp;
 	}
 

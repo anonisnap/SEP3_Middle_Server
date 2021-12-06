@@ -5,7 +5,6 @@ import com.group5.sep3.BusinessLogic.model.ItemLocation;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.ItemLocationRestManager;
 import com.group5.sep3.util.JsonHelper;
-import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.lang.reflect.Type;
@@ -14,75 +13,63 @@ import java.util.Collection;
 import java.util.List;
 
 public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
+	@Override
+	public ItemLocation put(ItemLocation obj) {
+		String restUrl = obj.getClass().getSimpleName();
+		String restResponse = (String) RestClientImpl.getInstance().put(restUrl, obj);
 
+		return JsonHelper.fromJson(restResponse, ItemLocation.class);
+	}
 
+	@Override
+	public ItemLocation post(ItemLocation obj) {
+		String restUrl = obj.getClass().getSimpleName();
+		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
-    @Override
-    public ItemLocation put(ItemLocation obj) throws RestClientException {
-        ProjectUtil.testPrint("Sending " + obj.toString());
-        String restUrl = obj.getClass().getSimpleName();
-        RestClientImpl.getInstance().put(restUrl, obj);
-        return obj;
-    }
+		return JsonHelper.fromJson(restResponse, ItemLocation.class);
+	}
 
-    @Override
-    public ItemLocation post(ItemLocation obj) throws RestClientException {
-        String restUrl = obj.getClass().getSimpleName();
-        RestClientImpl.getInstance().post(restUrl, obj);
-        return obj;
-    }
+	@Override
+	public ItemLocation get(ItemLocation obj) {
+		String restUrl = obj.getClass().getSimpleName() + "/" + obj.getId();
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 
-    @Override
-    public ItemLocation get(ItemLocation obj) throws RestClientException {
-        ProjectUtil.notImplemented();
-        return null;
-    }
+		return JsonHelper.fromJson(restResponse, ItemLocation.class);
+	}
 
-    @Override
-    public List<ItemLocation> getAll() throws RestClientException {
+	@Override
+	public Collection<ItemLocation> getAll() {
+		String restUrl = ItemLocation.class.getSimpleName();
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
+		Type type = new TypeToken<ArrayList<ItemLocation>>() {
+		}.getType();
 
-        String restUrl = ItemLocation.class.getSimpleName();
+		return JsonHelper.fromJson(restResponse, type);
+	}
 
-        String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
+	@Override
+	public ItemLocation delete(ItemLocation obj) {
+		String restUrl = ItemLocation.class.getSimpleName() + "/" + obj.getId();
 
-        ProjectUtil.testPrint(jsonString);
+		return RestClientImpl.getInstance().delete(restUrl) ? obj : null;
+	}
 
-        Type type = new TypeToken<ArrayList<ItemLocation>>(){}.getType();
+	@Override
+	public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
+		String restUrl = obj.getClass().getSimpleName() + "/itemId/" + obj.getItem().getId();
+		return getItemLocationsFromURL(restUrl);
+	}
 
-        ArrayList<ItemLocation> itemLocations = JsonHelper.fromJson(jsonString, type);
+	@Override
+	public List<ItemLocation> getByLocationId(ItemLocation obj) throws RestClientException {
+		String restUrl = obj.getClass().getSimpleName() + "/locationId/" + obj.getLocation().getId();
+		return getItemLocationsFromURL(restUrl);
+	}
 
-        for (ItemLocation itemLocation : itemLocations) {
-            System.out.println(itemLocation);
-        }
-
-        return itemLocations;
-    }
-
-    @Override
-    public ItemLocation delete(ItemLocation obj) throws RestClientException {
-        ProjectUtil.notImplemented();
-        return null;
-    }
-
-
-    @Override
-    public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
-        String restUrl = obj.getClass().getSimpleName() + "/itemId/" + obj.getItem().getId();
-        return getItemLocationsFromURL(restUrl);
-    }
-
-
-    @Override
-    public List<ItemLocation> getByLocationId(ItemLocation obj) throws RestClientException {
-        String restUrl = obj.getClass().getSimpleName() + "/locationId/" + obj.getLocation().getId();
-        return getItemLocationsFromURL(restUrl);
-    }
-
-    private List<ItemLocation> getItemLocationsFromURL(String restUrl) {
-        Object restResponse = RestClientImpl.getInstance().get(restUrl);
-        ProjectUtil.testPrint(restResponse.getClass() + "\n" + restResponse);
-        TypeToken<? extends List<ItemLocation>> typeToken = TypeToken.get(new ArrayList<ItemLocation>() {}.getClass());
-        return JsonHelper.fromJson((String) restResponse, typeToken.getType());
-    }
-
+	private List<ItemLocation> getItemLocationsFromURL(String restUrl) {
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
+		TypeToken<? extends List<ItemLocation>> typeToken = TypeToken.get(new ArrayList<ItemLocation>() {
+		}.getClass());
+		return JsonHelper.fromJson(restResponse, typeToken.getType());
+	}
 }
