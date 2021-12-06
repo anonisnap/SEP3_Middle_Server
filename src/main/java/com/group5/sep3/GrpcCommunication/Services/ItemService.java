@@ -21,13 +21,11 @@ public class ItemService extends ItemImplBase {
 
 	@Override
 	public void registerItem(gItem request, StreamObserver<gItem> responseObserver) {
-		System.out.println("+ Receiving Item from Client");
 
 		// METHOD CALLING
 		// Extract Object from Request
 		Item requestItem = getItemFromRequest(request);
 
-		System.out.println("Item from the gItem Request: " + requestItem);
 
 		// Perform Model Call
 		Item returnItem = null;
@@ -43,7 +41,6 @@ public class ItemService extends ItemImplBase {
 			returnItem = requestItem;
 		}
 
-		System.out.println("\t>> Return Item :\n" + returnItem);
 
 		// == == == == == == == == == == == ==
 
@@ -60,12 +57,10 @@ public class ItemService extends ItemImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Receiving Item from Client");
-	}
+			}
 
 	@Override
 	public void getItem(gItem request, StreamObserver<gItem> responseObserver) {
-		System.out.println("+ Sending Item to Client");
 
 		// Fetch the Item from Request
 		Item requestItem = getItemFromRequest(request);
@@ -83,7 +78,6 @@ public class ItemService extends ItemImplBase {
 			returnItem = requestItem;
 //			throw new NullPointerException();
 		}
-		System.out.println("\t>> Return Item :\n" + returnItem);
 
 		// Create Response Object
 		gItem.Builder response = gItem.newBuilder();
@@ -97,12 +91,10 @@ public class ItemService extends ItemImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Sending Item to Client");
-	}
+			}
 
 	@Override
 	public void getAllItem(gItem request, StreamObserver<gItemList> responseObserver) {
-		System.out.println("+ Sending all Items from Client");
 
 		List<gItem> returnItems = new ArrayList<>();
 
@@ -132,12 +124,10 @@ public class ItemService extends ItemImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Sending all Items from Client");
-	}
+			}
 
 	@Override
 	public void updateItem(gItem request, StreamObserver<gItem> responseObserver) {
-		System.out.println("+ Updating Item");
 
 		// Fetch Item
 		Item requestItem = getItemFromRequest(request);
@@ -155,7 +145,6 @@ public class ItemService extends ItemImplBase {
 			returnItem = requestItem;
 		}
 
-		System.out.println("\t>> Return Item :\n" + returnItem);
 
 		// Create Response Object
 		gItem.Builder response = gItem.newBuilder();
@@ -169,12 +158,10 @@ public class ItemService extends ItemImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Updating Item");
-	}
+			}
 
 	@Override
 	public void removeItem(gItem request, StreamObserver<gItem> responseObserver) {
-		System.out.println("+ Removing Item");
 
 		// Fetch Item
 		Item requestItem = getItemFromRequest(request);
@@ -192,7 +179,6 @@ public class ItemService extends ItemImplBase {
 			returnItem = requestItem;
 		}
 
-		System.out.println("\t>> Return Item :\n" + returnItem);
 
 		// Create Response Object
 		gItem.Builder response = gItem.newBuilder();
@@ -206,12 +192,10 @@ public class ItemService extends ItemImplBase {
 		// Tell Observer the Method is finished, and let it return the Response
 		responseObserver.onCompleted();
 
-		System.out.println("- Removing Item");
-	}
+			}
 
 	private Item getItemFromRequest(gItem req) {
 		Item tmp = new Item(req.getId(), req.getItemName(), req.getLength(), req.getWidth(), req.getHeight(), req.getWeight());
-		ProjectUtil.testPrint("Temporary item : " + tmp);
 		return tmp;
 	}
 
