@@ -44,7 +44,8 @@ public class ItemModelImpl implements ItemModel {
 
 	@Override
 	public Item remove(Item entity){
-		return null;
+		Item tmp = itemRestManager.delete(entity);
+		return tmp;
 	}
 
 

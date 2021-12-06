@@ -52,8 +52,9 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 
     @Override
     public Item delete(Item obj) {
-        ProjectUtil.notImplemented();
-        return null;
+        String restUrl = Item.class.getSimpleName() + "/" + obj.getId();
+        ProjectUtil.testPrint("Removing Item Id : " + obj.getId());
+        return RestClientImpl.getInstance().delete(restUrl) ? obj : null;
     }
 
 
