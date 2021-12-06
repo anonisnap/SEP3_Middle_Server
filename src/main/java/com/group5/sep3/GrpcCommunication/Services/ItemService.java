@@ -2,9 +2,11 @@ package com.group5.sep3.GrpcCommunication.Services;
 
 import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
 import com.group5.sep3.BusinessLogic.model.Item;
+import com.group5.sep3.util.ProjectUtil;
 import io.grpc.stub.StreamObserver;
-import protos.ItemGrpc.*;
-import protos.ItemOuterClass.*;
+import protos.ItemGrpc.ItemImplBase;
+import protos.ItemOuterClass.gItem;
+import protos.ItemOuterClass.gItemList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,15 +27,19 @@ public class ItemService extends ItemImplBase {
 		// Extract Object from Request
 		Item requestItem = getItemFromRequest(request);
 
+		System.out.println("Item from the gItem Request: " + requestItem);
+
 		// Perform Model Call
 		Item returnItem = null;
 		try {
 			returnItem = model.register(requestItem);
 		} catch (Exception e) {
+			System.out.println("Failed to Register an Item (" + requestItem.getItemName() + ")");
 			e.printStackTrace();
 		}
 
 		if (returnItem == null) {
+			System.out.println("<!> Item was null");
 			returnItem = requestItem;
 		}
 
@@ -204,7 +210,9 @@ public class ItemService extends ItemImplBase {
 	}
 
 	private Item getItemFromRequest(gItem req) {
-		return new Item(req.getId(), req.getItemName(), req.getLength(), req.getWidth(), req.getHeight(), req.getWeight());
+		Item tmp = new Item(req.getId(), req.getItemName(), req.getLength(), req.getWidth(), req.getHeight(), req.getWeight());
+		ProjectUtil.testPrint("Temporary item : " + tmp);
+		return tmp;
 	}
 
 	private gItem.Builder parseAndMergeItem(gItem.Builder builder, Item item) {

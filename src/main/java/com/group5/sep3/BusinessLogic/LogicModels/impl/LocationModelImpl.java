@@ -5,8 +5,6 @@ import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.RestManagerFactory;
 import com.group5.sep3.util.EntityTypes;
-import com.group5.sep3.util.ProjectUtil;
-import org.springframework.web.client.RestClientException;
 
 import java.util.Collection;
 
@@ -18,18 +16,17 @@ public class LocationModelImpl implements LocationModel {
 	}
 
 	@Override
-	public Location register(Location location) { // TODO: Implement
-		try {
-			return locationRestManager.put(location);
-		} catch (RestClientException e) {
-			ProjectUtil.testPrint(e.getMessage());
-			throw e;
-		}
+	public Location register(Location entity) {
+		Location tmp = locationRestManager.put(entity);
+		//TODO: error handling
+		return tmp;
 	}
 
 	@Override
-	public Location update(Location location) {
-		return locationRestManager.post(location);
+	public Location update(Location entity) {
+		Location tmp = locationRestManager.post(entity);
+		//TODO: error handling
+		return tmp;
 	}
 
 	@Override
@@ -38,15 +35,16 @@ public class LocationModelImpl implements LocationModel {
 	}
 
 	@Override
-	public Location get(Location location) {
-		return locationRestManager.get(location);
+	public Location get(Location entity) {
+		Location tmp = locationRestManager.get(entity);
+		//TODO: error handling
+		return tmp;
 	}
 
 	@Override
-	public Location remove(Location location) {
-		return locationRestManager.delete(location);
+	public Location remove(Location entity) {
+		Location tmp = locationRestManager.delete(entity);
+		//TODO: error handling
+		return tmp;
 	}
-
-
-
 }

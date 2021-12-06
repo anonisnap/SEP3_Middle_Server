@@ -1,5 +1,6 @@
 package com.group5.sep3.DataBaseCommunication;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,15 +26,15 @@ public class RestClientImpl implements RestClient {
 
 	@Override
 	public Object put(String restUrl, Object obj) throws RestClientException {
-		rest.put(ROOT + restUrl, obj);
-		return obj;
+		ResponseEntity<String> result = rest.postForEntity(ROOT + restUrl, obj, String.class);
+		return result.getBody();
 	}
 
 	@Override
 	public Object post(String restUrl, Object obj) throws RestClientException {
 		try {
 			//return rest.postForObject(ROOT + restUrl, obj, obj.getClass());
-			return rest.postForObject(ROOT + restUrl, obj, obj.getClass());
+			return rest.postForEntity(ROOT + restUrl, obj, String.class).getBody();
 		} catch (RestClientException e) {
 			e.printStackTrace();
 			return null;
@@ -43,7 +44,7 @@ public class RestClientImpl implements RestClient {
 	@Override
 	public Object get(String restUrl) throws RestClientException {
 		try {
-			return rest.getForObject(ROOT + restUrl, String.class);
+			return rest.getForEntity(ROOT + restUrl, String.class).getBody();
 		} catch (RestClientException e) {
 			e.printStackTrace();
 			return null;

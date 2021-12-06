@@ -61,4 +61,9 @@ public class Item {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" + "id = " + id + ", itemName = '" + itemName + '\'' + ", length = " + length + ", width = " + width + ", height = " + height + ", weight = " + weight + '}';
+    }
 }
