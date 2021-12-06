@@ -133,6 +133,9 @@ public class ItemService extends ItemImplBase {
 		responseObserver.onCompleted();
 
 		System.out.println("- Sending all Items from Client");
+
+
+		System.out.println("- Sending all Items from Client");
 	}
 
 	@Override
@@ -211,7 +214,6 @@ public class ItemService extends ItemImplBase {
 
 	private Item getItemFromRequest(gItem req) {
 		Item tmp = new Item(req.getId(), req.getItemName(), req.getLength(), req.getWidth(), req.getHeight(), req.getWeight());
-		ProjectUtil.testPrint("Temporary item : " + tmp);
 		return tmp;
 	}
 

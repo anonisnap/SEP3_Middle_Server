@@ -45,7 +45,6 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
         String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
 
-        ProjectUtil.testPrint(jsonString);
 
         Type type = new TypeToken<ArrayList<ItemLocation>>(){}.getType();
 
