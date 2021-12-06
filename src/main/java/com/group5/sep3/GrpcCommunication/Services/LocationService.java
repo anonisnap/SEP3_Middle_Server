@@ -94,7 +94,7 @@ public class LocationService extends LocationImplBase {
 			}
 
 	@Override
-	public void getAllLocation(gLocation request, StreamObserver<gLocationList> responseObserver) {
+	public void getAllLocations(gLocation request, StreamObserver<gLocationList> responseObserver) {
 
 		List<gLocation> returnLocations = new ArrayList<>();
 

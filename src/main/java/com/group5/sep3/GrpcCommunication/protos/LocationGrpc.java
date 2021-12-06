@@ -92,35 +92,35 @@ public final class LocationGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.LocationOuterClass.gLocation,
-      protos.LocationOuterClass.gLocationList> getGetAllLocationMethod;
+      protos.LocationOuterClass.gLocationList> getGetAllLocationsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetAllLocation",
+      fullMethodName = SERVICE_NAME + '/' + "GetAllLocations",
       requestType = protos.LocationOuterClass.gLocation.class,
       responseType = protos.LocationOuterClass.gLocationList.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<protos.LocationOuterClass.gLocation,
-      protos.LocationOuterClass.gLocationList> getGetAllLocationMethod() {
-    io.grpc.MethodDescriptor<protos.LocationOuterClass.gLocation, protos.LocationOuterClass.gLocationList> getGetAllLocationMethod;
-    if ((getGetAllLocationMethod = LocationGrpc.getGetAllLocationMethod) == null) {
+      protos.LocationOuterClass.gLocationList> getGetAllLocationsMethod() {
+    io.grpc.MethodDescriptor<protos.LocationOuterClass.gLocation, protos.LocationOuterClass.gLocationList> getGetAllLocationsMethod;
+    if ((getGetAllLocationsMethod = LocationGrpc.getGetAllLocationsMethod) == null) {
       synchronized (LocationGrpc.class) {
-        if ((getGetAllLocationMethod = LocationGrpc.getGetAllLocationMethod) == null) {
-          LocationGrpc.getGetAllLocationMethod = getGetAllLocationMethod = 
+        if ((getGetAllLocationsMethod = LocationGrpc.getGetAllLocationsMethod) == null) {
+          LocationGrpc.getGetAllLocationsMethod = getGetAllLocationsMethod = 
               io.grpc.MethodDescriptor.<protos.LocationOuterClass.gLocation, protos.LocationOuterClass.gLocationList>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "Protos.Location", "GetAllLocation"))
+                  "Protos.Location", "GetAllLocations"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.LocationOuterClass.gLocation.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.LocationOuterClass.gLocationList.getDefaultInstance()))
-                  .setSchemaDescriptor(new LocationMethodDescriptorSupplier("GetAllLocation"))
+                  .setSchemaDescriptor(new LocationMethodDescriptorSupplier("GetAllLocations"))
                   .build();
           }
         }
      }
-     return getGetAllLocationMethod;
+     return getGetAllLocationsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.LocationOuterClass.gLocation,
@@ -230,9 +230,9 @@ public final class LocationGrpc {
 
     /**
      */
-    public void getAllLocation(protos.LocationOuterClass.gLocation request,
+    public void getAllLocations(protos.LocationOuterClass.gLocation request,
         io.grpc.stub.StreamObserver<protos.LocationOuterClass.gLocationList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAllLocationMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getGetAllLocationsMethod(), responseObserver);
     }
 
     /**
@@ -266,12 +266,12 @@ public final class LocationGrpc {
                 protos.LocationOuterClass.gLocation>(
                   this, METHODID_GET_LOCATION)))
           .addMethod(
-            getGetAllLocationMethod(),
+            getGetAllLocationsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 protos.LocationOuterClass.gLocation,
                 protos.LocationOuterClass.gLocationList>(
-                  this, METHODID_GET_ALL_LOCATION)))
+                  this, METHODID_GET_ALL_LOCATIONS)))
           .addMethod(
             getUpdateLocationMethod(),
             asyncUnaryCall(
@@ -326,10 +326,10 @@ public final class LocationGrpc {
 
     /**
      */
-    public void getAllLocation(protos.LocationOuterClass.gLocation request,
+    public void getAllLocations(protos.LocationOuterClass.gLocation request,
         io.grpc.stub.StreamObserver<protos.LocationOuterClass.gLocationList> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getGetAllLocationMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetAllLocationsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -383,9 +383,9 @@ public final class LocationGrpc {
 
     /**
      */
-    public protos.LocationOuterClass.gLocationList getAllLocation(protos.LocationOuterClass.gLocation request) {
+    public protos.LocationOuterClass.gLocationList getAllLocations(protos.LocationOuterClass.gLocation request) {
       return blockingUnaryCall(
-          getChannel(), getGetAllLocationMethod(), getCallOptions(), request);
+          getChannel(), getGetAllLocationsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -439,10 +439,10 @@ public final class LocationGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.LocationOuterClass.gLocationList> getAllLocation(
+    public com.google.common.util.concurrent.ListenableFuture<protos.LocationOuterClass.gLocationList> getAllLocations(
         protos.LocationOuterClass.gLocation request) {
       return futureUnaryCall(
-          getChannel().newCall(getGetAllLocationMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetAllLocationsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -464,7 +464,7 @@ public final class LocationGrpc {
 
   private static final int METHODID_REGISTER_LOCATION = 0;
   private static final int METHODID_GET_LOCATION = 1;
-  private static final int METHODID_GET_ALL_LOCATION = 2;
+  private static final int METHODID_GET_ALL_LOCATIONS = 2;
   private static final int METHODID_UPDATE_LOCATION = 3;
   private static final int METHODID_REMOVE_LOCATION = 4;
 
@@ -493,8 +493,8 @@ public final class LocationGrpc {
           serviceImpl.getLocation((protos.LocationOuterClass.gLocation) request,
               (io.grpc.stub.StreamObserver<protos.LocationOuterClass.gLocation>) responseObserver);
           break;
-        case METHODID_GET_ALL_LOCATION:
-          serviceImpl.getAllLocation((protos.LocationOuterClass.gLocation) request,
+        case METHODID_GET_ALL_LOCATIONS:
+          serviceImpl.getAllLocations((protos.LocationOuterClass.gLocation) request,
               (io.grpc.stub.StreamObserver<protos.LocationOuterClass.gLocationList>) responseObserver);
           break;
         case METHODID_UPDATE_LOCATION:
@@ -568,7 +568,7 @@ public final class LocationGrpc {
               .setSchemaDescriptor(new LocationFileDescriptorSupplier())
               .addMethod(getRegisterLocationMethod())
               .addMethod(getGetLocationMethod())
-              .addMethod(getGetAllLocationMethod())
+              .addMethod(getGetAllLocationsMethod())
               .addMethod(getUpdateLocationMethod())
               .addMethod(getRemoveLocationMethod())
               .build();

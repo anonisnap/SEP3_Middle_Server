@@ -1747,20 +1747,20 @@ public final class ItemLocationOuterClass {
       "m\030\001 \001(\0132\r.Protos.gItem\022#\n\010location\030\002 \001(\013" +
       "2\021.Protos.gLocation\022\n\n\002id\030\003 \001(\005\022\016\n\006amoun" +
       "t\030\004 \001(\005\"A\n\021gItemLocationList\022,\n\ritemLoca" +
-      "tions\030\001 \003(\0132\025.Protos.gItemLocation2\353\003\n\014I" +
+      "tions\030\001 \003(\0132\025.Protos.gItemLocation2\354\003\n\014I" +
       "temLocation\022D\n\024RegisterItemLocation\022\025.Pr" +
       "otos.gItemLocation\032\025.Protos.gItemLocatio" +
       "n\022?\n\017GetItemLocation\022\025.Protos.gItemLocat" +
-      "ion\032\025.Protos.gItemLocation\022F\n\022GetAllItem" +
-      "Location\022\025.Protos.gItemLocation\032\031.Protos" +
-      ".gItemLocationList\022B\n\022UpdateItemLocation" +
-      "\022\025.Protos.gItemLocation\032\025.Protos.gItemLo" +
-      "cation\022B\n\022RemoveItemLocation\022\025.Protos.gI" +
-      "temLocation\032\025.Protos.gItemLocation\022?\n\013Ge" +
-      "tByItemId\022\025.Protos.gItemLocation\032\031.Proto" +
-      "s.gItemLocationList\022C\n\017GetByLocationId\022\025" +
-      ".Protos.gItemLocation\032\031.Protos.gItemLoca" +
-      "tionListB\021\n\006protos\252\002\006myGrpcb\006proto3"
+      "ion\032\025.Protos.gItemLocation\022G\n\023GetAllItem" +
+      "Locations\022\025.Protos.gItemLocation\032\031.Proto" +
+      "s.gItemLocationList\022B\n\022UpdateItemLocatio" +
+      "n\022\025.Protos.gItemLocation\032\025.Protos.gItemL" +
+      "ocation\022B\n\022RemoveItemLocation\022\025.Protos.g" +
+      "ItemLocation\032\025.Protos.gItemLocation\022?\n\013G" +
+      "etByItemId\022\025.Protos.gItemLocation\032\031.Prot" +
+      "os.gItemLocationList\022C\n\017GetByLocationId\022" +
+      "\025.Protos.gItemLocation\032\031.Protos.gItemLoc" +
+      "ationListB\021\n\006protos\252\002\006myGrpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

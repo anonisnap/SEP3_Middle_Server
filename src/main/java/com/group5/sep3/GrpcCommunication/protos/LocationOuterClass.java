@@ -1431,15 +1431,15 @@ public final class LocationOuterClass {
       "\n\016Location.proto\022\006Protos\",\n\tgLocation\022\n\n" +
       "\002Id\030\001 \001(\005\022\023\n\013Description\030\002 \001(\t\"4\n\rgLocat" +
       "ionList\022#\n\010location\030\001 \003(\0132\021.Protos.gLoca" +
-      "tion2\245\002\n\010Location\0228\n\020RegisterLocation\022\021." +
+      "tion2\246\002\n\010Location\0228\n\020RegisterLocation\022\021." +
       "Protos.gLocation\032\021.Protos.gLocation\0223\n\013G" +
       "etLocation\022\021.Protos.gLocation\032\021.Protos.g" +
-      "Location\022:\n\016GetAllLocation\022\021.Protos.gLoc" +
-      "ation\032\025.Protos.gLocationList\0226\n\016UpdateLo" +
-      "cation\022\021.Protos.gLocation\032\021.Protos.gLoca" +
-      "tion\0226\n\016RemoveLocation\022\021.Protos.gLocatio" +
-      "n\032\021.Protos.gLocationB\021\n\006protos\252\002\006myGrpcb" +
-      "\006proto3"
+      "Location\022;\n\017GetAllLocations\022\021.Protos.gLo" +
+      "cation\032\025.Protos.gLocationList\0226\n\016UpdateL" +
+      "ocation\022\021.Protos.gLocation\032\021.Protos.gLoc" +
+      "ation\0226\n\016RemoveLocation\022\021.Protos.gLocati" +
+      "on\032\021.Protos.gLocationB\021\n\006protos\252\002\006myGrpc" +
+      "b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

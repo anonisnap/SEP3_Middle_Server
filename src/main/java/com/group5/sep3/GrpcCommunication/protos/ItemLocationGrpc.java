@@ -92,35 +92,35 @@ public final class ItemLocationGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.ItemLocationOuterClass.gItemLocation,
-      protos.ItemLocationOuterClass.gItemLocationList> getGetAllItemLocationMethod;
+      protos.ItemLocationOuterClass.gItemLocationList> getGetAllItemLocationsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetAllItemLocation",
+      fullMethodName = SERVICE_NAME + '/' + "GetAllItemLocations",
       requestType = protos.ItemLocationOuterClass.gItemLocation.class,
       responseType = protos.ItemLocationOuterClass.gItemLocationList.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<protos.ItemLocationOuterClass.gItemLocation,
-      protos.ItemLocationOuterClass.gItemLocationList> getGetAllItemLocationMethod() {
-    io.grpc.MethodDescriptor<protos.ItemLocationOuterClass.gItemLocation, protos.ItemLocationOuterClass.gItemLocationList> getGetAllItemLocationMethod;
-    if ((getGetAllItemLocationMethod = ItemLocationGrpc.getGetAllItemLocationMethod) == null) {
+      protos.ItemLocationOuterClass.gItemLocationList> getGetAllItemLocationsMethod() {
+    io.grpc.MethodDescriptor<protos.ItemLocationOuterClass.gItemLocation, protos.ItemLocationOuterClass.gItemLocationList> getGetAllItemLocationsMethod;
+    if ((getGetAllItemLocationsMethod = ItemLocationGrpc.getGetAllItemLocationsMethod) == null) {
       synchronized (ItemLocationGrpc.class) {
-        if ((getGetAllItemLocationMethod = ItemLocationGrpc.getGetAllItemLocationMethod) == null) {
-          ItemLocationGrpc.getGetAllItemLocationMethod = getGetAllItemLocationMethod = 
+        if ((getGetAllItemLocationsMethod = ItemLocationGrpc.getGetAllItemLocationsMethod) == null) {
+          ItemLocationGrpc.getGetAllItemLocationsMethod = getGetAllItemLocationsMethod = 
               io.grpc.MethodDescriptor.<protos.ItemLocationOuterClass.gItemLocation, protos.ItemLocationOuterClass.gItemLocationList>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "Protos.ItemLocation", "GetAllItemLocation"))
+                  "Protos.ItemLocation", "GetAllItemLocations"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.ItemLocationOuterClass.gItemLocation.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.ItemLocationOuterClass.gItemLocationList.getDefaultInstance()))
-                  .setSchemaDescriptor(new ItemLocationMethodDescriptorSupplier("GetAllItemLocation"))
+                  .setSchemaDescriptor(new ItemLocationMethodDescriptorSupplier("GetAllItemLocations"))
                   .build();
           }
         }
      }
-     return getGetAllItemLocationMethod;
+     return getGetAllItemLocationsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.ItemLocationOuterClass.gItemLocation,
@@ -294,9 +294,9 @@ public final class ItemLocationGrpc {
 
     /**
      */
-    public void getAllItemLocation(protos.ItemLocationOuterClass.gItemLocation request,
+    public void getAllItemLocations(protos.ItemLocationOuterClass.gItemLocation request,
         io.grpc.stub.StreamObserver<protos.ItemLocationOuterClass.gItemLocationList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAllItemLocationMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getGetAllItemLocationsMethod(), responseObserver);
     }
 
     /**
@@ -344,12 +344,12 @@ public final class ItemLocationGrpc {
                 protos.ItemLocationOuterClass.gItemLocation>(
                   this, METHODID_GET_ITEM_LOCATION)))
           .addMethod(
-            getGetAllItemLocationMethod(),
+            getGetAllItemLocationsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 protos.ItemLocationOuterClass.gItemLocation,
                 protos.ItemLocationOuterClass.gItemLocationList>(
-                  this, METHODID_GET_ALL_ITEM_LOCATION)))
+                  this, METHODID_GET_ALL_ITEM_LOCATIONS)))
           .addMethod(
             getUpdateItemLocationMethod(),
             asyncUnaryCall(
@@ -418,10 +418,10 @@ public final class ItemLocationGrpc {
 
     /**
      */
-    public void getAllItemLocation(protos.ItemLocationOuterClass.gItemLocation request,
+    public void getAllItemLocations(protos.ItemLocationOuterClass.gItemLocation request,
         io.grpc.stub.StreamObserver<protos.ItemLocationOuterClass.gItemLocationList> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getGetAllItemLocationMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetAllItemLocationsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -491,9 +491,9 @@ public final class ItemLocationGrpc {
 
     /**
      */
-    public protos.ItemLocationOuterClass.gItemLocationList getAllItemLocation(protos.ItemLocationOuterClass.gItemLocation request) {
+    public protos.ItemLocationOuterClass.gItemLocationList getAllItemLocations(protos.ItemLocationOuterClass.gItemLocation request) {
       return blockingUnaryCall(
-          getChannel(), getGetAllItemLocationMethod(), getCallOptions(), request);
+          getChannel(), getGetAllItemLocationsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -561,10 +561,10 @@ public final class ItemLocationGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.ItemLocationOuterClass.gItemLocationList> getAllItemLocation(
+    public com.google.common.util.concurrent.ListenableFuture<protos.ItemLocationOuterClass.gItemLocationList> getAllItemLocations(
         protos.ItemLocationOuterClass.gItemLocation request) {
       return futureUnaryCall(
-          getChannel().newCall(getGetAllItemLocationMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetAllItemLocationsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -602,7 +602,7 @@ public final class ItemLocationGrpc {
 
   private static final int METHODID_REGISTER_ITEM_LOCATION = 0;
   private static final int METHODID_GET_ITEM_LOCATION = 1;
-  private static final int METHODID_GET_ALL_ITEM_LOCATION = 2;
+  private static final int METHODID_GET_ALL_ITEM_LOCATIONS = 2;
   private static final int METHODID_UPDATE_ITEM_LOCATION = 3;
   private static final int METHODID_REMOVE_ITEM_LOCATION = 4;
   private static final int METHODID_GET_BY_ITEM_ID = 5;
@@ -633,8 +633,8 @@ public final class ItemLocationGrpc {
           serviceImpl.getItemLocation((protos.ItemLocationOuterClass.gItemLocation) request,
               (io.grpc.stub.StreamObserver<protos.ItemLocationOuterClass.gItemLocation>) responseObserver);
           break;
-        case METHODID_GET_ALL_ITEM_LOCATION:
-          serviceImpl.getAllItemLocation((protos.ItemLocationOuterClass.gItemLocation) request,
+        case METHODID_GET_ALL_ITEM_LOCATIONS:
+          serviceImpl.getAllItemLocations((protos.ItemLocationOuterClass.gItemLocation) request,
               (io.grpc.stub.StreamObserver<protos.ItemLocationOuterClass.gItemLocationList>) responseObserver);
           break;
         case METHODID_UPDATE_ITEM_LOCATION:
@@ -716,7 +716,7 @@ public final class ItemLocationGrpc {
               .setSchemaDescriptor(new ItemLocationFileDescriptorSupplier())
               .addMethod(getRegisterItemLocationMethod())
               .addMethod(getGetItemLocationMethod())
-              .addMethod(getGetAllItemLocationMethod())
+              .addMethod(getGetAllItemLocationsMethod())
               .addMethod(getUpdateItemLocationMethod())
               .addMethod(getRemoveItemLocationMethod())
               .addMethod(getGetByItemIdMethod())
