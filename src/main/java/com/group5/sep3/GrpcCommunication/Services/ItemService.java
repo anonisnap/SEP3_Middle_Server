@@ -2,17 +2,16 @@ package com.group5.sep3.GrpcCommunication.Services;
 
 import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
 import com.group5.sep3.BusinessLogic.model.Item;
-import com.group5.sep3.util.ProjectUtil;
 import io.grpc.stub.StreamObserver;
-import protos.ItemGrpc.ItemImplBase;
-import protos.ItemOuterClass.gItem;
-import protos.ItemOuterClass.gItemList;
+import protos.ItemServiceGrpc.ItemServiceImplBase;
+import protos.ItemServiceOuterClass.gItem;
+import protos.ItemServiceOuterClass.gItemList;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ItemService extends ItemImplBase {
+public class ItemService extends ItemServiceImplBase {
 	ItemModel model;
 
 	public ItemService(ItemModel model) {
