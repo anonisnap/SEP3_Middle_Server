@@ -27,6 +27,7 @@ public class RestClientImpl implements RestClient {
 
 	@Override
 	public Object put(String restUrl, Object obj) throws RestClientException {
+		//Post is used the get back result-- spring put returns void
 		ResponseEntity<String> result = rest.postForEntity(ROOT + restUrl, obj, String.class);
 		return result.getBody();
 	}

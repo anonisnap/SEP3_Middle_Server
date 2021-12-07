@@ -193,6 +193,7 @@ public class ItemService extends ItemServiceImplBase {
 
 			}
 
+
 	private Item getItemFromRequest(gItem req) {
 		Item tmp = new Item(req.getId(), req.getItemName(), req.getLength(), req.getWidth(), req.getHeight(), req.getWeight());
 		return tmp;
@@ -201,4 +202,5 @@ public class ItemService extends ItemServiceImplBase {
 	private gItem.Builder parseAndMergeItem(gItem.Builder builder, Item item) {
 		return builder.setId(item.getId()).setItemName(item.getItemName()).setHeight(item.getHeight()).setLength(item.getLength()).setWidth(item.getWidth()).setWeight(item.getWeight());
 	}
+
 }

@@ -3,6 +3,7 @@ package com.group5.sep3;
 import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemLocationRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.LocationRestManagerImpl;
+import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.OrderRestManagerImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
@@ -20,6 +21,7 @@ public class RestManagerFactory {
         restManagers.put(EntityTypes.Item, new ItemRestManagerImpl());
         restManagers.put(EntityTypes.Location, new LocationRestManagerImpl());
         restManagers.put(EntityTypes.ItemLocation, new ItemLocationRestManagerImpl());
+        restManagers.put(EntityTypes.Order, new OrderRestManagerImpl());
 
         StringBuilder debug = new StringBuilder();
         for (EntityTypes key : restManagers.keySet()) {
