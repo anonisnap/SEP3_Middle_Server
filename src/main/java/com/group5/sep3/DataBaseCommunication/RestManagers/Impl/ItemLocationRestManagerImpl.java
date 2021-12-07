@@ -5,11 +5,11 @@ import com.group5.sep3.BusinessLogic.model.ItemLocation;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.ItemLocationRestManager;
 import com.group5.sep3.util.JsonHelper;
+import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
@@ -31,6 +31,7 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
 	@Override
 	public ItemLocation get(ItemLocation obj) {
+		ProjectUtil.testPrint("ItemLocation ID: " + obj.getId());
 		String restUrl = obj.getClass().getSimpleName() + "/" + obj.getId();
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 
@@ -38,7 +39,7 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 	}
 
 	@Override
-	public Collection<ItemLocation> getAll() {
+	public List<ItemLocation> getAll() {
 		String restUrl = ItemLocation.class.getSimpleName();
 
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);

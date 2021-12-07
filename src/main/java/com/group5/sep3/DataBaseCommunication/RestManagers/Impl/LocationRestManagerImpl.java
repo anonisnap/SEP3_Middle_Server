@@ -8,7 +8,7 @@ import com.group5.sep3.util.JsonHelper;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class LocationRestManagerImpl implements RestManager<Location> {
 
@@ -37,7 +37,7 @@ public class LocationRestManagerImpl implements RestManager<Location> {
 	}
 
 	@Override
-	public Collection<Location> getAll() {
+	public List<Location> getAll() {
 		String restUrl = Location.class.getSimpleName();
 		String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
 		Type type = new TypeToken<ArrayList<Location>>() {
