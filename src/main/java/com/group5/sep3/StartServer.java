@@ -7,6 +7,9 @@ public class StartServer {
 	public static void main(String[] args) {
 
 //        Item item = new Item(); TODO: Sander??
+		//TODO: Frederik??
+		//TODO: Young??
+		//TODO: Sebastian??
 
 //        RequestHandler requestHandler = new RequestHandlerImpl();
 //        SocketServer socketServer = new SocketServerImpl(requestHandler);
