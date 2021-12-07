@@ -1,5 +1,6 @@
 package com.group5.sep3.DataBaseCommunication;
 
+import com.group5.sep3.util.ProjectUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -46,7 +47,8 @@ public class RestClientImpl implements RestClient {
 		try {
 			return rest.getForEntity(ROOT + restUrl, String.class).getBody();
 		} catch (RestClientException e) {
-			e.printStackTrace();
+			ProjectUtil.testPrint("Could not get item " + e.getMessage());
+			//e.printStackTrace();
 			return null;
 		}
 	}
@@ -58,7 +60,8 @@ public class RestClientImpl implements RestClient {
 			rest.delete(ROOT + restUrl);
 			return true;
 		} catch (RestClientException e) {
-			e.printStackTrace();
+			ProjectUtil.testPrint("Could not delete item: " + e.getMessage());
+			//e.printStackTrace();
 			return false;
 		}
 

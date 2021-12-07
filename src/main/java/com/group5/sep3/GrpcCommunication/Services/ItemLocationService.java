@@ -150,6 +150,60 @@ public class ItemLocationService extends ItemLocationImplBase {
 		responseObserver.onCompleted();
 	}
 
+	@Override
+	public void getByItemId(gItemLocation request, StreamObserver<gItemLocationList> responseObserver) {
+		ItemLocation requestItemLocation = getItemLocationFromRequest(request);
+		List<gItemLocation> returnItemLocations = new ArrayList<>();
+		Collection<ItemLocation> itemLocations;
+		// Parse Model ItemLocations to gRPC ItemLocations
+		try {
+			itemLocations = model.getByItemId(requestItemLocation);
+
+			for (ItemLocation itemLocation : itemLocations) {
+				gItemLocation.Builder builder = gItemLocation.newBuilder();
+				parseAndMergeItemLocation(builder, itemLocation);
+				returnItemLocations.add(builder.build()); // THIS LIKELY WON'T WORK. UNSURE OF HOW PARSEFROM IS IMPLEMENTED
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// Create Response Object
+		gItemLocationList.Builder response = gItemLocationList.newBuilder();
+		// Add the gItemLocations to the Response
+		response.addAllItemLocations(returnItemLocations); // Add ItemLocations to Builder
+		// Link the Response to the Observer
+		responseObserver.onNext(response.build());
+		// Tell Observer the Method is finished, and let it return the Response
+		responseObserver.onCompleted();
+
+	}
+
+	@Override
+	public void getByLocationId(gItemLocation request, StreamObserver<gItemLocationList> responseObserver) {
+		ItemLocation requestItemLocation = getItemLocationFromRequest(request);
+		List<gItemLocation> returnItemLocations = new ArrayList<>();
+		Collection<ItemLocation> itemLocations;
+		// Parse Model ItemLocations to gRPC ItemLocations
+		try {
+			itemLocations = model.getByLocationId(requestItemLocation);
+			for (ItemLocation itemLocation : itemLocations) {
+				gItemLocation.Builder builder = gItemLocation.newBuilder();
+				parseAndMergeItemLocation(builder, itemLocation);
+				returnItemLocations.add(builder.build()); // THIS LIKELY WON'T WORK. UNSURE OF HOW PARSEFROM IS IMPLEMENTED
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// Create Response Object
+		gItemLocationList.Builder response = gItemLocationList.newBuilder();
+		// Add the gItemLocations to the Response
+		response.addAllItemLocations(returnItemLocations); // Add ItemLocations to Builder
+		// Link the Response to the Observer
+		responseObserver.onNext(response.build());
+		// Tell Observer the Method is finished, and let it return the Response
+		responseObserver.onCompleted();
+	}
+
 	private ItemLocation getItemLocationFromRequest(gItemLocation req) {
 		gItem x = req.getItem();
 		gLocation y = req.getLocation();

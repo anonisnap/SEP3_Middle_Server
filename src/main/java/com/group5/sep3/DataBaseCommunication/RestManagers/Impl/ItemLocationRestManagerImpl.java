@@ -40,11 +40,10 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 	@Override
 	public Collection<ItemLocation> getAll() {
 		String restUrl = ItemLocation.class.getSimpleName();
-		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
-		Type type = new TypeToken<ArrayList<ItemLocation>>() {
-		}.getType();
 
-		return JsonHelper.fromJson(restResponse, type);
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
+
+		return getItemLocationsFromResponse(restResponse);
 	}
 
 	@Override
@@ -57,19 +56,19 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 	@Override
 	public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
 		String restUrl = obj.getClass().getSimpleName() + "/itemId/" + obj.getItem().getId();
-		return getItemLocationsFromURL(restUrl);
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
+		return getItemLocationsFromResponse(restResponse);
 	}
 
 	@Override
 	public List<ItemLocation> getByLocationId(ItemLocation obj) throws RestClientException {
 		String restUrl = obj.getClass().getSimpleName() + "/locationId/" + obj.getLocation().getId();
-		return getItemLocationsFromURL(restUrl);
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
+		return getItemLocationsFromResponse(restResponse);
 	}
 
-	private List<ItemLocation> getItemLocationsFromURL(String restUrl) {
-		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
-		TypeToken<? extends List<ItemLocation>> typeToken = TypeToken.get(new ArrayList<ItemLocation>() {
-		}.getClass());
-		return JsonHelper.fromJson(restResponse, typeToken.getType());
+	private List<ItemLocation> getItemLocationsFromResponse(String restResponse) {
+		Type type = new TypeToken<ArrayList<ItemLocation>>() {}.getType();
+		return JsonHelper.fromJson(restResponse, type);
 	}
 }
