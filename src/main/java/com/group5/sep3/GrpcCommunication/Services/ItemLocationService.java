@@ -158,6 +158,7 @@ public class ItemLocationService extends ItemLocationImplBase {
 		// Parse Model ItemLocations to gRPC ItemLocations
 		try {
 			itemLocations = model.getByItemId(requestItemLocation);
+
 			for (ItemLocation itemLocation : itemLocations) {
 				gItemLocation.Builder builder = gItemLocation.newBuilder();
 				parseAndMergeItemLocation(builder, itemLocation);
