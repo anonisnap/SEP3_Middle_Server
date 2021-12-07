@@ -19,39 +19,39 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
-    comments = "Source: User.proto")
-public final class UserGrpc {
+    comments = "Source: UserService.proto")
+public final class UserServiceGrpc {
 
-  private UserGrpc() {}
+  private UserServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "Protos.User";
+  public static final String SERVICE_NAME = "Protos.UserService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<protos.UserOuterClass.UserDetails,
-      protos.UserOuterClass.Confirmation> getLoginMethod;
+  private static volatile io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
+      protos.UserServiceOuterClass.Confirmation> getLoginMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "login",
-      requestType = protos.UserOuterClass.UserDetails.class,
-      responseType = protos.UserOuterClass.Confirmation.class,
+      requestType = protos.UserServiceOuterClass.UserDetails.class,
+      responseType = protos.UserServiceOuterClass.Confirmation.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<protos.UserOuterClass.UserDetails,
-      protos.UserOuterClass.Confirmation> getLoginMethod() {
-    io.grpc.MethodDescriptor<protos.UserOuterClass.UserDetails, protos.UserOuterClass.Confirmation> getLoginMethod;
-    if ((getLoginMethod = UserGrpc.getLoginMethod) == null) {
-      synchronized (UserGrpc.class) {
-        if ((getLoginMethod = UserGrpc.getLoginMethod) == null) {
-          UserGrpc.getLoginMethod = getLoginMethod = 
-              io.grpc.MethodDescriptor.<protos.UserOuterClass.UserDetails, protos.UserOuterClass.Confirmation>newBuilder()
+  public static io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
+      protos.UserServiceOuterClass.Confirmation> getLoginMethod() {
+    io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation> getLoginMethod;
+    if ((getLoginMethod = UserServiceGrpc.getLoginMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getLoginMethod = UserServiceGrpc.getLoginMethod) == null) {
+          UserServiceGrpc.getLoginMethod = getLoginMethod = 
+              io.grpc.MethodDescriptor.<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "Protos.User", "login"))
+                  "Protos.UserService", "login"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protos.UserOuterClass.UserDetails.getDefaultInstance()))
+                  protos.UserServiceOuterClass.UserDetails.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protos.UserOuterClass.Confirmation.getDefaultInstance()))
-                  .setSchemaDescriptor(new UserMethodDescriptorSupplier("login"))
+                  protos.UserServiceOuterClass.Confirmation.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("login"))
                   .build();
           }
         }
@@ -59,31 +59,31 @@ public final class UserGrpc {
      return getLoginMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<protos.UserOuterClass.UserDetails,
-      protos.UserOuterClass.Confirmation> getLogoutMethod;
+  private static volatile io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
+      protos.UserServiceOuterClass.Confirmation> getLogoutMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "logout",
-      requestType = protos.UserOuterClass.UserDetails.class,
-      responseType = protos.UserOuterClass.Confirmation.class,
+      requestType = protos.UserServiceOuterClass.UserDetails.class,
+      responseType = protos.UserServiceOuterClass.Confirmation.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<protos.UserOuterClass.UserDetails,
-      protos.UserOuterClass.Confirmation> getLogoutMethod() {
-    io.grpc.MethodDescriptor<protos.UserOuterClass.UserDetails, protos.UserOuterClass.Confirmation> getLogoutMethod;
-    if ((getLogoutMethod = UserGrpc.getLogoutMethod) == null) {
-      synchronized (UserGrpc.class) {
-        if ((getLogoutMethod = UserGrpc.getLogoutMethod) == null) {
-          UserGrpc.getLogoutMethod = getLogoutMethod = 
-              io.grpc.MethodDescriptor.<protos.UserOuterClass.UserDetails, protos.UserOuterClass.Confirmation>newBuilder()
+  public static io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
+      protos.UserServiceOuterClass.Confirmation> getLogoutMethod() {
+    io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation> getLogoutMethod;
+    if ((getLogoutMethod = UserServiceGrpc.getLogoutMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getLogoutMethod = UserServiceGrpc.getLogoutMethod) == null) {
+          UserServiceGrpc.getLogoutMethod = getLogoutMethod = 
+              io.grpc.MethodDescriptor.<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "Protos.User", "logout"))
+                  "Protos.UserService", "logout"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protos.UserOuterClass.UserDetails.getDefaultInstance()))
+                  protos.UserServiceOuterClass.UserDetails.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protos.UserOuterClass.Confirmation.getDefaultInstance()))
-                  .setSchemaDescriptor(new UserMethodDescriptorSupplier("logout"))
+                  protos.UserServiceOuterClass.Confirmation.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("logout"))
                   .build();
           }
         }
@@ -94,41 +94,41 @@ public final class UserGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static UserStub newStub(io.grpc.Channel channel) {
-    return new UserStub(channel);
+  public static UserServiceStub newStub(io.grpc.Channel channel) {
+    return new UserServiceStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static UserBlockingStub newBlockingStub(
+  public static UserServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new UserBlockingStub(channel);
+    return new UserServiceBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static UserFutureStub newFutureStub(
+  public static UserServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new UserFutureStub(channel);
+    return new UserServiceFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class UserImplBase implements io.grpc.BindableService {
+  public static abstract class UserServiceImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void login(protos.UserOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserOuterClass.Confirmation> responseObserver) {
+    public void login(protos.UserServiceOuterClass.UserDetails request,
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
       asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
     }
 
     /**
      */
-    public void logout(protos.UserOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserOuterClass.Confirmation> responseObserver) {
+    public void logout(protos.UserServiceOuterClass.UserDetails request,
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
       asyncUnimplementedUnaryCall(getLogoutMethod(), responseObserver);
     }
 
@@ -138,15 +138,15 @@ public final class UserGrpc {
             getLoginMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                protos.UserOuterClass.UserDetails,
-                protos.UserOuterClass.Confirmation>(
+                protos.UserServiceOuterClass.UserDetails,
+                protos.UserServiceOuterClass.Confirmation>(
                   this, METHODID_LOGIN)))
           .addMethod(
             getLogoutMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                protos.UserOuterClass.UserDetails,
-                protos.UserOuterClass.Confirmation>(
+                protos.UserServiceOuterClass.UserDetails,
+                protos.UserServiceOuterClass.Confirmation>(
                   this, METHODID_LOGOUT)))
           .build();
     }
@@ -154,34 +154,34 @@ public final class UserGrpc {
 
   /**
    */
-  public static final class UserStub extends io.grpc.stub.AbstractStub<UserStub> {
-    private UserStub(io.grpc.Channel channel) {
+  public static final class UserServiceStub extends io.grpc.stub.AbstractStub<UserServiceStub> {
+    private UserServiceStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private UserStub(io.grpc.Channel channel,
+    private UserServiceStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected UserStub build(io.grpc.Channel channel,
+    protected UserServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new UserStub(channel, callOptions);
+      return new UserServiceStub(channel, callOptions);
     }
 
     /**
      */
-    public void login(protos.UserOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserOuterClass.Confirmation> responseObserver) {
+    public void login(protos.UserServiceOuterClass.UserDetails request,
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void logout(protos.UserOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserOuterClass.Confirmation> responseObserver) {
+    public void logout(protos.UserServiceOuterClass.UserDetails request,
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLogoutMethod(), getCallOptions()), request, responseObserver);
     }
@@ -189,32 +189,32 @@ public final class UserGrpc {
 
   /**
    */
-  public static final class UserBlockingStub extends io.grpc.stub.AbstractStub<UserBlockingStub> {
-    private UserBlockingStub(io.grpc.Channel channel) {
+  public static final class UserServiceBlockingStub extends io.grpc.stub.AbstractStub<UserServiceBlockingStub> {
+    private UserServiceBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private UserBlockingStub(io.grpc.Channel channel,
+    private UserServiceBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected UserBlockingStub build(io.grpc.Channel channel,
+    protected UserServiceBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new UserBlockingStub(channel, callOptions);
+      return new UserServiceBlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public protos.UserOuterClass.Confirmation login(protos.UserOuterClass.UserDetails request) {
+    public protos.UserServiceOuterClass.Confirmation login(protos.UserServiceOuterClass.UserDetails request) {
       return blockingUnaryCall(
           getChannel(), getLoginMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public protos.UserOuterClass.Confirmation logout(protos.UserOuterClass.UserDetails request) {
+    public protos.UserServiceOuterClass.Confirmation logout(protos.UserServiceOuterClass.UserDetails request) {
       return blockingUnaryCall(
           getChannel(), getLogoutMethod(), getCallOptions(), request);
     }
@@ -222,34 +222,34 @@ public final class UserGrpc {
 
   /**
    */
-  public static final class UserFutureStub extends io.grpc.stub.AbstractStub<UserFutureStub> {
-    private UserFutureStub(io.grpc.Channel channel) {
+  public static final class UserServiceFutureStub extends io.grpc.stub.AbstractStub<UserServiceFutureStub> {
+    private UserServiceFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private UserFutureStub(io.grpc.Channel channel,
+    private UserServiceFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected UserFutureStub build(io.grpc.Channel channel,
+    protected UserServiceFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new UserFutureStub(channel, callOptions);
+      return new UserServiceFutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.UserOuterClass.Confirmation> login(
-        protos.UserOuterClass.UserDetails request) {
+    public com.google.common.util.concurrent.ListenableFuture<protos.UserServiceOuterClass.Confirmation> login(
+        protos.UserServiceOuterClass.UserDetails request) {
       return futureUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.UserOuterClass.Confirmation> logout(
-        protos.UserOuterClass.UserDetails request) {
+    public com.google.common.util.concurrent.ListenableFuture<protos.UserServiceOuterClass.Confirmation> logout(
+        protos.UserServiceOuterClass.UserDetails request) {
       return futureUnaryCall(
           getChannel().newCall(getLogoutMethod(), getCallOptions()), request);
     }
@@ -263,10 +263,10 @@ public final class UserGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final UserImplBase serviceImpl;
+    private final UserServiceImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(UserImplBase serviceImpl, int methodId) {
+    MethodHandlers(UserServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -276,12 +276,12 @@ public final class UserGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LOGIN:
-          serviceImpl.login((protos.UserOuterClass.UserDetails) request,
-              (io.grpc.stub.StreamObserver<protos.UserOuterClass.Confirmation>) responseObserver);
+          serviceImpl.login((protos.UserServiceOuterClass.UserDetails) request,
+              (io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation>) responseObserver);
           break;
         case METHODID_LOGOUT:
-          serviceImpl.logout((protos.UserOuterClass.UserDetails) request,
-              (io.grpc.stub.StreamObserver<protos.UserOuterClass.Confirmation>) responseObserver);
+          serviceImpl.logout((protos.UserServiceOuterClass.UserDetails) request,
+              (io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -299,32 +299,32 @@ public final class UserGrpc {
     }
   }
 
-  private static abstract class UserBaseDescriptorSupplier
+  private static abstract class UserServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    UserBaseDescriptorSupplier() {}
+    UserServiceBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return protos.UserOuterClass.getDescriptor();
+      return protos.UserServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("User");
+      return getFileDescriptor().findServiceByName("UserService");
     }
   }
 
-  private static final class UserFileDescriptorSupplier
-      extends UserBaseDescriptorSupplier {
-    UserFileDescriptorSupplier() {}
+  private static final class UserServiceFileDescriptorSupplier
+      extends UserServiceBaseDescriptorSupplier {
+    UserServiceFileDescriptorSupplier() {}
   }
 
-  private static final class UserMethodDescriptorSupplier
-      extends UserBaseDescriptorSupplier
+  private static final class UserServiceMethodDescriptorSupplier
+      extends UserServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    UserMethodDescriptorSupplier(String methodName) {
+    UserServiceMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -339,11 +339,11 @@ public final class UserGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (UserGrpc.class) {
+      synchronized (UserServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new UserFileDescriptorSupplier())
+              .setSchemaDescriptor(new UserServiceFileDescriptorSupplier())
               .addMethod(getLoginMethod())
               .addMethod(getLogoutMethod())
               .build();

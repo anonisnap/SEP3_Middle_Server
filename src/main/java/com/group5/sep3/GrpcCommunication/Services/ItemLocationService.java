@@ -5,17 +5,17 @@ import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.ItemLocation;
 import com.group5.sep3.BusinessLogic.model.Location;
 import io.grpc.stub.StreamObserver;
-import protos.ItemLocationGrpc.ItemLocationImplBase;
-import protos.ItemLocationOuterClass.gItemLocation;
-import protos.ItemLocationOuterClass.gItemLocationList;
-import protos.ItemOuterClass.gItem;
-import protos.LocationOuterClass.gLocation;
+import protos.ItemLocationServiceGrpc.ItemLocationServiceImplBase;
+import protos.ItemLocationServiceOuterClass.gItemLocation;
+import protos.ItemLocationServiceOuterClass.gItemLocationList;
+import protos.ItemServiceOuterClass.gItem;
+import protos.LocationServiceOuterClass.gLocation;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ItemLocationService extends ItemLocationImplBase {
+public class ItemLocationService extends ItemLocationServiceImplBase {
 	ItemLocationModel model;
 
 	public ItemLocationService(ItemLocationModel model) {
