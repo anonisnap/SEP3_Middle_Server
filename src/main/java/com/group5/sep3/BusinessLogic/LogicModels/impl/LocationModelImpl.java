@@ -12,8 +12,8 @@ import java.util.List;
 public class LocationModelImpl implements LocationModel {
 	private final RestManager<Location> locationRestManager;
 
-	public LocationModelImpl() {
-		locationRestManager = (RestManager<Location>) RestManagerFactory.getInstance().getRestManager(EntityTypes.Location);
+	public LocationModelImpl(RestManager<Location> locationRestManager ) {
+		this.locationRestManager = locationRestManager;
 	}
 
 	@Override

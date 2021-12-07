@@ -10,10 +10,12 @@ import java.util.Collection;
 import java.util.List;
 
 public class ItemModelImpl implements ItemModel {
+
 	private final RestManager<Item> itemRestManager;
 
-	public ItemModelImpl() {
-		this.itemRestManager = (RestManager<Item>) RestManagerFactory.getInstance().getRestManager(EntityTypes.Item);
+	public ItemModelImpl(RestManager<Item> itemRestManager) {
+
+		this.itemRestManager = itemRestManager;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class ItemLocationService extends ItemLocationServiceImplBase {
+
 	ItemLocationModel model;
 
 	public ItemLocationService(ItemLocationModel model) {

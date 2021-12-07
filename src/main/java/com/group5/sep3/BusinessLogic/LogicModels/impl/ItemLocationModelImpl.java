@@ -14,8 +14,8 @@ import java.util.List;
 public class ItemLocationModelImpl implements ItemLocationModel {
 	private final ItemLocationRestManager itemLocationRestManager;
 
-	public ItemLocationModelImpl() {
-		this.itemLocationRestManager = (ItemLocationRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.ItemLocation);
+	public ItemLocationModelImpl(ItemLocationRestManager itemLocationRestManager) {
+		this.itemLocationRestManager = itemLocationRestManager;
 	}
 
 	@Override
