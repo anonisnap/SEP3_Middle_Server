@@ -5,5 +5,5 @@ public enum EntityTypes {
     Location,
     ItemLocation,
     Order,
-    Employee
+    Employee //FIXME: Employee?
 }

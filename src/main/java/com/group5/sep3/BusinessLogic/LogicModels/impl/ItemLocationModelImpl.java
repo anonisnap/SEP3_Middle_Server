@@ -3,9 +3,6 @@ package com.group5.sep3.BusinessLogic.LogicModels.impl;
 import com.group5.sep3.BusinessLogic.LogicModels.ItemLocationModel;
 import com.group5.sep3.BusinessLogic.model.ItemLocation;
 import com.group5.sep3.DataBaseCommunication.RestManagers.ItemLocationRestManager;
-import com.group5.sep3.RestManagerFactory;
-import com.group5.sep3.util.EntityTypes;
-import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.util.Collection;

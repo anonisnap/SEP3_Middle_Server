@@ -6,7 +6,6 @@ import com.group5.sep3.BusinessLogic.model.OrderEntry;
 import com.group5.sep3.util.ProjectUtil;
 import io.grpc.stub.StreamObserver;
 import protos.OrderServiceGrpc.OrderServiceImplBase;
-import protos.OrderServiceOuterClass;
 import protos.OrderServiceOuterClass.*;
 
 import java.util.ArrayList;

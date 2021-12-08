@@ -2,7 +2,6 @@ package com.group5.sep3.BusinessLogic.LogicModels;
 
 import com.group5.sep3.BusinessLogic.model.ItemLocation;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface ItemLocationModel extends LogicModel<ItemLocation>{

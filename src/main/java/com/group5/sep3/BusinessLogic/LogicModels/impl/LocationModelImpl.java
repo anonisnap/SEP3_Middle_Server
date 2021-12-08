@@ -3,10 +3,7 @@ package com.group5.sep3.BusinessLogic.LogicModels.impl;
 import com.group5.sep3.BusinessLogic.LogicModels.LocationModel;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
-import com.group5.sep3.RestManagerFactory;
-import com.group5.sep3.util.EntityTypes;
 
-import java.util.Collection;
 import java.util.List;
 
 public class LocationModelImpl implements LocationModel {
