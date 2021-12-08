@@ -46,4 +46,13 @@ public class ItemLocation {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "ItemLocation{" +
+                "id=" + id +
+                ", location=" + location +
+                ", item=" + item +
+                ", amount=" + amount +
+                '}';
+    }
 }
