@@ -45,19 +45,17 @@ public class ItemLocationModelImpl implements ItemLocationModel {
         //Get AmountToMove for If statements
         int amountToMove = itemLocation.getAmount();
 
-        //Grabbing list of itemLocations with current Location from ItemLocation
+        //Grabbing list of itemLocations with current Location
         List<ItemLocation> itemLocations = getByLocationId(itemLocation);
 
         //If List contains item with same itemId, then add this amount to that.
         for (ItemLocation itemLoc : itemLocations) {
             if (itemLoc.getItem().getId() == itemLocation.getItem().getId()) {
-                System.out.println("Inside If");
+                //Updating new ItemLocation Amount
+                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
 
                 //Updating old ItemLocation Amount
                 oldItemLocation.setAmount(oldLocationAmount-amountToMove);
-
-                //Updating new ItemLocation Amount
-                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
 
                 if (amountToMove < oldLocationAmount) {
                     //Update New ItemLocation
