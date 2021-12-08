@@ -48,36 +48,27 @@ public class ItemLocationModelImpl implements ItemLocationModel {
         //Grabbing list of itemLocations with current Location from ItemLocation
         List<ItemLocation> itemLocations = getByLocationId(itemLocation);
 
-
         //If List contains item with same itemId, then add this amount to that.
         for (ItemLocation itemLoc : itemLocations) {
             if (itemLoc.getItem().getId() == itemLocation.getItem().getId()) {
                 System.out.println("Inside If");
 
-                //Get item amount on location we're moving to
-                int amountCurrentlyOnLocation = itemLoc.getAmount();
+                //Updating old ItemLocation Amount
+                oldItemLocation.setAmount(oldLocationAmount-amountToMove);
 
-                //Set Location
-                itemLocation.setAmount(amountCurrentlyOnLocation + amountToMove);
-                itemLocation.setId(itemLoc.getId());
+                //Updating new ItemLocation Amount
+                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
 
                 if (amountToMove < oldLocationAmount) {
-                    System.out.println("Total amount is bigger than moved - 2");
-
-                    itemLoc.setAmount(oldLocationAmount - amountToMove);
+                    //Update New ItemLocation
                     itemLocationRestManager.post(itemLoc);
-
-                    return itemLocationRestManager.post(itemLocation);
+                    //Update Old ItemLocation
+                    return itemLocationRestManager.post(oldItemLocation);
                 }
-
+                //If amount on location = moved amount
                 return itemLocationRestManager.post(itemLocation);
             }
-            System.out.println("Outside If");
-            System.out.println(itemLoc);
         }
-        System.out.println("Outside for loop");
-        //Check if location already has items first, if so add amount to old amount
-
 
         //Item doesn't exist on new Location
         if (amountToMove < oldLocationAmount) {
