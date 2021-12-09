@@ -55,25 +55,23 @@ public class ItemLocationModelImpl implements ItemLocationModel {
 
         //Getting Location data, from old location
         ItemLocation oldItemLocation = get(itemLocation);
-        System.out.println("Found old item location" + oldItemLocation);
         //Getting Location Amount, from old location
         int oldLocationAmount = oldItemLocation.getAmount();
+
         //Get AmountToMove for If statements
         int amountToMove = itemLocation.getAmount();
 
-        //Grabbing list of itemLocations with current Location from ItemLocation
+        //Grabbing list of itemLocations with current Location
         List<ItemLocation> itemLocations = getByLocationId(itemLocation);
 
-        //If List contains item with same itemId, then add amount to that.
+        //If List contains item with same itemId, then add this amount to that.
         for (ItemLocation itemLoc : itemLocations) {
             if (itemLoc.getItem().getId() == itemLocation.getItem().getId()) {
-                System.out.println("Inside If");
+                //Updating new ItemLocation Amount
+                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
 
                 //Updating old ItemLocation Amount
                 oldItemLocation.setAmount(oldLocationAmount-amountToMove);
-
-                //Updating new ItemLocation Amount
-                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
 
                 if (amountToMove < oldLocationAmount) {
                     //Update New ItemLocation
@@ -101,7 +99,7 @@ public class ItemLocationModelImpl implements ItemLocationModel {
             return itemLocationRestManager.update(oldItemLocation);
         }
 
-        //If all items moved from old Location, just update location
+        //Same amount moved as on old Location, just update location
         return itemLocationRestManager.update(itemLocation);
 }
 
