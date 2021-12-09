@@ -14,13 +14,15 @@ public class UserModelImpl implements UserModel {
 
 	@Override
 	public User login(User user) {
-		ProjectUtil.notImplemented();
-		return null;
+		User actualUser = userRestManager.get(user);
+
+		return actualUser;
 	}
 
 	@Override
 	public User logout(User user) {
-		ProjectUtil.notImplemented();
-		return null;
+		// Can be used for logging work-times
+
+		return user;
 	}
 }
