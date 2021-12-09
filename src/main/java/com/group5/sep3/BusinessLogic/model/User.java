@@ -44,4 +44,9 @@ public class User {
 	public void setSecurityLevel(int securityLevel) {
 		this.securityLevel = securityLevel;
 	}
+
+	@Override
+	public String toString() {
+		return "User{" + "username = '" + username + '\'' + ", password = '" + password + '\'' + ", role = '" + role + '\'' + ", securityLevel = " + securityLevel + '}';
+	}
 }
