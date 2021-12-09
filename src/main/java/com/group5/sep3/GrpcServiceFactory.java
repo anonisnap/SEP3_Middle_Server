@@ -3,9 +3,11 @@ package com.group5.sep3;
 import com.group5.sep3.BusinessLogic.LogicModels.ItemLocationModel;
 import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
 import com.group5.sep3.BusinessLogic.LogicModels.LocationModel;
+import com.group5.sep3.BusinessLogic.LogicModels.UserModel;
 import com.group5.sep3.GrpcCommunication.Services.ItemLocationService;
 import com.group5.sep3.GrpcCommunication.Services.ItemService;
 import com.group5.sep3.GrpcCommunication.Services.LocationService;
+import com.group5.sep3.GrpcCommunication.Services.UserService;
 import com.group5.sep3.util.EntityTypes;
 import io.grpc.BindableService;
 
@@ -18,9 +20,10 @@ public class GrpcServiceFactory {
 
 	private GrpcServiceFactory() {
 		grpcMap = new HashMap<>();
-		grpcMap.put(EntityTypes.Item, new ItemService((ItemModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.Item)));
-		grpcMap.put(EntityTypes.Location, new LocationService((LocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.Location)));
-		grpcMap.put(EntityTypes.ItemLocation, new ItemLocationService((ItemLocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ItemLocation)));
+		grpcMap.put(EntityTypes.ITEM, new ItemService((ItemModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ITEM)));
+		grpcMap.put(EntityTypes.LOCATION, new LocationService((LocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.LOCATION)));
+		grpcMap.put(EntityTypes.ITEMLOCATION, new ItemLocationService((ItemLocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ITEMLOCATION)));
+		grpcMap.put(EntityTypes.USER, new UserService((UserModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.USER)));
 	}
 
 	public static GrpcServiceFactory getInstance() {

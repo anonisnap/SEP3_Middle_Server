@@ -4,7 +4,7 @@ import com.group5.sep3.BusinessLogic.model.ItemLocation;
 
 import java.util.List;
 
-public interface ItemLocationModel extends LogicModel<ItemLocation>{
+public interface ItemLocationModel extends EntityLogicModel<ItemLocation> {
 
     /**
      * Return all ItemLocations which feature the Item ID specified in the given ItemLocation

@@ -1,13 +1,12 @@
 package com.group5.sep3;
 
+import com.group5.sep3.BusinessLogic.LogicModels.EntityLogicModel;
 import com.group5.sep3.BusinessLogic.LogicModels.LogicModel;
-import com.group5.sep3.BusinessLogic.LogicModels.impl.ItemLocationModelImpl;
-import com.group5.sep3.BusinessLogic.LogicModels.impl.ItemModelImpl;
-import com.group5.sep3.BusinessLogic.LogicModels.impl.LocationModelImpl;
-import com.group5.sep3.BusinessLogic.LogicModels.impl.OrderModelImpl;
+import com.group5.sep3.BusinessLogic.LogicModels.impl.*;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.BusinessLogic.model.Order;
+import com.group5.sep3.BusinessLogic.model.User;
 import com.group5.sep3.DataBaseCommunication.RestManagers.ItemLocationRestManager;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.EntityTypes;
@@ -27,10 +26,11 @@ public class LogicModelFactory {
 		ProjectUtil.testPrint("+ New Logic Model Factory");
 		modelMap = new HashMap<>();
 
-		modelMap.put(EntityTypes.Item, new ItemModelImpl((RestManager<Item>) RestManagerFactory.getInstance().getRestManager(EntityTypes.Item)));
-		modelMap.put(EntityTypes.Location, new LocationModelImpl((RestManager<Location>) RestManagerFactory.getInstance().getRestManager(EntityTypes.Location)));
-		modelMap.put(EntityTypes.ItemLocation, new ItemLocationModelImpl((ItemLocationRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.ItemLocation)));
-		modelMap.put(EntityTypes.Order, new OrderModelImpl((RestManager<Order>) RestManagerFactory.getInstance().getRestManager(EntityTypes.Order)));
+		modelMap.put(EntityTypes.ITEM, new ItemModelImpl((RestManager<Item>) RestManagerFactory.getInstance().getRestManager(EntityTypes.ITEM)));
+		modelMap.put(EntityTypes.LOCATION, new LocationModelImpl((RestManager<Location>) RestManagerFactory.getInstance().getRestManager(EntityTypes.LOCATION)));
+		modelMap.put(EntityTypes.ITEMLOCATION, new ItemLocationModelImpl((ItemLocationRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.ITEMLOCATION)));
+		modelMap.put(EntityTypes.ORDER, new OrderModelImpl((RestManager<Order>) RestManagerFactory.getInstance().getRestManager(EntityTypes.ORDER)));
+		modelMap.put(EntityTypes.USER, new UserModelImpl((RestManager<User>) RestManagerFactory.getInstance().getRestManager(EntityTypes.USER)));
 	}
 
 	public static LogicModelFactory getInstance() {

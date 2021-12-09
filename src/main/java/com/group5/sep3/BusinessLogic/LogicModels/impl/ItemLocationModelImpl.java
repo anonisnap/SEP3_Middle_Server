@@ -18,7 +18,7 @@ public class ItemLocationModelImpl implements ItemLocationModel {
     @Override
     public ItemLocation register(ItemLocation itemLocation) throws Exception {
         //Get all itemLocations used Location, to see if item already exists on location
-        List<ItemLocation> itemLocations = getByLocationId(itemLocation.getLocation().getId());
+        List<ItemLocation> itemLocations = getByLocationId(itemLocation);
 
         //Rotate through locations to check items
         for (ItemLocation itemLoc : itemLocations) {
@@ -31,7 +31,6 @@ public class ItemLocationModelImpl implements ItemLocationModel {
                 return itemLocationRestManager.update(itemLocation);
             }
         }
-
         //If item doesn't exist on location, create itemLocation
         return itemLocationRestManager.create(itemLocation);
     }
@@ -55,26 +54,24 @@ public class ItemLocationModelImpl implements ItemLocationModel {
         */
 
         //Getting Location data, from old location
-        ItemLocation oldItemLocation = get(itemLocation.getId());
-        System.out.println("Found old item location" + oldItemLocation);
+        ItemLocation oldItemLocation = get(itemLocation);
         //Getting Location Amount, from old location
         int oldLocationAmount = oldItemLocation.getAmount();
+
         //Get AmountToMove for If statements
         int amountToMove = itemLocation.getAmount();
 
-        //Grabbing list of itemLocations with current Location from ItemLocation
-        List<ItemLocation> itemLocations = getByLocationId(itemLocation.getLocation().getId());
+        //Grabbing list of itemLocations with current Location
+        List<ItemLocation> itemLocations = getByLocationId(itemLocation);
 
-        //If List contains item with same itemId, then add amount to that.
+        //If List contains item with same itemId, then add this amount to that.
         for (ItemLocation itemLoc : itemLocations) {
             if (itemLoc.getItem().getId() == itemLocation.getItem().getId()) {
-                System.out.println("Inside If");
+                //Updating new ItemLocation Amount
+                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
 
                 //Updating old ItemLocation Amount
                 oldItemLocation.setAmount(oldLocationAmount-amountToMove);
-
-                //Updating new ItemLocation Amount
-                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
 
                 if (amountToMove < oldLocationAmount) {
                     //Update New ItemLocation
@@ -102,7 +99,7 @@ public class ItemLocationModelImpl implements ItemLocationModel {
             return itemLocationRestManager.update(oldItemLocation);
         }
 
-        //If all items moved from old Location, just update location
+        //Same amount moved as on old Location, just update location
         return itemLocationRestManager.update(itemLocation);
 }
 
@@ -112,24 +109,24 @@ public class ItemLocationModelImpl implements ItemLocationModel {
     }
 
     @Override
-    public ItemLocation get(int itemLocationId) throws Exception {
-        return itemLocationRestManager.get(itemLocationId);
+    public ItemLocation get(ItemLocation itemLocation) throws Exception {
+        return itemLocationRestManager.get(itemLocation);
     }
 
     @Override
-    public boolean remove(int itemLocationId) throws Exception {
-        return itemLocationRestManager.delete(itemLocationId);
+    public ItemLocation remove(ItemLocation itemLocation) throws Exception {
+        return itemLocationRestManager.delete(itemLocation);
     }
 
     // TODO: Mangler der ikke PROTO filer for disse?
     @Override
-    public List<ItemLocation> getByItemId(int itemId) throws RestClientException {
-        return itemLocationRestManager.getByItemId(itemId);
+    public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
+        return itemLocationRestManager.getByItemId(obj);
     }
 
     @Override
-    public List<ItemLocation> getByLocationId(int locationId) throws RestClientException {
-        return itemLocationRestManager.getByLocationId(locationId);
+    public List<ItemLocation> getByLocationId(ItemLocation itemLocation) throws RestClientException {
+        return itemLocationRestManager.getByLocationId(itemLocation);
     }
 
 }
