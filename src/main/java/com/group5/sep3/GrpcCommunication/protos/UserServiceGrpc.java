@@ -1,10 +1,18 @@
 package protos;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -20,21 +28,21 @@ public final class UserServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
-      protos.UserServiceOuterClass.Confirmation> getLoginMethod;
+      protos.UserServiceOuterClass.UserDetails> getLoginMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "login",
       requestType = protos.UserServiceOuterClass.UserDetails.class,
-      responseType = protos.UserServiceOuterClass.Confirmation.class,
+      responseType = protos.UserServiceOuterClass.UserDetails.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
-      protos.UserServiceOuterClass.Confirmation> getLoginMethod() {
-    io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation> getLoginMethod;
+      protos.UserServiceOuterClass.UserDetails> getLoginMethod() {
+    io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.UserDetails> getLoginMethod;
     if ((getLoginMethod = UserServiceGrpc.getLoginMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getLoginMethod = UserServiceGrpc.getLoginMethod) == null) {
           UserServiceGrpc.getLoginMethod = getLoginMethod = 
-              io.grpc.MethodDescriptor.<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation>newBuilder()
+              io.grpc.MethodDescriptor.<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.UserDetails>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "Protos.UserService", "login"))
@@ -42,7 +50,7 @@ public final class UserServiceGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.UserServiceOuterClass.UserDetails.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protos.UserServiceOuterClass.Confirmation.getDefaultInstance()))
+                  protos.UserServiceOuterClass.UserDetails.getDefaultInstance()))
                   .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("login"))
                   .build();
           }
@@ -52,21 +60,21 @@ public final class UserServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
-      protos.UserServiceOuterClass.Confirmation> getLogoutMethod;
+      protos.UserServiceOuterClass.UserDetails> getLogoutMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "logout",
       requestType = protos.UserServiceOuterClass.UserDetails.class,
-      responseType = protos.UserServiceOuterClass.Confirmation.class,
+      responseType = protos.UserServiceOuterClass.UserDetails.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails,
-      protos.UserServiceOuterClass.Confirmation> getLogoutMethod() {
-    io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation> getLogoutMethod;
+      protos.UserServiceOuterClass.UserDetails> getLogoutMethod() {
+    io.grpc.MethodDescriptor<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.UserDetails> getLogoutMethod;
     if ((getLogoutMethod = UserServiceGrpc.getLogoutMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getLogoutMethod = UserServiceGrpc.getLogoutMethod) == null) {
           UserServiceGrpc.getLogoutMethod = getLogoutMethod = 
-              io.grpc.MethodDescriptor.<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.Confirmation>newBuilder()
+              io.grpc.MethodDescriptor.<protos.UserServiceOuterClass.UserDetails, protos.UserServiceOuterClass.UserDetails>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "Protos.UserService", "logout"))
@@ -74,7 +82,7 @@ public final class UserServiceGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.UserServiceOuterClass.UserDetails.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protos.UserServiceOuterClass.Confirmation.getDefaultInstance()))
+                  protos.UserServiceOuterClass.UserDetails.getDefaultInstance()))
                   .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("logout"))
                   .build();
           }
@@ -113,14 +121,14 @@ public final class UserServiceGrpc {
     /**
      */
     public void login(protos.UserServiceOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.UserDetails> responseObserver) {
       asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
     }
 
     /**
      */
     public void logout(protos.UserServiceOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.UserDetails> responseObserver) {
       asyncUnimplementedUnaryCall(getLogoutMethod(), responseObserver);
     }
 
@@ -131,14 +139,14 @@ public final class UserServiceGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 protos.UserServiceOuterClass.UserDetails,
-                protos.UserServiceOuterClass.Confirmation>(
+                protos.UserServiceOuterClass.UserDetails>(
                   this, METHODID_LOGIN)))
           .addMethod(
             getLogoutMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 protos.UserServiceOuterClass.UserDetails,
-                protos.UserServiceOuterClass.Confirmation>(
+                protos.UserServiceOuterClass.UserDetails>(
                   this, METHODID_LOGOUT)))
           .build();
     }
@@ -165,7 +173,7 @@ public final class UserServiceGrpc {
     /**
      */
     public void login(protos.UserServiceOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.UserDetails> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
     }
@@ -173,7 +181,7 @@ public final class UserServiceGrpc {
     /**
      */
     public void logout(protos.UserServiceOuterClass.UserDetails request,
-        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation> responseObserver) {
+        io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.UserDetails> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLogoutMethod(), getCallOptions()), request, responseObserver);
     }
@@ -199,14 +207,14 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public protos.UserServiceOuterClass.Confirmation login(protos.UserServiceOuterClass.UserDetails request) {
+    public protos.UserServiceOuterClass.UserDetails login(protos.UserServiceOuterClass.UserDetails request) {
       return blockingUnaryCall(
           getChannel(), getLoginMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public protos.UserServiceOuterClass.Confirmation logout(protos.UserServiceOuterClass.UserDetails request) {
+    public protos.UserServiceOuterClass.UserDetails logout(protos.UserServiceOuterClass.UserDetails request) {
       return blockingUnaryCall(
           getChannel(), getLogoutMethod(), getCallOptions(), request);
     }
@@ -232,7 +240,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.UserServiceOuterClass.Confirmation> login(
+    public com.google.common.util.concurrent.ListenableFuture<protos.UserServiceOuterClass.UserDetails> login(
         protos.UserServiceOuterClass.UserDetails request) {
       return futureUnaryCall(
           getChannel().newCall(getLoginMethod(), getCallOptions()), request);
@@ -240,7 +248,7 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.UserServiceOuterClass.Confirmation> logout(
+    public com.google.common.util.concurrent.ListenableFuture<protos.UserServiceOuterClass.UserDetails> logout(
         protos.UserServiceOuterClass.UserDetails request) {
       return futureUnaryCall(
           getChannel().newCall(getLogoutMethod(), getCallOptions()), request);
@@ -269,11 +277,11 @@ public final class UserServiceGrpc {
       switch (methodId) {
         case METHODID_LOGIN:
           serviceImpl.login((protos.UserServiceOuterClass.UserDetails) request,
-              (io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation>) responseObserver);
+              (io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.UserDetails>) responseObserver);
           break;
         case METHODID_LOGOUT:
           serviceImpl.logout((protos.UserServiceOuterClass.UserDetails) request,
-              (io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.Confirmation>) responseObserver);
+              (io.grpc.stub.StreamObserver<protos.UserServiceOuterClass.UserDetails>) responseObserver);
           break;
         default:
           throw new AssertionError();
