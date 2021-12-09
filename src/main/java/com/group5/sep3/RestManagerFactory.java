@@ -18,10 +18,10 @@ public class RestManagerFactory {
 
     private RestManagerFactory() {
         restManagers = new HashMap<>();
-        restManagers.put(EntityTypes.Item, new ItemRestManagerImpl());
-        restManagers.put(EntityTypes.Location, new LocationRestManagerImpl());
-        restManagers.put(EntityTypes.ItemLocation, new ItemLocationRestManagerImpl());
-        restManagers.put(EntityTypes.Order, new OrderRestManagerImpl());
+        restManagers.put(EntityTypes.ITEM, new ItemRestManagerImpl());
+        restManagers.put(EntityTypes.LOCATION, new LocationRestManagerImpl());
+        restManagers.put(EntityTypes.ITEMLOCATION, new ItemLocationRestManagerImpl());
+        restManagers.put(EntityTypes.ORDER, new OrderRestManagerImpl());
 
         StringBuilder debug = new StringBuilder();
         for (EntityTypes key : restManagers.keySet()) {
