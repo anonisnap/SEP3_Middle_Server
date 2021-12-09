@@ -12,15 +12,15 @@ public interface ItemLocationModel extends EntityLogicModel<ItemLocation> {
      * @return
      * @throws Exception
      */
-    List<ItemLocation> getByItemId(ItemLocation itemLocation) throws Exception;
+    List<ItemLocation> getByItemId(int itemId) throws Exception;
 
     /**
      * Return all ItemLocations which feature the Location ID specified in the given ItemLocation
-     * @param itemLocation ItemLocation object with Location containing ID to Search for
+     * @param locationId ItemLocation object with Location containing ID to Search for
      * @return
      * @throws Exception
      */
-    List<ItemLocation> getByLocationId(ItemLocation itemLocation) throws Exception ;
+    List<ItemLocation> getByLocationId(int locationId) throws Exception ;
 
 
 }

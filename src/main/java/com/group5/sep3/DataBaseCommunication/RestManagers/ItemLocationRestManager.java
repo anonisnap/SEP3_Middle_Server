@@ -9,8 +9,8 @@ public interface ItemLocationRestManager extends RestManager<ItemLocation>{
 
 
 
-    List<ItemLocation> getByItemId(ItemLocation itemLocation) throws RestClientException ;
+    List<ItemLocation> getByItemId(int itemId) throws RestClientException ;
 
-    List<ItemLocation> getByLocationId(ItemLocation itemLocation) throws RestClientException ;
+    List<ItemLocation> getByLocationId(int locationId) throws RestClientException ;
 
 }

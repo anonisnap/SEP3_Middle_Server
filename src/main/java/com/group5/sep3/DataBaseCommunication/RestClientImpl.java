@@ -62,10 +62,8 @@ public class RestClientImpl implements RestClient {
 			return true;
 		} catch (RestClientException e) {
 			ProjectUtil.testPrint("Could not delete item: " + e.getMessage());
-			//e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
-
 	}
-
 }

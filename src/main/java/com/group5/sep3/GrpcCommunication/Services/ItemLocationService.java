@@ -1,21 +1,21 @@
 package com.group5.sep3.GrpcCommunication.Services;
 
+import Protos.ProtoUtil.*;
 import com.group5.sep3.BusinessLogic.LogicModels.ItemLocationModel;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.ItemLocation;
 import com.group5.sep3.BusinessLogic.model.Location;
 import io.grpc.stub.StreamObserver;
-import protos.ItemLocationServiceGrpc.ItemLocationServiceImplBase;
-import protos.ItemLocationServiceOuterClass.gItemLocation;
-import protos.ItemLocationServiceOuterClass.gItemLocationList;
-import protos.ItemServiceOuterClass.gItem;
-import protos.LocationServiceOuterClass.gLocation;
+import protos.ItemLocationServiceGrpc;
+import protos.ItemLocationServiceOuterClass.*;
+import protos.ItemServiceOuterClass.*;
+import protos.LocationServiceOuterClass.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ItemLocationService extends ItemLocationServiceImplBase {
+public class ItemLocationService extends ItemLocationServiceGrpc.ItemLocationServiceImplBase {
 
 	ItemLocationModel model;
 
@@ -50,30 +50,36 @@ public class ItemLocationService extends ItemLocationServiceImplBase {
 		responseObserver.onCompleted();
 	}
 
+
 	@Override
-	public void getItemLocation(gItemLocation request, StreamObserver<gItemLocation> responseObserver) {
+	public void getItemLocation(gItemLocationId request, StreamObserver<gItemLocation> responseObserver) {
 		// Fetch the ItemLocation from Request
-		ItemLocation requestItemLocation = getItemLocationFromRequest(request);
+		int itemLocationId = request.getItemLocationId();
 		// Fetch the ItemLocation from the Server
-		ItemLocation itemLocation = null;
 		try {
-			itemLocation = model.get(requestItemLocation);
+
+			ItemLocation itemLocation = model.get(itemLocationId);
+
+			// Ensure ItemLocation was retrieved. If itemLocation is null, Echo back the ItemLocation requested. Optionally throw an Error
+			if (itemLocation == null) {
+				responseObserver.onError(new Exception("Not Found bitch"));
+			}
+
+			// Create Response Object
+			gItemLocation.Builder response = gItemLocation.newBuilder();
+			// Set Values Of Response Object
+			parseAndMergeItemLocation(response, itemLocation);
+			// Link the Response to the Observer
+			responseObserver.onNext(response.build());
+			// Tell Observer the Method is finished, and let it return the Response
+			responseObserver.onCompleted();
+
 		} catch (Exception e) {
+			responseObserver.onError(e);
 			e.printStackTrace();
 		}
-		// Ensure ItemLocation was retrieved. If itemLocation is null, Echo back the ItemLocation requested. Optionally throw an Error
-		if (itemLocation == null) {
-			itemLocation = requestItemLocation;
-//			throw new NullPointerException();
-		}
-		// Create Response Object
-		gItemLocation.Builder response = gItemLocation.newBuilder();
-		// Set Values Of Response Object
-		parseAndMergeItemLocation(response, itemLocation);
-		// Link the Response to the Observer
-		responseObserver.onNext(response.build());
-		// Tell Observer the Method is finished, and let it return the Response
-		responseObserver.onCompleted();
+
+
 	}
 
 	@Override
@@ -126,45 +132,54 @@ public class ItemLocationService extends ItemLocationServiceImplBase {
 		responseObserver.onCompleted();
 	}
 
+
 	@Override
-	public void removeItemLocation(gItemLocation request, StreamObserver<gItemLocation> responseObserver) {
+	public void removeItemLocation(gItemLocationId request, StreamObserver<gBoolValue> responseObserver) {
 		// Fetch ItemLocation
-		ItemLocation requestItemLocation = getItemLocationFromRequest(request);
+		int itemLocationId = request.getItemLocationId();
 		// Remove ItemLocation on Server
-		ItemLocation returnItemLocation = null;
+
 		try {
-			returnItemLocation = model.remove(requestItemLocation);
+			boolean result = model.remove(itemLocationId);
+
+			// Ensure ReturnItemLocation is not Null | Consider throwing an Error Instead
+			if (!result) {
+				responseObserver.onError(new Throwable("Item Location was not removed"));
+			}
+
+
+			// Link the Response to the Observer
+			//responseObserver.onNext();
+			// Tell Observer the Method is finished, and let it return the Response
+			responseObserver.onCompleted();
+
 		} catch (Exception e) {
+			responseObserver.onError(new Throwable("Item Location was not removed"));
 			e.printStackTrace();
 		}
-		// Ensure ReturnItemLocation is not Null | Consider throwing an Error Instead
-		if (returnItemLocation == null) {
-			returnItemLocation = requestItemLocation;
-		}
-		// Create Response Object
-		gItemLocation.Builder response = gItemLocation.newBuilder();
-		// Add the gItemLocations to the Response
-		parseAndMergeItemLocation(response, returnItemLocation);
-		// Link the Response to the Observer
-		responseObserver.onNext(response.build());
-		// Tell Observer the Method is finished, and let it return the Response
-		responseObserver.onCompleted();
+
+
 	}
 
 	@Override
-	public void getByItemId(gItemLocation request, StreamObserver<gItemLocationList> responseObserver) {
-		ItemLocation requestItemLocation = getItemLocationFromRequest(request);
+	public void getByItemId(gItemId request, StreamObserver<gItemLocationList> responseObserver) {
+
+		int itemId = request.getItemId();
+
 		List<gItemLocation> returnItemLocations = new ArrayList<>();
+
 		Collection<ItemLocation> itemLocations;
 		// Parse Model ItemLocations to gRPC ItemLocations
 		try {
-			itemLocations = model.getByItemId(requestItemLocation);
+
+			itemLocations = model.getByItemId(itemId);
 
 			for (ItemLocation itemLocation : itemLocations) {
 				gItemLocation.Builder builder = gItemLocation.newBuilder();
 				parseAndMergeItemLocation(builder, itemLocation);
 				returnItemLocations.add(builder.build()); // THIS LIKELY WON'T WORK. UNSURE OF HOW PARSEFROM IS IMPLEMENTED
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -180,13 +195,15 @@ public class ItemLocationService extends ItemLocationServiceImplBase {
 	}
 
 	@Override
-	public void getByLocationId(gItemLocation request, StreamObserver<gItemLocationList> responseObserver) {
-		ItemLocation requestItemLocation = getItemLocationFromRequest(request);
+	public void getByLocationId(gLocationId request, StreamObserver<gItemLocationList> responseObserver) {
+
+		int locationId = request.getLocationId();
+
 		List<gItemLocation> returnItemLocations = new ArrayList<>();
 		Collection<ItemLocation> itemLocations;
 		// Parse Model ItemLocations to gRPC ItemLocations
 		try {
-			itemLocations = model.getByLocationId(requestItemLocation);
+			itemLocations = model.getByLocationId(locationId);
 			for (ItemLocation itemLocation : itemLocations) {
 				gItemLocation.Builder builder = gItemLocation.newBuilder();
 				parseAndMergeItemLocation(builder, itemLocation);

@@ -33,16 +33,16 @@ public class LocationModelImpl implements LocationModel {
 	}
 
 	@Override
-	public Location get(Location entity) {
-		Location tmp = locationRestManager.get(entity);
+	public Location get(int entityId) {
+		Location tmp = locationRestManager.get(entityId);
 		//TODO: error handling
 		return tmp;
 	}
 
 	@Override
-	public Location remove(Location entity) {
-		Location tmp = locationRestManager.delete(entity);
+	public boolean remove(int entityId) {
+		return locationRestManager.delete(entityId);
 		//TODO: error handling
-		return tmp;
+
 	}
 }

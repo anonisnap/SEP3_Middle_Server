@@ -9,6 +9,7 @@ import com.group5.sep3.BusinessLogic.model.Order;
 import com.group5.sep3.BusinessLogic.model.User;
 import com.group5.sep3.DataBaseCommunication.RestManagers.ItemLocationRestManager;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
+import com.group5.sep3.DataBaseCommunication.RestManagers.UserRestManager;
 import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
 
@@ -30,7 +31,7 @@ public class LogicModelFactory {
 		modelMap.put(EntityTypes.LOCATION, new LocationModelImpl((RestManager<Location>) RestManagerFactory.getInstance().getRestManager(EntityTypes.LOCATION)));
 		modelMap.put(EntityTypes.ITEMLOCATION, new ItemLocationModelImpl((ItemLocationRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.ITEMLOCATION)));
 		modelMap.put(EntityTypes.ORDER, new OrderModelImpl((RestManager<Order>) RestManagerFactory.getInstance().getRestManager(EntityTypes.ORDER)));
-		modelMap.put(EntityTypes.USER, new UserModelImpl((RestManager<User>) RestManagerFactory.getInstance().getRestManager(EntityTypes.USER)));
+		modelMap.put(EntityTypes.USER, new UserModelImpl((UserRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.USER)));
 	}
 
 	public static LogicModelFactory getInstance() {

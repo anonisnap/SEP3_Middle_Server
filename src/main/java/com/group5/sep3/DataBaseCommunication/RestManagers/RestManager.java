@@ -8,10 +8,9 @@ public interface RestManager<T> {
 
     T create(T obj) throws RestClientException;
     T update(T obj) throws RestClientException;
-    T get(T obj) throws RestClientException;
+    T get(int objId) throws RestClientException;
     List<T> getAll() throws RestClientException;
-    T delete(T obj) throws RestClientException;
-
+    boolean delete(int objId) throws RestClientException;
 
 
 }
