@@ -38,30 +38,28 @@ public class ItemLocationModelImpl implements ItemLocationModel {
     @Override
     public ItemLocation update(ItemLocation itemLocation) throws Exception {
 
+        /*
+            //Getting Location data, from old location
+        ItemLocation oldItemLocation = get(itemLocation);
+        System.out.println("Found old item location" + oldItemLocation);
+        //Get AmountToMove for If statements
+        int amountToMove = itemLocation.getAmount();
+
+        System.out.println("All items were moved " + itemLocation);
+        oldItemLocation.setAmount(-amountToMove);
+        itemLocationRestManager.create(oldItemLocation);
+
+        System.out.println("Create new itemlocation"+itemLocation);
+        return itemLocationRestManager.create(itemLocation);
+        */
+
         //Getting Location data, from old location
         ItemLocation oldItemLocation = get(itemLocation);
         System.out.println("Found old item location" + oldItemLocation);
         //Getting Location Amount, from old location
-        int oldAmount = oldItemLocation.getAmount();
+        int oldLocationAmount = oldItemLocation.getAmount();
         //Get AmountToMove for If statements
         int amountToMove = itemLocation.getAmount();
-
-
-        if (oldAmount - amountToMove == 0){
-            System.out.println("All items were moved " + itemLocation);
-            return itemLocationRestManager.update(itemLocation);}
-
-
-        oldItemLocation.setAmount(oldAmount-amountToMove);
-        System.out.println("old item location updated" + oldItemLocation);
-        itemLocationRestManager.update(oldItemLocation);
-
-        System.out.println("Create new itemlocation" + itemLocation);
-        return itemLocationRestManager.create(itemLocation);
-
-
-
-        /*
 
         //Grabbing list of itemLocations with current Location from ItemLocation
         List<ItemLocation> itemLocations = getByLocationId(itemLocation);
@@ -104,8 +102,8 @@ public class ItemLocationModelImpl implements ItemLocationModel {
         }
 
         //If all items moved from old Location, just update location
-        return itemLocationRestManager.update(itemLocation);*/
-    }
+        return itemLocationRestManager.update(itemLocation);
+}
 
     @Override
     public Collection<ItemLocation> getAll() throws Exception {
