@@ -28,8 +28,8 @@ public class OrderRestManagerImpl implements RestManager<Order> {
     }
 
     @Override
-    public Order get(Order order) throws RestClientException {
-        String restUrl = order.getClass().getSimpleName() + "/" + order.getId();
+    public Order get(int order) throws RestClientException {
+        String restUrl = Order.class.getSimpleName() + "/" + order;
         String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
         return JsonHelper.fromJson(restResponse, Order.class);
     }
@@ -47,10 +47,10 @@ public class OrderRestManagerImpl implements RestManager<Order> {
     }
 
     @Override
-    public Order delete(Order order) throws RestClientException {
-        String restUrl = Order.class.getSimpleName() + "/" + order.getId();
+    public boolean delete(int order) throws RestClientException {
+        String restUrl = Order.class.getSimpleName() + "/" + order;
 
-        return RestClientImpl.getInstance().delete(restUrl) ? order : null;
+        return RestClientImpl.getInstance().delete(restUrl);
     }
 
 }

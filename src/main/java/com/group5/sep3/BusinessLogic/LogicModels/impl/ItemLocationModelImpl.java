@@ -18,7 +18,7 @@ public class ItemLocationModelImpl implements ItemLocationModel {
     @Override
     public ItemLocation register(ItemLocation itemLocation) throws Exception {
         //Get all itemLocations used Location, to see if item already exists on location
-        List<ItemLocation> itemLocations = getByLocationId(itemLocation);
+        List<ItemLocation> itemLocations = getByLocationId(itemLocation.getLocation().getId());
 
         //Rotate through locations to check items
         for (ItemLocation itemLoc : itemLocations) {
@@ -31,6 +31,7 @@ public class ItemLocationModelImpl implements ItemLocationModel {
                 return itemLocationRestManager.update(itemLocation);
             }
         }
+
         //If item doesn't exist on location, create itemLocation
         return itemLocationRestManager.create(itemLocation);
     }
@@ -54,7 +55,7 @@ public class ItemLocationModelImpl implements ItemLocationModel {
         */
 
         //Getting Location data, from old location
-        ItemLocation oldItemLocation = get(itemLocation);
+        ItemLocation oldItemLocation = get(itemLocation.getId());
         System.out.println("Found old item location" + oldItemLocation);
         //Getting Location Amount, from old location
         int oldLocationAmount = oldItemLocation.getAmount();
@@ -62,7 +63,7 @@ public class ItemLocationModelImpl implements ItemLocationModel {
         int amountToMove = itemLocation.getAmount();
 
         //Grabbing list of itemLocations with current Location from ItemLocation
-        List<ItemLocation> itemLocations = getByLocationId(itemLocation);
+        List<ItemLocation> itemLocations = getByLocationId(itemLocation.getLocation().getId());
 
         //If List contains item with same itemId, then add amount to that.
         for (ItemLocation itemLoc : itemLocations) {
@@ -111,24 +112,24 @@ public class ItemLocationModelImpl implements ItemLocationModel {
     }
 
     @Override
-    public ItemLocation get(ItemLocation itemLocation) throws Exception {
-        return itemLocationRestManager.get(itemLocation);
+    public ItemLocation get(int itemLocationId) throws Exception {
+        return itemLocationRestManager.get(itemLocationId);
     }
 
     @Override
-    public ItemLocation remove(ItemLocation itemLocation) throws Exception {
-        return itemLocationRestManager.delete(itemLocation);
+    public boolean remove(int itemLocationId) throws Exception {
+        return itemLocationRestManager.delete(itemLocationId);
     }
 
     // TODO: Mangler der ikke PROTO filer for disse?
     @Override
-    public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
-        return itemLocationRestManager.getByItemId(obj);
+    public List<ItemLocation> getByItemId(int itemId) throws RestClientException {
+        return itemLocationRestManager.getByItemId(itemId);
     }
 
     @Override
-    public List<ItemLocation> getByLocationId(ItemLocation itemLocation) throws RestClientException {
-        return itemLocationRestManager.getByLocationId(itemLocation);
+    public List<ItemLocation> getByLocationId(int locationId) throws RestClientException {
+        return itemLocationRestManager.getByLocationId(locationId);
     }
 
 }

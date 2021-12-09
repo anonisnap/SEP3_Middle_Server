@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
+
 	@Override
 	public ItemLocation create(ItemLocation obj) {
 		String restUrl = obj.getClass().getSimpleName() + "/add";
@@ -30,9 +31,9 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 	}
 
 	@Override
-	public ItemLocation get(ItemLocation obj) {
-		ProjectUtil.testPrint("ItemLocation ID: " + obj.getId());
-		String restUrl = obj.getClass().getSimpleName() + "/" + obj.getId();
+	public ItemLocation get(int objId) {
+		ProjectUtil.testPrint("ItemLocation ID: " + objId);
+		String restUrl = ItemLocation.class.getSimpleName() + "/" + objId;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 
 		return JsonHelper.fromJson(restResponse, ItemLocation.class);
@@ -48,22 +49,21 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 	}
 
 	@Override
-	public ItemLocation delete(ItemLocation obj) {
-		String restUrl = ItemLocation.class.getSimpleName() + "/" + obj.getId();
-
-		return RestClientImpl.getInstance().delete(restUrl) ? obj : null;
+	public boolean delete(int objId) {
+		String restUrl = ItemLocation.class.getSimpleName() + "/" + objId;
+		return RestClientImpl.getInstance().delete(restUrl);
 	}
 
 	@Override
-	public List<ItemLocation> getByItemId(ItemLocation obj) throws RestClientException {
-		String restUrl = obj.getClass().getSimpleName() + "/itemId/" + obj.getItem().getId();
+	public List<ItemLocation> getByItemId(int obj) throws RestClientException {
+		String restUrl = ItemLocation.class.getSimpleName() + "/itemId/" + obj;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 		return getItemLocationsFromResponse(restResponse);
 	}
 
 	@Override
-	public List<ItemLocation> getByLocationId(ItemLocation obj) throws RestClientException {
-		String restUrl = obj.getClass().getSimpleName() + "/locationId/" + obj.getLocation().getId();
+	public List<ItemLocation> getByLocationId(int obj) throws RestClientException {
+		String restUrl = ItemLocation.class.getSimpleName() + "/locationId/" + obj;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 		return getItemLocationsFromResponse(restResponse);
 	}

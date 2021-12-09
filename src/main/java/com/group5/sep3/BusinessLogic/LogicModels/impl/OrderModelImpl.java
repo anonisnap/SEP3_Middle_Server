@@ -20,7 +20,7 @@ public class OrderModelImpl implements OrderModel {
     }
 
     @Override
-    public Order get(Order order) {
+    public Order get(int order) {
         return orderRestManager.get(order);
     }
 
@@ -35,7 +35,7 @@ public class OrderModelImpl implements OrderModel {
     }
 
     @Override
-    public Order remove(Order order) {
+    public boolean remove(int order) {
         return orderRestManager.delete(order);
     }
 

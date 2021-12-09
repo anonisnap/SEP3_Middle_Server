@@ -35,16 +35,16 @@ public class ItemModelImpl implements ItemModel {
 	}
 
 	@Override
-	public Item get(Item entity) {
-		Item tmp = itemRestManager.get(entity);
+	public Item get(int entityId) {
+		Item tmp = itemRestManager.get(entityId);
 		//TODO: error handling
 		return tmp;
 	}
 
 	@Override
-	public Item remove(Item entity) {
-		Item tmp = itemRestManager.delete(entity);
+	public boolean remove(int entityId) {
+		return itemRestManager.delete(entityId);
 		//TODO: error handling
-		return tmp;
+
 	}
 }

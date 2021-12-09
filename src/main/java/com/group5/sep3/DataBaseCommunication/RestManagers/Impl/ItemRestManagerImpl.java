@@ -29,8 +29,8 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 	}
 
 	@Override
-	public Item get(Item obj) {
-		String restUrl = obj.getClass().getSimpleName() + "/" + obj.getId();
+	public Item get(int objId) {
+		String restUrl = Item.class.getSimpleName() + "/" + objId;
 		Object restResponse = RestClientImpl.getInstance().get(restUrl);
 
 		return JsonHelper.fromJson((String) restResponse, Item.class);
@@ -47,9 +47,8 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 	}
 
 	@Override
-	public Item delete(Item obj) {
-		String restUrl = Item.class.getSimpleName() + "/" + obj.getId();
-
-		return RestClientImpl.getInstance().delete(restUrl) ? obj : null;
+	public boolean delete(int objId) {
+		String restUrl = Item.class.getSimpleName() + "/" + objId;
+		return RestClientImpl.getInstance().delete(restUrl);
 	}
 }
