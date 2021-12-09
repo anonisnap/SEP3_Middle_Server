@@ -19,29 +19,39 @@ public final class UserServiceOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
-     */
-    int getId();
-
-    /**
-     * <code>string username = 2;</code>
+     * <code>string Username = 1;</code>
      */
     java.lang.String getUsername();
     /**
-     * <code>string username = 2;</code>
+     * <code>string Username = 1;</code>
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>string password = 3;</code>
+     * <code>string Password = 2;</code>
      */
     java.lang.String getPassword();
     /**
-     * <code>string password = 3;</code>
+     * <code>string Password = 2;</code>
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
+
+    /**
+     * <code>string Role = 3;</code>
+     */
+    java.lang.String getRole();
+    /**
+     * <code>string Role = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getRoleBytes();
+
+    /**
+     * <code>int32 SecurityLevel = 4;</code>
+     */
+    int getSecurityLevel();
   }
   /**
    * Protobuf type {@code Protos.UserDetails}
@@ -56,9 +66,10 @@ public final class UserServiceOuterClass {
       super(builder);
     }
     private UserDetails() {
-      id_ = 0;
       username_ = "";
       password_ = "";
+      role_ = "";
+      securityLevel_ = 0;
     }
 
     @java.lang.Override
@@ -85,21 +96,27 @@ public final class UserServiceOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              id_ = input.readInt32();
-              break;
-            }
-            case 18: {
+            case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               username_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               password_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              role_ = s;
+              break;
+            }
+            case 32: {
+
+              securityLevel_ = input.readInt32();
               break;
             }
             default: {
@@ -134,19 +151,10 @@ public final class UserServiceOuterClass {
               protos.UserServiceOuterClass.UserDetails.class, protos.UserServiceOuterClass.UserDetails.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
-    /**
-     * <code>int32 id = 1;</code>
-     */
-    public int getId() {
-      return id_;
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 2;
+    public static final int USERNAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object username_;
     /**
-     * <code>string username = 2;</code>
+     * <code>string Username = 1;</code>
      */
     public java.lang.String getUsername() {
       java.lang.Object ref = username_;
@@ -161,7 +169,7 @@ public final class UserServiceOuterClass {
       }
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>string Username = 1;</code>
      */
     public com.google.protobuf.ByteString
         getUsernameBytes() {
@@ -177,10 +185,10 @@ public final class UserServiceOuterClass {
       }
     }
 
-    public static final int PASSWORD_FIELD_NUMBER = 3;
+    public static final int PASSWORD_FIELD_NUMBER = 2;
     private volatile java.lang.Object password_;
     /**
-     * <code>string password = 3;</code>
+     * <code>string Password = 2;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
@@ -195,7 +203,7 @@ public final class UserServiceOuterClass {
       }
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>string Password = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
@@ -209,6 +217,49 @@ public final class UserServiceOuterClass {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int ROLE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object role_;
+    /**
+     * <code>string Role = 3;</code>
+     */
+    public java.lang.String getRole() {
+      java.lang.Object ref = role_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        role_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Role = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRoleBytes() {
+      java.lang.Object ref = role_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        role_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SECURITYLEVEL_FIELD_NUMBER = 4;
+    private int securityLevel_;
+    /**
+     * <code>int32 SecurityLevel = 4;</code>
+     */
+    public int getSecurityLevel() {
+      return securityLevel_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -225,14 +276,17 @@ public final class UserServiceOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeInt32(1, id_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+      }
+      if (!getRoleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, role_);
+      }
+      if (securityLevel_ != 0) {
+        output.writeInt32(4, securityLevel_);
       }
       unknownFields.writeTo(output);
     }
@@ -243,15 +297,18 @@ public final class UserServiceOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
       if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
       }
       if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      }
+      if (!getRoleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, role_);
+      }
+      if (securityLevel_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, securityLevel_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -269,12 +326,14 @@ public final class UserServiceOuterClass {
       protos.UserServiceOuterClass.UserDetails other = (protos.UserServiceOuterClass.UserDetails) obj;
 
       boolean result = true;
-      result = result && (getId()
-          == other.getId());
       result = result && getUsername()
           .equals(other.getUsername());
       result = result && getPassword()
           .equals(other.getPassword());
+      result = result && getRole()
+          .equals(other.getRole());
+      result = result && (getSecurityLevel()
+          == other.getSecurityLevel());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -286,12 +345,14 @@ public final class UserServiceOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
       hash = (53 * hash) + getPassword().hashCode();
+      hash = (37 * hash) + ROLE_FIELD_NUMBER;
+      hash = (53 * hash) + getRole().hashCode();
+      hash = (37 * hash) + SECURITYLEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getSecurityLevel();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -425,11 +486,13 @@ public final class UserServiceOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
-
         username_ = "";
 
         password_ = "";
+
+        role_ = "";
+
+        securityLevel_ = 0;
 
         return this;
       }
@@ -457,9 +520,10 @@ public final class UserServiceOuterClass {
       @java.lang.Override
       public protos.UserServiceOuterClass.UserDetails buildPartial() {
         protos.UserServiceOuterClass.UserDetails result = new protos.UserServiceOuterClass.UserDetails(this);
-        result.id_ = id_;
         result.username_ = username_;
         result.password_ = password_;
+        result.role_ = role_;
+        result.securityLevel_ = securityLevel_;
         onBuilt();
         return result;
       }
@@ -508,9 +572,6 @@ public final class UserServiceOuterClass {
 
       public Builder mergeFrom(protos.UserServiceOuterClass.UserDetails other) {
         if (other == protos.UserServiceOuterClass.UserDetails.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
-        }
         if (!other.getUsername().isEmpty()) {
           username_ = other.username_;
           onChanged();
@@ -518,6 +579,13 @@ public final class UserServiceOuterClass {
         if (!other.getPassword().isEmpty()) {
           password_ = other.password_;
           onChanged();
+        }
+        if (!other.getRole().isEmpty()) {
+          role_ = other.role_;
+          onChanged();
+        }
+        if (other.getSecurityLevel() != 0) {
+          setSecurityLevel(other.getSecurityLevel());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -548,35 +616,9 @@ public final class UserServiceOuterClass {
         return this;
       }
 
-      private int id_ ;
-      /**
-       * <code>int32 id = 1;</code>
-       */
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>int32 id = 1;</code>
-       */
-      public Builder setId(int value) {
-        
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 id = 1;</code>
-       */
-      public Builder clearId() {
-        
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object username_ = "";
       /**
-       * <code>string username = 2;</code>
+       * <code>string Username = 1;</code>
        */
       public java.lang.String getUsername() {
         java.lang.Object ref = username_;
@@ -591,7 +633,7 @@ public final class UserServiceOuterClass {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string Username = 1;</code>
        */
       public com.google.protobuf.ByteString
           getUsernameBytes() {
@@ -607,7 +649,7 @@ public final class UserServiceOuterClass {
         }
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string Username = 1;</code>
        */
       public Builder setUsername(
           java.lang.String value) {
@@ -620,7 +662,7 @@ public final class UserServiceOuterClass {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string Username = 1;</code>
        */
       public Builder clearUsername() {
         
@@ -629,7 +671,7 @@ public final class UserServiceOuterClass {
         return this;
       }
       /**
-       * <code>string username = 2;</code>
+       * <code>string Username = 1;</code>
        */
       public Builder setUsernameBytes(
           com.google.protobuf.ByteString value) {
@@ -645,7 +687,7 @@ public final class UserServiceOuterClass {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>string password = 3;</code>
+       * <code>string Password = 2;</code>
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -660,7 +702,7 @@ public final class UserServiceOuterClass {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string Password = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
@@ -676,7 +718,7 @@ public final class UserServiceOuterClass {
         }
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string Password = 2;</code>
        */
       public Builder setPassword(
           java.lang.String value) {
@@ -689,7 +731,7 @@ public final class UserServiceOuterClass {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string Password = 2;</code>
        */
       public Builder clearPassword() {
         
@@ -698,7 +740,7 @@ public final class UserServiceOuterClass {
         return this;
       }
       /**
-       * <code>string password = 3;</code>
+       * <code>string Password = 2;</code>
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -708,6 +750,101 @@ public final class UserServiceOuterClass {
   checkByteStringIsUtf8(value);
         
         password_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object role_ = "";
+      /**
+       * <code>string Role = 3;</code>
+       */
+      public java.lang.String getRole() {
+        java.lang.Object ref = role_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          role_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string Role = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRoleBytes() {
+        java.lang.Object ref = role_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          role_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Role = 3;</code>
+       */
+      public Builder setRole(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        role_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Role = 3;</code>
+       */
+      public Builder clearRole() {
+        
+        role_ = getDefaultInstance().getRole();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Role = 3;</code>
+       */
+      public Builder setRoleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        role_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int securityLevel_ ;
+      /**
+       * <code>int32 SecurityLevel = 4;</code>
+       */
+      public int getSecurityLevel() {
+        return securityLevel_;
+      }
+      /**
+       * <code>int32 SecurityLevel = 4;</code>
+       */
+      public Builder setSecurityLevel(int value) {
+        
+        securityLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 SecurityLevel = 4;</code>
+       */
+      public Builder clearSecurityLevel() {
+        
+        securityLevel_ = 0;
         onChanged();
         return this;
       }
@@ -764,493 +901,11 @@ public final class UserServiceOuterClass {
 
   }
 
-  public interface ConfirmationOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Protos.Confirmation)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>bool confirmed = 1;</code>
-     */
-    boolean getConfirmed();
-  }
-  /**
-   * Protobuf type {@code Protos.Confirmation}
-   */
-  public  static final class Confirmation extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Protos.Confirmation)
-      ConfirmationOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Confirmation.newBuilder() to construct.
-    private Confirmation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Confirmation() {
-      confirmed_ = false;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Confirmation(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              confirmed_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protos.UserServiceOuterClass.internal_static_Protos_Confirmation_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protos.UserServiceOuterClass.internal_static_Protos_Confirmation_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protos.UserServiceOuterClass.Confirmation.class, protos.UserServiceOuterClass.Confirmation.Builder.class);
-    }
-
-    public static final int CONFIRMED_FIELD_NUMBER = 1;
-    private boolean confirmed_;
-    /**
-     * <code>bool confirmed = 1;</code>
-     */
-    public boolean getConfirmed() {
-      return confirmed_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (confirmed_ != false) {
-        output.writeBool(1, confirmed_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (confirmed_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, confirmed_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof protos.UserServiceOuterClass.Confirmation)) {
-        return super.equals(obj);
-      }
-      protos.UserServiceOuterClass.Confirmation other = (protos.UserServiceOuterClass.Confirmation) obj;
-
-      boolean result = true;
-      result = result && (getConfirmed()
-          == other.getConfirmed());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CONFIRMED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getConfirmed());
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static protos.UserServiceOuterClass.Confirmation parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(protos.UserServiceOuterClass.Confirmation prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code Protos.Confirmation}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Protos.Confirmation)
-        protos.UserServiceOuterClass.ConfirmationOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protos.UserServiceOuterClass.internal_static_Protos_Confirmation_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protos.UserServiceOuterClass.internal_static_Protos_Confirmation_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protos.UserServiceOuterClass.Confirmation.class, protos.UserServiceOuterClass.Confirmation.Builder.class);
-      }
-
-      // Construct using protos.UserServiceOuterClass.Confirmation.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        confirmed_ = false;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protos.UserServiceOuterClass.internal_static_Protos_Confirmation_descriptor;
-      }
-
-      @java.lang.Override
-      public protos.UserServiceOuterClass.Confirmation getDefaultInstanceForType() {
-        return protos.UserServiceOuterClass.Confirmation.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public protos.UserServiceOuterClass.Confirmation build() {
-        protos.UserServiceOuterClass.Confirmation result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public protos.UserServiceOuterClass.Confirmation buildPartial() {
-        protos.UserServiceOuterClass.Confirmation result = new protos.UserServiceOuterClass.Confirmation(this);
-        result.confirmed_ = confirmed_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protos.UserServiceOuterClass.Confirmation) {
-          return mergeFrom((protos.UserServiceOuterClass.Confirmation)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protos.UserServiceOuterClass.Confirmation other) {
-        if (other == protos.UserServiceOuterClass.Confirmation.getDefaultInstance()) return this;
-        if (other.getConfirmed() != false) {
-          setConfirmed(other.getConfirmed());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protos.UserServiceOuterClass.Confirmation parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protos.UserServiceOuterClass.Confirmation) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private boolean confirmed_ ;
-      /**
-       * <code>bool confirmed = 1;</code>
-       */
-      public boolean getConfirmed() {
-        return confirmed_;
-      }
-      /**
-       * <code>bool confirmed = 1;</code>
-       */
-      public Builder setConfirmed(boolean value) {
-        
-        confirmed_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool confirmed = 1;</code>
-       */
-      public Builder clearConfirmed() {
-        
-        confirmed_ = false;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:Protos.Confirmation)
-    }
-
-    // @@protoc_insertion_point(class_scope:Protos.Confirmation)
-    private static final protos.UserServiceOuterClass.Confirmation DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new protos.UserServiceOuterClass.Confirmation();
-    }
-
-    public static protos.UserServiceOuterClass.Confirmation getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Confirmation>
-        PARSER = new com.google.protobuf.AbstractParser<Confirmation>() {
-      @java.lang.Override
-      public Confirmation parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Confirmation(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Confirmation> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Confirmation> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public protos.UserServiceOuterClass.Confirmation getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Protos_UserDetails_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Protos_UserDetails_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Protos_Confirmation_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Protos_Confirmation_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1260,13 +915,13 @@ public final class UserServiceOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021UserService.proto\022\006Protos\"=\n\013UserDetai" +
-      "ls\022\n\n\002id\030\001 \001(\005\022\020\n\010username\030\002 \001(\t\022\020\n\010pass" +
-      "word\030\003 \001(\t\"!\n\014Confirmation\022\021\n\tconfirmed\030" +
-      "\001 \001(\0102v\n\013UserService\0222\n\005login\022\023.Protos.U" +
-      "serDetails\032\024.Protos.Confirmation\0223\n\006logo" +
-      "ut\022\023.Protos.UserDetails\032\024.Protos.Confirm" +
-      "ationB\021\n\006protos\252\002\006myGrpcb\006proto3"
+      "\n\021UserService.proto\022\006Protos\"V\n\013UserDetai" +
+      "ls\022\020\n\010Username\030\001 \001(\t\022\020\n\010Password\030\002 \001(\t\022\014" +
+      "\n\004Role\030\003 \001(\t\022\025\n\rSecurityLevel\030\004 \001(\0052t\n\013U" +
+      "serService\0221\n\005login\022\023.Protos.UserDetails" +
+      "\032\023.Protos.UserDetails\0222\n\006logout\022\023.Protos" +
+      ".UserDetails\032\023.Protos.UserDetailsB\021\n\006pro" +
+      "tos\252\002\006myGrpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1285,13 +940,7 @@ public final class UserServiceOuterClass {
     internal_static_Protos_UserDetails_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Protos_UserDetails_descriptor,
-        new java.lang.String[] { "Id", "Username", "Password", });
-    internal_static_Protos_Confirmation_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_Protos_Confirmation_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Protos_Confirmation_descriptor,
-        new java.lang.String[] { "Confirmed", });
+        new java.lang.String[] { "Username", "Password", "Role", "SecurityLevel", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
