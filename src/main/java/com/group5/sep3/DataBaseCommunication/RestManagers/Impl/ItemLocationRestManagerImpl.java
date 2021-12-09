@@ -14,9 +14,12 @@ import java.util.List;
 
 public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
+	private final String ITEM_ID_URL = "/itemId/";
+	private final String LOCATION_ID_URL = "/locationId/";
+
 	@Override
 	public ItemLocation create(ItemLocation obj) {
-		String restUrl = obj.getClass().getSimpleName() + "/add";
+		String restUrl = obj.getClass().getSimpleName() + RestClientImpl.ADD_URL;
 		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, ItemLocation.class);
@@ -24,7 +27,7 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
 	@Override
 	public ItemLocation update(ItemLocation obj) {
-		String restUrl = obj.getClass().getSimpleName() + "/update";
+		String restUrl = obj.getClass().getSimpleName() + RestClientImpl.UPDATE_URL;
 		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, ItemLocation.class);
@@ -32,7 +35,7 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
 	@Override
 	public ItemLocation get(int objId) {
-		ProjectUtil.testPrint("ItemLocation ID: " + objId);
+ProjectUtil.testPrint("ItemLocation ID: " + objId);
 		String restUrl = ItemLocation.class.getSimpleName() + "/" + objId;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 
@@ -56,14 +59,14 @@ public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 
 	@Override
 	public List<ItemLocation> getByItemId(int obj) throws RestClientException {
-		String restUrl = ItemLocation.class.getSimpleName() + "/itemId/" + obj;
+		String restUrl = ItemLocation.class.getSimpleName() + ITEM_ID_URL + obj;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 		return getItemLocationsFromResponse(restResponse);
 	}
 
 	@Override
 	public List<ItemLocation> getByLocationId(int obj) throws RestClientException {
-		String restUrl = ItemLocation.class.getSimpleName() + "/locationId/" + obj;
+		String restUrl = ItemLocation.class.getSimpleName() + LOCATION_ID_URL + obj;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 		return getItemLocationsFromResponse(restResponse);
 	}

@@ -11,6 +11,9 @@ public class RestClientImpl implements RestClient {
 	private final String ROOT = "http://localhost:5000/";
 	private final RestTemplate rest = new RestTemplate();
 
+	public static final String ADD_URL = "/add";
+	public static final String UPDATE_URL = "/update";
+
 	private RestClientImpl() {
 	}
 

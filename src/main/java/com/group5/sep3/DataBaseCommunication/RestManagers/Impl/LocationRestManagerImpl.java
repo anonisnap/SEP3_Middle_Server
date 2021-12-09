@@ -14,7 +14,7 @@ public class LocationRestManagerImpl implements RestManager<Location> {
 
 	@Override
 	public Location create(Location obj) {
-		String restUrl = obj.getClass().getSimpleName() + "/add";
+		String restUrl = obj.getClass().getSimpleName() + RestClientImpl.ADD_URL;
 		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, Location.class);
@@ -22,7 +22,7 @@ public class LocationRestManagerImpl implements RestManager<Location> {
 
 	@Override
 	public Location update(Location obj) {
-		String restUrl = obj.getClass().getSimpleName() + "/update";
+		String restUrl = obj.getClass().getSimpleName() + RestClientImpl.UPDATE_URL;
 		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, Location.class);

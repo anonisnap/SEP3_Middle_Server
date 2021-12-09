@@ -15,14 +15,14 @@ public class OrderRestManagerImpl implements RestManager<Order> {
 
     @Override
     public Order create(Order order) throws RestClientException {
-        String restUrl = order.getClass().getSimpleName() + "/add";
+        String restUrl = order.getClass().getSimpleName() + RestClientImpl.ADD_URL;
         String restRespone = (String) RestClientImpl.getInstance().post(restUrl,order);
         return JsonHelper.fromJson(restRespone, Order.class);
     }
 
     @Override
     public Order update(Order order) throws RestClientException {
-        String restUrl = order.getClass().getSimpleName() + "/update";
+        String restUrl = order.getClass().getSimpleName() + RestClientImpl.UPDATE_URL;
         String restRespone = (String) RestClientImpl.getInstance().post(restUrl,order);
         return JsonHelper.fromJson(restRespone, Order.class);
     }

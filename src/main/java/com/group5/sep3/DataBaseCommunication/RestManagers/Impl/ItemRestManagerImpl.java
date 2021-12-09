@@ -14,7 +14,7 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 
 	@Override
 	public Item create(Item obj) {
-		String restUrl = obj.getClass().getSimpleName() + "/add";
+		String restUrl = obj.getClass().getSimpleName() + RestClientImpl.ADD_URL;
 		String tmp = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(tmp, Item.class);
@@ -22,7 +22,7 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 
 	@Override
 	public Item update(Item obj) {
-		String restUrl = obj.getClass().getSimpleName() + "/update";
+		String restUrl = obj.getClass().getSimpleName() + RestClientImpl.UPDATE_URL;
 		String tmp = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(tmp, Item.class);
