@@ -15,8 +15,7 @@ public class UserModelImpl implements UserModel {
 
 	@Override
 	public User login(User user) {
-		User actualUser = userRestManager.login(user);
-		return actualUser;
+		return userRestManager.login(user);
 	}
 
 	@Override

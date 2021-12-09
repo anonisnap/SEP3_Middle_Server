@@ -32,13 +32,19 @@ public class LogicModelFactory {
 		modelMap.put(EntityTypes.ITEMLOCATION, new ItemLocationModelImpl((ItemLocationRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.ITEMLOCATION)));
 		modelMap.put(EntityTypes.ORDER, new OrderModelImpl((RestManager<Order>) RestManagerFactory.getInstance().getRestManager(EntityTypes.ORDER)));
 		modelMap.put(EntityTypes.USER, new UserModelImpl((UserRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.USER)));
+
+		StringBuilder debug = new StringBuilder();
+		for (EntityTypes key : modelMap.keySet()) {
+			debug.append("\n\t> ").append(key).append(" ").append(modelMap.get(key).getClass().getSimpleName());
+		}
+		ProjectUtil.testPrint("logic model Implementations ("+ modelMap.keySet().size()+"): " + debug);
+
 	}
 
 	public static LogicModelFactory getInstance() {
 		if (instance == null) {
 			instance = new LogicModelFactory();
 		}
-		ProjectUtil.testPrint("> Accessing Logic Model Factory");
 		return instance;
 	}
 

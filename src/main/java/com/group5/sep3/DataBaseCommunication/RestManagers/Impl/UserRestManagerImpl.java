@@ -1,9 +1,7 @@
 package com.group5.sep3.DataBaseCommunication.RestManagers.Impl;
 
-import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.User;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
-import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.DataBaseCommunication.RestManagers.UserRestManager;
 import com.group5.sep3.util.JsonHelper;
 import com.group5.sep3.util.ProjectUtil;
@@ -16,12 +14,14 @@ public class UserRestManagerImpl implements UserRestManager {
 
 	@Override
 	public User login(User user) {
-		String restUrl = "login/" + user.getUsername();
-		Object restResponse = RestClientImpl.getInstance().get(restUrl);
+
+		String restUrl = "Login";
+		Object restResponse = RestClientImpl.getInstance().post(restUrl, user);
+
+
 
 		return JsonHelper.fromJson((String) restResponse, User.class);
 	}
-
 
 
 

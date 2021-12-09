@@ -1,9 +1,6 @@
 package com.group5.sep3;
 
-import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemLocationRestManagerImpl;
-import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.ItemRestManagerImpl;
-import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.LocationRestManagerImpl;
-import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.OrderRestManagerImpl;
+import com.group5.sep3.DataBaseCommunication.RestManagers.Impl.*;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
@@ -22,12 +19,13 @@ public class RestManagerFactory {
         restManagers.put(EntityTypes.LOCATION, new LocationRestManagerImpl());
         restManagers.put(EntityTypes.ITEMLOCATION, new ItemLocationRestManagerImpl());
         restManagers.put(EntityTypes.ORDER, new OrderRestManagerImpl());
+        restManagers.put(EntityTypes.USER, new UserRestManagerImpl());
 
         StringBuilder debug = new StringBuilder();
         for (EntityTypes key : restManagers.keySet()) {
             debug.append("\n\t> ").append(key).append(" ").append(restManagers.get(key).getClass().getSimpleName());
         }
-        ProjectUtil.testPrint("Rest Manager Implementations: " + debug);
+        ProjectUtil.testPrint("Rest Manager Implementations ("+ restManagers.keySet().size()+"):" + debug);
 
     }
 

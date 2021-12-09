@@ -46,10 +46,11 @@ public class RestClientImpl implements RestClient {
 	@Override
 	public Object get(String restUrl) throws RestClientException {
 		try {
+
 			return rest.getForEntity(ROOT + restUrl, String.class).getBody();
 		} catch (RestClientException e) {
 			ProjectUtil.testPrint("Could not get item " + e.getMessage());
-			//e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}

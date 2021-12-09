@@ -12,5 +12,4 @@ public interface RestManager<T> {
     List<T> getAll() throws RestClientException;
     boolean delete(int objId) throws RestClientException;
 
-
 }

@@ -1,14 +1,9 @@
 package com.group5.sep3;
 
-import com.group5.sep3.BusinessLogic.LogicModels.ItemLocationModel;
-import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
-import com.group5.sep3.BusinessLogic.LogicModels.LocationModel;
-import com.group5.sep3.BusinessLogic.LogicModels.UserModel;
-import com.group5.sep3.GrpcCommunication.Services.ItemLocationService;
-import com.group5.sep3.GrpcCommunication.Services.ItemService;
-import com.group5.sep3.GrpcCommunication.Services.LocationService;
-import com.group5.sep3.GrpcCommunication.Services.UserService;
+import com.group5.sep3.BusinessLogic.LogicModels.*;
+import com.group5.sep3.GrpcCommunication.Services.*;
 import com.group5.sep3.util.EntityTypes;
+import com.group5.sep3.util.ProjectUtil;
 import io.grpc.BindableService;
 
 import java.util.HashMap;
@@ -23,7 +18,14 @@ public class GrpcServiceFactory {
 		grpcMap.put(EntityTypes.ITEM, new ItemService((ItemModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ITEM)));
 		grpcMap.put(EntityTypes.LOCATION, new LocationService((LocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.LOCATION)));
 		grpcMap.put(EntityTypes.ITEMLOCATION, new ItemLocationService((ItemLocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ITEMLOCATION)));
+		grpcMap.put(EntityTypes.ORDER, new OrderService((OrderModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ORDER)));
 		grpcMap.put(EntityTypes.USER, new UserService((UserModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.USER)));
+
+		StringBuilder debug = new StringBuilder();
+		for (EntityTypes key : grpcMap.keySet()) {
+			debug.append("\n\t> ").append(key).append(" ").append(grpcMap.get(key).getClass().getSimpleName());
+		}
+		ProjectUtil.testPrint("Grpc service Implementations ("+ grpcMap.keySet().size()+"):" + debug);
 	}
 
 	public static GrpcServiceFactory getInstance() {
