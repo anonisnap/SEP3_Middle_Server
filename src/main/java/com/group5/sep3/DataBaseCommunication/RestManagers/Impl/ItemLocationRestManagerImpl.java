@@ -14,16 +14,16 @@ import java.util.List;
 
 public class ItemLocationRestManagerImpl implements ItemLocationRestManager {
 	@Override
-	public ItemLocation put(ItemLocation obj) {
-		String restUrl = obj.getClass().getSimpleName();
-		String restResponse = (String) RestClientImpl.getInstance().put(restUrl, obj);
+	public ItemLocation create(ItemLocation obj) {
+		String restUrl = obj.getClass().getSimpleName() + "/add";
+		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, ItemLocation.class);
 	}
 
 	@Override
-	public ItemLocation post(ItemLocation obj) {
-		String restUrl = obj.getClass().getSimpleName();
+	public ItemLocation update(ItemLocation obj) {
+		String restUrl = obj.getClass().getSimpleName() + "/update";
 		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, ItemLocation.class);

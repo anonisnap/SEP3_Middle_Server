@@ -15,14 +15,14 @@ public class LocationModelImpl implements LocationModel {
 
 	@Override
 	public Location register(Location entity) {
-		Location tmp = locationRestManager.put(entity);
+		Location tmp = locationRestManager.create(entity);
 		//TODO: error handling
 		return tmp;
 	}
 
 	@Override
 	public Location update(Location entity) {
-		Location tmp = locationRestManager.post(entity);
+		Location tmp = locationRestManager.update(entity);
 		//TODO: error handling
 		return tmp;
 	}

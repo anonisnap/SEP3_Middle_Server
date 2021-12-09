@@ -13,16 +13,16 @@ import java.util.List;
 public class LocationRestManagerImpl implements RestManager<Location> {
 
 	@Override
-	public Location put(Location obj) {
-		String restUrl = obj.getClass().getSimpleName();
-		String restResponse = (String) RestClientImpl.getInstance().put(restUrl, obj);
+	public Location create(Location obj) {
+		String restUrl = obj.getClass().getSimpleName() + "/add";
+		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, Location.class);
 	}
 
 	@Override
-	public Location post(Location obj) {
-		String restUrl = obj.getClass().getSimpleName();
+	public Location update(Location obj) {
+		String restUrl = obj.getClass().getSimpleName() + "/update";
 		String restResponse = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(restResponse, Location.class);

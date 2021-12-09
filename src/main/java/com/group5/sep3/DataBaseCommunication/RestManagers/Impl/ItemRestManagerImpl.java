@@ -13,16 +13,16 @@ import java.util.List;
 public class ItemRestManagerImpl implements RestManager<Item> {
 
 	@Override
-	public Item put(Item obj) {
-		String restUrl = obj.getClass().getSimpleName();
-		String tmp = (String) RestClientImpl.getInstance().put(restUrl, obj);
+	public Item create(Item obj) {
+		String restUrl = obj.getClass().getSimpleName() + "/add";
+		String tmp = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(tmp, Item.class);
 	}
 
 	@Override
-	public Item post(Item obj) {
-		String restUrl = obj.getClass().getSimpleName();
+	public Item update(Item obj) {
+		String restUrl = obj.getClass().getSimpleName() + "/update";
 		String tmp = (String) RestClientImpl.getInstance().post(restUrl, obj);
 
 		return JsonHelper.fromJson(tmp, Item.class);

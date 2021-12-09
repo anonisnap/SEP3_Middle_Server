@@ -16,7 +16,7 @@ public class OrderModelImpl implements OrderModel {
 
     @Override
     public Order register(Order order) {
-        return orderRestManager.put(order);
+        return orderRestManager.create(order);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class OrderModelImpl implements OrderModel {
 
     @Override
     public Order update(Order order) {
-        return orderRestManager.post(order);
+        return orderRestManager.update(order);
     }
 
     @Override

@@ -17,14 +17,14 @@ public class ItemModelImpl implements ItemModel {
 
 	@Override
 	public Item register(Item entity) {
-		Item tmp = itemRestManager.put(entity);
+		Item tmp = itemRestManager.create(entity);
 		//TODO: error handling
 		return tmp;
 	}
 
 	@Override
 	public Item update(Item entity) {
-		Item tmp = itemRestManager.post(entity);
+		Item tmp = itemRestManager.update(entity);
 		//TODO: error handling
 		return tmp;
 	}

@@ -14,16 +14,16 @@ import java.util.List;
 public class OrderRestManagerImpl implements RestManager<Order> {
 
     @Override
-    public Order put(Order order) throws RestClientException {
-        String restUrl = order.getClass().getSimpleName();
-        String restRespone = (String) RestClientImpl.getInstance().put(restUrl,order);
+    public Order create(Order order) throws RestClientException {
+        String restUrl = order.getClass().getSimpleName() + "/add";
+        String restRespone = (String) RestClientImpl.getInstance().post(restUrl,order);
         return JsonHelper.fromJson(restRespone, Order.class);
     }
 
     @Override
-    public Order post(Order order) throws RestClientException {
-        String restUrl = order.getClass().getSimpleName();
-        String restRespone = (String) RestClientImpl.getInstance().put(restUrl,order);
+    public Order update(Order order) throws RestClientException {
+        String restUrl = order.getClass().getSimpleName() + "/update";
+        String restRespone = (String) RestClientImpl.getInstance().post(restUrl,order);
         return JsonHelper.fromJson(restRespone, Order.class);
     }
 

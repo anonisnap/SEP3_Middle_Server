@@ -28,27 +28,45 @@ public class ItemLocationModelImpl implements ItemLocationModel {
                 itemLocation.setAmount(itemLocation.getAmount() + itemLoc.getAmount());
                 //Set ItemLocation Id to Id on new ItemLocation, so Database knows it exists
                 itemLocation.setId(itemLoc.getId());
-                return itemLocationRestManager.post(itemLocation);
+                return itemLocationRestManager.update(itemLocation);
             }
         }
         //If item doesn't exist on location, create itemLocation
-        return itemLocationRestManager.put(itemLocation);
+        return itemLocationRestManager.create(itemLocation);
     }
 
     @Override
     public ItemLocation update(ItemLocation itemLocation) throws Exception {
+
         //Getting Location data, from old location
         ItemLocation oldItemLocation = get(itemLocation);
+        System.out.println("Found old item location" + oldItemLocation);
         //Getting Location Amount, from old location
-        int oldLocationAmount = oldItemLocation.getAmount();
-
+        int oldAmount = oldItemLocation.getAmount();
         //Get AmountToMove for If statements
         int amountToMove = itemLocation.getAmount();
+
+
+        if (oldAmount - amountToMove == 0){
+            System.out.println("All items were moved " + itemLocation);
+            return itemLocationRestManager.update(itemLocation);}
+
+
+        oldItemLocation.setAmount(oldAmount-amountToMove);
+        System.out.println("old item location updated" + oldItemLocation);
+        itemLocationRestManager.update(oldItemLocation);
+
+        System.out.println("Create new itemlocation" + itemLocation);
+        return itemLocationRestManager.create(itemLocation);
+
+
+
+        /*
 
         //Grabbing list of itemLocations with current Location from ItemLocation
         List<ItemLocation> itemLocations = getByLocationId(itemLocation);
 
-        //If List contains item with same itemId, then add this amount to that.
+        //If List contains item with same itemId, then add amount to that.
         for (ItemLocation itemLoc : itemLocations) {
             if (itemLoc.getItem().getId() == itemLocation.getItem().getId()) {
                 System.out.println("Inside If");
@@ -61,12 +79,12 @@ public class ItemLocationModelImpl implements ItemLocationModel {
 
                 if (amountToMove < oldLocationAmount) {
                     //Update New ItemLocation
-                    itemLocationRestManager.post(itemLoc);
+                    itemLocationRestManager.update(itemLoc);
                     //Update Old ItemLocation
-                    return itemLocationRestManager.post(oldItemLocation);
+                    return itemLocationRestManager.update(oldItemLocation);
                 }
                 //If amount on location = moved amount
-                return itemLocationRestManager.post(itemLocation);
+                return itemLocationRestManager.update(itemLocation);
             }
         }
 
@@ -79,14 +97,14 @@ public class ItemLocationModelImpl implements ItemLocationModel {
             itemLocation.setId(0);
 
             //Putting to new Location
-            itemLocationRestManager.put(itemLocation);
+            itemLocationRestManager.create(itemLocation);
 
             //Updating Old Location
-            return itemLocationRestManager.post(oldItemLocation);
+            return itemLocationRestManager.update(oldItemLocation);
         }
 
-        //Same amount moved as on old Location, just update location
-        return itemLocationRestManager.post(itemLocation);
+        //If all items moved from old Location, just update location
+        return itemLocationRestManager.update(itemLocation);*/
     }
 
     @Override
