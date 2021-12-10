@@ -17,7 +17,7 @@ public class GrpcServiceFactory {
 		grpcMap = new HashMap<>();
 		grpcMap.put(EntityTypes.ITEM, new ItemService((ItemModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ITEM)));
 		grpcMap.put(EntityTypes.LOCATION, new LocationService((LocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.LOCATION)));
-		grpcMap.put(EntityTypes.ITEMLOCATION, new ItemLocationService((ItemLocationModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ITEMLOCATION)));
+		grpcMap.put(EntityTypes.INVENTORY, new InventoryService((InventoryModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.INVENTORY)));
 		grpcMap.put(EntityTypes.ORDER, new OrderService((OrderModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.ORDER)));
 		grpcMap.put(EntityTypes.USER, new UserService((UserModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.USER)));
 

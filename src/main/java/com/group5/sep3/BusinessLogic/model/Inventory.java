@@ -1,13 +1,13 @@
 package com.group5.sep3.BusinessLogic.model;
 
-public class ItemLocation {
+public class Inventory {
 
     private int id;
     private Location location;
     private Item item;
     private int amount;
 
-    public ItemLocation(int id, Location location, Item item, int amount) {
+    public Inventory(int id, Location location, Item item, int amount) {
         this.id = id;
         this.location = location;
         this.item = item;

@@ -2,7 +2,6 @@ package com.group5.sep3.BusinessLogic.LogicModels.impl;
 
 import com.group5.sep3.BusinessLogic.LogicModels.UserModel;
 import com.group5.sep3.BusinessLogic.model.User;
-import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.DataBaseCommunication.RestManagers.UserRestManager;
 import com.group5.sep3.util.ProjectUtil;
 

@@ -17,7 +17,7 @@ public class RestManagerFactory {
         restManagers = new HashMap<>();
         restManagers.put(EntityTypes.ITEM, new ItemRestManagerImpl());
         restManagers.put(EntityTypes.LOCATION, new LocationRestManagerImpl());
-        restManagers.put(EntityTypes.ITEMLOCATION, new ItemLocationRestManagerImpl());
+        restManagers.put(EntityTypes.INVENTORY, new InventoryRestManagerImpl());
         restManagers.put(EntityTypes.ORDER, new OrderRestManagerImpl());
         restManagers.put(EntityTypes.USER, new UserRestManagerImpl());
 

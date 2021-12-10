@@ -1,7 +1,6 @@
 package com.group5.sep3.GrpcCommunication.Services;
 
 import Protos.ProtoUtil.*;
-import com.google.protobuf.BoolValue;
 import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
 import com.group5.sep3.BusinessLogic.model.Item;
 import io.grpc.stub.StreamObserver;
