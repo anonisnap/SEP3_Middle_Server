@@ -1,6 +1,7 @@
 package com.group5.sep3.BusinessLogic.LogicModels;
 
 import com.group5.sep3.BusinessLogic.model.Inventory;
+import org.springframework.web.client.RestClientException;
 
 import java.util.List;
 
@@ -21,5 +22,7 @@ public interface InventoryModel extends EntityLogicModel<Inventory> {
      */
     List<Inventory> getByLocationId(int locationId) throws Exception ;
 
+
+    List<Inventory> getInventoryStock() throws Exception;
 
 }

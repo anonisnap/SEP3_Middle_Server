@@ -120,13 +120,18 @@ public class InventoryModelImpl implements InventoryModel {
 
     // TODO: Mangler der ikke PROTO filer for disse?
     @Override
-    public List<Inventory> getByItemId(int itemId) throws RestClientException {
+    public List<Inventory> getByItemId(int itemId) {
         return inventoryRestManager.getByItemId(itemId);
     }
 
     @Override
-    public List<Inventory> getByLocationId(int locationId) throws RestClientException {
+    public List<Inventory> getByLocationId(int locationId){
         return inventoryRestManager.getByLocationId(locationId);
+    }
+
+    @Override
+    public List<Inventory> getInventoryStock() {
+        return inventoryRestManager.GetInventoryStock();
     }
 
 }

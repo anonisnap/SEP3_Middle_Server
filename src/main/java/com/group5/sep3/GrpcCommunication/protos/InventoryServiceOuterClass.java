@@ -2230,19 +2230,20 @@ public final class InventoryServiceOuterClass {
       "s.gLocation\022\n\n\002id\030\003 \001(\005\022\016\n\006amount\030\004 \001(\005\"" +
       "8\n\016gInventoryList\022&\n\nInventorys\030\001 \003(\0132\022." +
       "Protos.gInventory\"#\n\014gInventoryId\022\023\n\013Inv" +
-      "entoryId\030\001 \001(\0052\271\003\n\020InventoryService\022;\n\021R" +
+      "entoryId\030\001 \001(\0052\371\003\n\020InventoryService\022;\n\021R" +
       "egisterInventory\022\022.Protos.gInventory\032\022.P" +
       "rotos.gInventory\0228\n\014GetInventory\022\024.Proto" +
-      "s.gInventoryId\032\022.Protos.gInventory\022>\n\020Ge" +
-      "tAllInventorys\022\022.Protos.gInventory\032\026.Pro" +
-      "tos.gInventoryList\0229\n\017UpdateInventory\022\022." +
-      "Protos.gInventory\032\022.Protos.gInventory\022;\n" +
-      "\017RemoveInventory\022\024.Protos.gInventoryId\032\022" +
-      ".Protos.gBoolValue\0226\n\013GetByItemId\022\017.Prot" +
-      "os.gItemId\032\026.Protos.gInventoryList\022>\n\017Ge" +
-      "tByLocationId\022\023.Protos.gLocationId\032\026.Pro" +
-      "tos.gInventoryListB\021\n\006protos\252\002\006myGrpcb\006p" +
-      "roto3"
+      "s.gInventoryId\032\022.Protos.gInventory\022=\n\017Ge" +
+      "tAllInventory\022\022.Protos.gInventory\032\026.Prot" +
+      "os.gInventoryList\0229\n\017UpdateInventory\022\022.P" +
+      "rotos.gInventory\032\022.Protos.gInventory\022;\n\017" +
+      "RemoveInventory\022\024.Protos.gInventoryId\032\022." +
+      "Protos.gBoolValue\0226\n\013GetByItemId\022\017.Proto" +
+      "s.gItemId\032\026.Protos.gInventoryList\022>\n\017Get" +
+      "ByLocationId\022\023.Protos.gLocationId\032\026.Prot" +
+      "os.gInventoryList\022?\n\021GetStockInventory\022\022" +
+      ".Protos.gInventory\032\026.Protos.gInventoryLi" +
+      "stB\021\n\006protos\252\002\006myGrpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

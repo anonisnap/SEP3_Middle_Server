@@ -92,35 +92,35 @@ public final class InventoryServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory,
-      protos.InventoryServiceOuterClass.gInventoryList> getGetAllInventorysMethod;
+      protos.InventoryServiceOuterClass.gInventoryList> getGetAllInventoryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetAllInventorys",
+      fullMethodName = SERVICE_NAME + '/' + "GetAllInventory",
       requestType = protos.InventoryServiceOuterClass.gInventory.class,
       responseType = protos.InventoryServiceOuterClass.gInventoryList.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory,
-      protos.InventoryServiceOuterClass.gInventoryList> getGetAllInventorysMethod() {
-    io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory, protos.InventoryServiceOuterClass.gInventoryList> getGetAllInventorysMethod;
-    if ((getGetAllInventorysMethod = InventoryServiceGrpc.getGetAllInventorysMethod) == null) {
+      protos.InventoryServiceOuterClass.gInventoryList> getGetAllInventoryMethod() {
+    io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory, protos.InventoryServiceOuterClass.gInventoryList> getGetAllInventoryMethod;
+    if ((getGetAllInventoryMethod = InventoryServiceGrpc.getGetAllInventoryMethod) == null) {
       synchronized (InventoryServiceGrpc.class) {
-        if ((getGetAllInventorysMethod = InventoryServiceGrpc.getGetAllInventorysMethod) == null) {
-          InventoryServiceGrpc.getGetAllInventorysMethod = getGetAllInventorysMethod = 
+        if ((getGetAllInventoryMethod = InventoryServiceGrpc.getGetAllInventoryMethod) == null) {
+          InventoryServiceGrpc.getGetAllInventoryMethod = getGetAllInventoryMethod = 
               io.grpc.MethodDescriptor.<protos.InventoryServiceOuterClass.gInventory, protos.InventoryServiceOuterClass.gInventoryList>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "Protos.InventoryService", "GetAllInventorys"))
+                  "Protos.InventoryService", "GetAllInventory"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.InventoryServiceOuterClass.gInventory.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   protos.InventoryServiceOuterClass.gInventoryList.getDefaultInstance()))
-                  .setSchemaDescriptor(new InventoryServiceMethodDescriptorSupplier("GetAllInventorys"))
+                  .setSchemaDescriptor(new InventoryServiceMethodDescriptorSupplier("GetAllInventory"))
                   .build();
           }
         }
      }
-     return getGetAllInventorysMethod;
+     return getGetAllInventoryMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory,
@@ -251,6 +251,38 @@ public final class InventoryServiceGrpc {
      return getGetByLocationIdMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory,
+      protos.InventoryServiceOuterClass.gInventoryList> getGetStockInventoryMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetStockInventory",
+      requestType = protos.InventoryServiceOuterClass.gInventory.class,
+      responseType = protos.InventoryServiceOuterClass.gInventoryList.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory,
+      protos.InventoryServiceOuterClass.gInventoryList> getGetStockInventoryMethod() {
+    io.grpc.MethodDescriptor<protos.InventoryServiceOuterClass.gInventory, protos.InventoryServiceOuterClass.gInventoryList> getGetStockInventoryMethod;
+    if ((getGetStockInventoryMethod = InventoryServiceGrpc.getGetStockInventoryMethod) == null) {
+      synchronized (InventoryServiceGrpc.class) {
+        if ((getGetStockInventoryMethod = InventoryServiceGrpc.getGetStockInventoryMethod) == null) {
+          InventoryServiceGrpc.getGetStockInventoryMethod = getGetStockInventoryMethod = 
+              io.grpc.MethodDescriptor.<protos.InventoryServiceOuterClass.gInventory, protos.InventoryServiceOuterClass.gInventoryList>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "Protos.InventoryService", "GetStockInventory"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  protos.InventoryServiceOuterClass.gInventory.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  protos.InventoryServiceOuterClass.gInventoryList.getDefaultInstance()))
+                  .setSchemaDescriptor(new InventoryServiceMethodDescriptorSupplier("GetStockInventory"))
+                  .build();
+          }
+        }
+     }
+     return getGetStockInventoryMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -294,9 +326,9 @@ public final class InventoryServiceGrpc {
 
     /**
      */
-    public void getAllInventorys(protos.InventoryServiceOuterClass.gInventory request,
+    public void getAllInventory(protos.InventoryServiceOuterClass.gInventory request,
         io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAllInventorysMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getGetAllInventoryMethod(), responseObserver);
     }
 
     /**
@@ -327,6 +359,13 @@ public final class InventoryServiceGrpc {
       asyncUnimplementedUnaryCall(getGetByLocationIdMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getStockInventory(protos.InventoryServiceOuterClass.gInventory request,
+        io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetStockInventoryMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -344,12 +383,12 @@ public final class InventoryServiceGrpc {
                 protos.InventoryServiceOuterClass.gInventory>(
                   this, METHODID_GET_INVENTORY)))
           .addMethod(
-            getGetAllInventorysMethod(),
+            getGetAllInventoryMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 protos.InventoryServiceOuterClass.gInventory,
                 protos.InventoryServiceOuterClass.gInventoryList>(
-                  this, METHODID_GET_ALL_INVENTORYS)))
+                  this, METHODID_GET_ALL_INVENTORY)))
           .addMethod(
             getUpdateInventoryMethod(),
             asyncUnaryCall(
@@ -378,6 +417,13 @@ public final class InventoryServiceGrpc {
                 protos.LocationServiceOuterClass.gLocationId,
                 protos.InventoryServiceOuterClass.gInventoryList>(
                   this, METHODID_GET_BY_LOCATION_ID)))
+          .addMethod(
+            getGetStockInventoryMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                protos.InventoryServiceOuterClass.gInventory,
+                protos.InventoryServiceOuterClass.gInventoryList>(
+                  this, METHODID_GET_STOCK_INVENTORY)))
           .build();
     }
   }
@@ -418,10 +464,10 @@ public final class InventoryServiceGrpc {
 
     /**
      */
-    public void getAllInventorys(protos.InventoryServiceOuterClass.gInventory request,
+    public void getAllInventory(protos.InventoryServiceOuterClass.gInventory request,
         io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getGetAllInventorysMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetAllInventoryMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -454,6 +500,14 @@ public final class InventoryServiceGrpc {
         io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetByLocationIdMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getStockInventory(protos.InventoryServiceOuterClass.gInventory request,
+        io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetStockInventoryMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -491,9 +545,9 @@ public final class InventoryServiceGrpc {
 
     /**
      */
-    public protos.InventoryServiceOuterClass.gInventoryList getAllInventorys(protos.InventoryServiceOuterClass.gInventory request) {
+    public protos.InventoryServiceOuterClass.gInventoryList getAllInventory(protos.InventoryServiceOuterClass.gInventory request) {
       return blockingUnaryCall(
-          getChannel(), getGetAllInventorysMethod(), getCallOptions(), request);
+          getChannel(), getGetAllInventoryMethod(), getCallOptions(), request);
     }
 
     /**
@@ -522,6 +576,13 @@ public final class InventoryServiceGrpc {
     public protos.InventoryServiceOuterClass.gInventoryList getByLocationId(protos.LocationServiceOuterClass.gLocationId request) {
       return blockingUnaryCall(
           getChannel(), getGetByLocationIdMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public protos.InventoryServiceOuterClass.gInventoryList getStockInventory(protos.InventoryServiceOuterClass.gInventory request) {
+      return blockingUnaryCall(
+          getChannel(), getGetStockInventoryMethod(), getCallOptions(), request);
     }
   }
 
@@ -561,10 +622,10 @@ public final class InventoryServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protos.InventoryServiceOuterClass.gInventoryList> getAllInventorys(
+    public com.google.common.util.concurrent.ListenableFuture<protos.InventoryServiceOuterClass.gInventoryList> getAllInventory(
         protos.InventoryServiceOuterClass.gInventory request) {
       return futureUnaryCall(
-          getChannel().newCall(getGetAllInventorysMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetAllInventoryMethod(), getCallOptions()), request);
     }
 
     /**
@@ -598,15 +659,24 @@ public final class InventoryServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetByLocationIdMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<protos.InventoryServiceOuterClass.gInventoryList> getStockInventory(
+        protos.InventoryServiceOuterClass.gInventory request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetStockInventoryMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTER_INVENTORY = 0;
   private static final int METHODID_GET_INVENTORY = 1;
-  private static final int METHODID_GET_ALL_INVENTORYS = 2;
+  private static final int METHODID_GET_ALL_INVENTORY = 2;
   private static final int METHODID_UPDATE_INVENTORY = 3;
   private static final int METHODID_REMOVE_INVENTORY = 4;
   private static final int METHODID_GET_BY_ITEM_ID = 5;
   private static final int METHODID_GET_BY_LOCATION_ID = 6;
+  private static final int METHODID_GET_STOCK_INVENTORY = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -633,8 +703,8 @@ public final class InventoryServiceGrpc {
           serviceImpl.getInventory((protos.InventoryServiceOuterClass.gInventoryId) request,
               (io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventory>) responseObserver);
           break;
-        case METHODID_GET_ALL_INVENTORYS:
-          serviceImpl.getAllInventorys((protos.InventoryServiceOuterClass.gInventory) request,
+        case METHODID_GET_ALL_INVENTORY:
+          serviceImpl.getAllInventory((protos.InventoryServiceOuterClass.gInventory) request,
               (io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList>) responseObserver);
           break;
         case METHODID_UPDATE_INVENTORY:
@@ -651,6 +721,10 @@ public final class InventoryServiceGrpc {
           break;
         case METHODID_GET_BY_LOCATION_ID:
           serviceImpl.getByLocationId((protos.LocationServiceOuterClass.gLocationId) request,
+              (io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList>) responseObserver);
+          break;
+        case METHODID_GET_STOCK_INVENTORY:
+          serviceImpl.getStockInventory((protos.InventoryServiceOuterClass.gInventory) request,
               (io.grpc.stub.StreamObserver<protos.InventoryServiceOuterClass.gInventoryList>) responseObserver);
           break;
         default:
@@ -716,11 +790,12 @@ public final class InventoryServiceGrpc {
               .setSchemaDescriptor(new InventoryServiceFileDescriptorSupplier())
               .addMethod(getRegisterInventoryMethod())
               .addMethod(getGetInventoryMethod())
-              .addMethod(getGetAllInventorysMethod())
+              .addMethod(getGetAllInventoryMethod())
               .addMethod(getUpdateInventoryMethod())
               .addMethod(getRemoveInventoryMethod())
               .addMethod(getGetByItemIdMethod())
               .addMethod(getGetByLocationIdMethod())
+              .addMethod(getGetStockInventoryMethod())
               .build();
         }
       }

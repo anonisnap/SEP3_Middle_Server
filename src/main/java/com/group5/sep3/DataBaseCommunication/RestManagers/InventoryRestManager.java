@@ -9,8 +9,10 @@ public interface InventoryRestManager extends RestManager<Inventory>{
 
 
 
-    List<Inventory> getByItemId(int itemId) throws RestClientException ;
+    List<Inventory> getByItemId(int itemId) throws RestClientException;
 
-    List<Inventory> getByLocationId(int locationId) throws RestClientException ;
+    List<Inventory> getByLocationId(int locationId) throws RestClientException;
+
+    List<Inventory> GetInventoryStock() throws RestClientException;
 
 }

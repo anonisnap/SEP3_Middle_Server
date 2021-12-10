@@ -14,8 +14,11 @@ import java.util.List;
 
 public class InventoryRestManagerImpl implements InventoryRestManager {
 
+
 	private final String ITEM_ID_URL = "/itemId/";
 	private final String LOCATION_ID_URL = "/locationId/";
+	private final String ALL_INVENTORY = "/all";
+	private final String STOCK_INVENTORY = "/stock";
 
 	@Override
 	public Inventory create(Inventory obj) {
@@ -44,7 +47,7 @@ ProjectUtil.testPrint("ItemLocation ID: " + objId);
 
 	@Override
 	public List<Inventory> getAll() {
-		String restUrl = Inventory.class.getSimpleName();
+		String restUrl = Inventory.class.getSimpleName() + ALL_INVENTORY;
 
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 
@@ -68,6 +71,15 @@ ProjectUtil.testPrint("ItemLocation ID: " + objId);
 	public List<Inventory> getByLocationId(int obj) throws RestClientException {
 		String restUrl = Inventory.class.getSimpleName() + LOCATION_ID_URL + obj;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
+		return getItemLocationsFromResponse(restResponse);
+	}
+
+	@Override
+	public List<Inventory> GetInventoryStock() throws RestClientException {
+		String restUrl = Inventory.class.getSimpleName() + STOCK_INVENTORY;
+
+		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
+
 		return getItemLocationsFromResponse(restResponse);
 	}
 

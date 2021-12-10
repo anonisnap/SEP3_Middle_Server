@@ -83,12 +83,37 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 	}
 
 	@Override
-	public void getAllInventorys(gInventory request, StreamObserver<gInventoryList> responseObserver) {
+	public void getAllInventory(gInventory request, StreamObserver<gInventoryList> responseObserver) {
 		List<gInventory> returnInventorys = new ArrayList<>();
 		Collection<Inventory> Inventorys;
 		// Parse Model Inventorys to gRPC Inventorys
 		try {
 			Inventorys = model.getAll();
+			for (Inventory Inventory : Inventorys) {
+				gInventory.Builder builder = gInventory.newBuilder();
+				parseAndMergeInventory(builder, Inventory);
+				returnInventorys.add(builder.build()); // THIS LIKELY WON'T WORK. UNSURE OF HOW PARSEFROM IS IMPLEMENTED
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// Create Response Object
+		gInventoryList.Builder response = gInventoryList.newBuilder();
+		// Add the gInventorys to the Response
+		response.addAllInventorys(returnInventorys); // Add Inventorys to Builder
+		// Link the Response to the Observer
+		responseObserver.onNext(response.build());
+		// Tell Observer the Method is finished, and let it return the Response
+		responseObserver.onCompleted();
+	}
+
+	@Override
+	public void getStockInventory(gInventory request, StreamObserver<gInventoryList> responseObserver) {
+		List<gInventory> returnInventorys = new ArrayList<>();
+		Collection<Inventory> Inventorys;
+		// Parse Model Inventorys to gRPC Inventorys
+		try {
+			Inventorys = model.getInventoryStock();
 			for (Inventory Inventory : Inventorys) {
 				gInventory.Builder builder = gInventory.newBuilder();
 				parseAndMergeInventory(builder, Inventory);
@@ -157,8 +182,6 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 			responseObserver.onError(new Throwable("Item Location was not removed"));
 			e.printStackTrace();
 		}
-
-
 	}
 
 	@Override
