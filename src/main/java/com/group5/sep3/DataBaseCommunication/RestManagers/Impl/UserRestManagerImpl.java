@@ -7,7 +7,7 @@ import com.group5.sep3.util.JsonHelper;
 import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class UserRestManagerImpl implements UserRestManager {
 
@@ -44,7 +44,7 @@ public class UserRestManagerImpl implements UserRestManager {
 	}
 
 	@Override
-	public List<User> getAll() throws RestClientException {
+	public ArrayList<User> getAll() throws RestClientException {
 		ProjectUtil.notImplemented();
 		return null;
 	}

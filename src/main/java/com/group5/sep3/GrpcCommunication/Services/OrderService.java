@@ -2,6 +2,8 @@ package com.group5.sep3.GrpcCommunication.Services;
 
 import Protos.ProtoUtil.*;
 import com.group5.sep3.BusinessLogic.LogicModels.OrderModel;
+import com.group5.sep3.BusinessLogic.model.Item;
+import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.BusinessLogic.model.Order;
 import com.group5.sep3.BusinessLogic.model.OrderEntry;
 import com.group5.sep3.util.ProjectUtil;
@@ -15,6 +17,7 @@ import java.util.List;
 
 
 public class OrderService extends OrderServiceImplBase {
+
     OrderModel orderModel;
 
     public OrderService(OrderModel orderModel) {
@@ -24,13 +27,11 @@ public class OrderService extends OrderServiceImplBase {
 
     @Override
     public void registerOrder(gOrder request, StreamObserver<gOrder> responseObserver) {
-        Order order = convertToOrder(request);
+        Order order = GrpcEntityConverter.FromGEntity.convertToOrder(request);
 
         try {
             Order result = orderModel.register(order);
-
-            gOrder gResult = ConvertToGOrder(result);
-
+            gOrder gResult = GrpcEntityConverter.FromEntity.convertToGOrder(result);
             responseObserver.onNext(gResult);
             responseObserver.onCompleted();
         } catch (Exception e) {
@@ -46,7 +47,7 @@ public class OrderService extends OrderServiceImplBase {
         try {
             Order result = orderModel.get(orderId);
 
-            gOrder gResult = ConvertToGOrder(result);
+            gOrder gResult = GrpcEntityConverter.FromEntity.convertToGOrder(result);
             responseObserver.onNext(gResult);
             responseObserver.onCompleted();
         } catch (Exception e) {
@@ -66,7 +67,7 @@ public class OrderService extends OrderServiceImplBase {
             List<gOrder> gOrders = new ArrayList<>();
 
             for (Order order : orders) {
-                gOrders.add(ConvertToGOrder(order));
+                gOrders.add(GrpcEntityConverter.FromEntity.convertToGOrder(order));
             }
 
             gOrderList returnOrderList = gOrderList.newBuilder().addAllOrders(gOrders).build();
@@ -83,11 +84,11 @@ public class OrderService extends OrderServiceImplBase {
 
     @Override
     public void updateOrder(gOrder request, StreamObserver<gOrder> responseObserver) {
-        Order orderToUpdate = convertToOrder(request);
+        Order orderToUpdate = GrpcEntityConverter.FromGEntity.convertToOrder(request);
         try {
             Order result = orderModel.update(orderToUpdate);
 
-            gOrder gOrder = ConvertToGOrder(result);
+            gOrder gOrder = GrpcEntityConverter.FromEntity.convertToGOrder(result);
 
             responseObserver.onNext(gOrder);
             responseObserver.onCompleted();
@@ -101,50 +102,6 @@ public class OrderService extends OrderServiceImplBase {
     @Override
     public void removeOrder(gOrderId request, StreamObserver<gBoolValue> responseObserver) {
         ProjectUtil.notImplemented();
-    }
-
-    private Order convertToOrder(gOrder request) {
-        Order order = new Order(request.getOrderNumber());
-        order.setOrderNumber(request.getOrderNumber());
-        order.setId(request.getId());
-
-        ArrayList<OrderEntry> orderEntries = new ArrayList<>();
-
-        for (gOrderEntry gOrderEntry : request.getOrderEntriesList()) {
-
-            OrderEntry orderEntry =
-                    new OrderEntry(gOrderEntry.getOrderId(),gOrderEntry.getAmount(),gOrderEntry.getItemId());
-
-            orderEntries.add(orderEntry);
-        }
-
-        order.setOrderEntries(orderEntries);
-        ProjectUtil.testPrint(order.toString());
-        return order;
-
-    }
-
-    private gOrder ConvertToGOrder(Order order) {
-        // list for generated gOrder entries
-        ArrayList<gOrderEntry> gOrderEntries = new ArrayList<>();
-
-
-        for (OrderEntry orderEntry : order.getOrderEntries()) {
-            // building ever gOrder entry from order entry
-            gOrderEntry buildGOrderEntry = gOrderEntry
-                    .newBuilder()
-                    .setOrderId(orderEntry.getOrderId())
-                    .setAmount(orderEntry.getAmount())
-                    .setItemId(orderEntry.getItemId()).build();
-            // add to list
-            gOrderEntries.add(buildGOrderEntry);
-        }
-        //
-        // build order and return
-        return gOrder.newBuilder()
-                .setId(order.getId())
-                .addAllOrderEntries(gOrderEntries)
-                .setOrderNumber(order.getOrderNumber()).build();
     }
 
 }

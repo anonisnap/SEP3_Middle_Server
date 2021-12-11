@@ -46,12 +46,12 @@ ProjectUtil.testPrint("ItemLocation ID: " + objId);
 	}
 
 	@Override
-	public List<Inventory> getAll() {
+	public ArrayList<Inventory> getAll() {
 		String restUrl = Inventory.class.getSimpleName() + ALL_INVENTORY;
 
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 
-		return getItemLocationsFromResponse(restResponse);
+		return (ArrayList<Inventory>) getItemLocationsFromResponse(restResponse);
 	}
 
 	@Override

@@ -5,14 +5,13 @@ public class OrderEntry {
 
     private int orderId;
     private int amount;
+    private Item item;
 
-    private int itemId;
 
-
-    public OrderEntry(int orderId, int amount, int itemId) {
+    public OrderEntry(int orderId, int amount, Item item) {
         this.orderId = orderId;
         this.amount = amount;
-        this.itemId = itemId;
+        this.item = item;
     }
 
     public int getOrderId() {
@@ -23,10 +22,6 @@ public class OrderEntry {
         return amount;
     }
 
-    public int getItemId() {
-        return itemId;
-    }
-
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
@@ -35,7 +30,19 @@ public class OrderEntry {
         this.amount = amount;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderEntry{" +
+                "amount=" + amount +
+                ", item=" + item +
+                '}';
     }
 }

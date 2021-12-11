@@ -3,9 +3,8 @@ package com.group5.sep3.BusinessLogic.LogicModels.impl;
 import com.group5.sep3.BusinessLogic.LogicModels.InventoryModel;
 import com.group5.sep3.BusinessLogic.model.Inventory;
 import com.group5.sep3.DataBaseCommunication.RestManagers.InventoryRestManager;
-import org.springframework.web.client.RestClientException;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryModelImpl implements InventoryModel {
@@ -104,7 +103,7 @@ public class InventoryModelImpl implements InventoryModel {
 }
 
     @Override
-    public Collection<Inventory> getAll() throws Exception {
+    public ArrayList<Inventory> getAll() throws Exception {
         return inventoryRestManager.getAll();
     }
 

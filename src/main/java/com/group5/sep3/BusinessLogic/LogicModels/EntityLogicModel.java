@@ -1,4 +1,6 @@
 package com.group5.sep3.BusinessLogic.LogicModels;
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public interface EntityLogicModel<TEntity> extends LogicModel{
@@ -9,7 +11,7 @@ public interface EntityLogicModel<TEntity> extends LogicModel{
 
     TEntity update(TEntity entity) throws Exception;
 
-    Collection<TEntity> getAll() throws Exception;
+    ArrayList<TEntity> getAll() throws Exception;
 
     boolean remove(int entity) throws Exception;
 

@@ -51,6 +51,19 @@ public final class OrderServiceOuterClass {
      */
     protos.OrderServiceOuterClass.gOrderEntryOrBuilder getOrderEntriesOrBuilder(
         int index);
+
+    /**
+     * <code>.Protos.gLocation orderLocation = 4;</code>
+     */
+    boolean hasOrderLocation();
+    /**
+     * <code>.Protos.gLocation orderLocation = 4;</code>
+     */
+    protos.LocationServiceOuterClass.gLocation getOrderLocation();
+    /**
+     * <code>.Protos.gLocation orderLocation = 4;</code>
+     */
+    protos.LocationServiceOuterClass.gLocationOrBuilder getOrderLocationOrBuilder();
   }
   /**
    * Protobuf type {@code Protos.gOrder}
@@ -111,6 +124,19 @@ public final class OrderServiceOuterClass {
               }
               orderEntries_.add(
                   input.readMessage(protos.OrderServiceOuterClass.gOrderEntry.parser(), extensionRegistry));
+              break;
+            }
+            case 34: {
+              protos.LocationServiceOuterClass.gLocation.Builder subBuilder = null;
+              if (orderLocation_ != null) {
+                subBuilder = orderLocation_.toBuilder();
+              }
+              orderLocation_ = input.readMessage(protos.LocationServiceOuterClass.gLocation.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(orderLocation_);
+                orderLocation_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -202,6 +228,27 @@ public final class OrderServiceOuterClass {
       return orderEntries_.get(index);
     }
 
+    public static final int ORDERLOCATION_FIELD_NUMBER = 4;
+    private protos.LocationServiceOuterClass.gLocation orderLocation_;
+    /**
+     * <code>.Protos.gLocation orderLocation = 4;</code>
+     */
+    public boolean hasOrderLocation() {
+      return orderLocation_ != null;
+    }
+    /**
+     * <code>.Protos.gLocation orderLocation = 4;</code>
+     */
+    public protos.LocationServiceOuterClass.gLocation getOrderLocation() {
+      return orderLocation_ == null ? protos.LocationServiceOuterClass.gLocation.getDefaultInstance() : orderLocation_;
+    }
+    /**
+     * <code>.Protos.gLocation orderLocation = 4;</code>
+     */
+    public protos.LocationServiceOuterClass.gLocationOrBuilder getOrderLocationOrBuilder() {
+      return getOrderLocation();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -225,6 +272,9 @@ public final class OrderServiceOuterClass {
       for (int i = 0; i < orderEntries_.size(); i++) {
         output.writeMessage(3, orderEntries_.get(i));
       }
+      if (orderLocation_ != null) {
+        output.writeMessage(4, getOrderLocation());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -245,6 +295,10 @@ public final class OrderServiceOuterClass {
       for (int i = 0; i < orderEntries_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, orderEntries_.get(i));
+      }
+      if (orderLocation_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getOrderLocation());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -268,6 +322,11 @@ public final class OrderServiceOuterClass {
           == other.getOrderNumber());
       result = result && getOrderEntriesList()
           .equals(other.getOrderEntriesList());
+      result = result && (hasOrderLocation() == other.hasOrderLocation());
+      if (hasOrderLocation()) {
+        result = result && getOrderLocation()
+            .equals(other.getOrderLocation());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -286,6 +345,10 @@ public final class OrderServiceOuterClass {
       if (getOrderEntriesCount() > 0) {
         hash = (37 * hash) + ORDERENTRIES_FIELD_NUMBER;
         hash = (53 * hash) + getOrderEntriesList().hashCode();
+      }
+      if (hasOrderLocation()) {
+        hash = (37 * hash) + ORDERLOCATION_FIELD_NUMBER;
+        hash = (53 * hash) + getOrderLocation().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -431,6 +494,12 @@ public final class OrderServiceOuterClass {
         } else {
           orderEntriesBuilder_.clear();
         }
+        if (orderLocationBuilder_ == null) {
+          orderLocation_ = null;
+        } else {
+          orderLocation_ = null;
+          orderLocationBuilder_ = null;
+        }
         return this;
       }
 
@@ -469,6 +538,11 @@ public final class OrderServiceOuterClass {
           result.orderEntries_ = orderEntries_;
         } else {
           result.orderEntries_ = orderEntriesBuilder_.build();
+        }
+        if (orderLocationBuilder_ == null) {
+          result.orderLocation_ = orderLocation_;
+        } else {
+          result.orderLocation_ = orderLocationBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -550,6 +624,9 @@ public final class OrderServiceOuterClass {
               orderEntriesBuilder_.addAllMessages(other.orderEntries_);
             }
           }
+        }
+        if (other.hasOrderLocation()) {
+          mergeOrderLocation(other.getOrderLocation());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -872,6 +949,123 @@ public final class OrderServiceOuterClass {
         }
         return orderEntriesBuilder_;
       }
+
+      private protos.LocationServiceOuterClass.gLocation orderLocation_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protos.LocationServiceOuterClass.gLocation, protos.LocationServiceOuterClass.gLocation.Builder, protos.LocationServiceOuterClass.gLocationOrBuilder> orderLocationBuilder_;
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public boolean hasOrderLocation() {
+        return orderLocationBuilder_ != null || orderLocation_ != null;
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public protos.LocationServiceOuterClass.gLocation getOrderLocation() {
+        if (orderLocationBuilder_ == null) {
+          return orderLocation_ == null ? protos.LocationServiceOuterClass.gLocation.getDefaultInstance() : orderLocation_;
+        } else {
+          return orderLocationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public Builder setOrderLocation(protos.LocationServiceOuterClass.gLocation value) {
+        if (orderLocationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          orderLocation_ = value;
+          onChanged();
+        } else {
+          orderLocationBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public Builder setOrderLocation(
+          protos.LocationServiceOuterClass.gLocation.Builder builderForValue) {
+        if (orderLocationBuilder_ == null) {
+          orderLocation_ = builderForValue.build();
+          onChanged();
+        } else {
+          orderLocationBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public Builder mergeOrderLocation(protos.LocationServiceOuterClass.gLocation value) {
+        if (orderLocationBuilder_ == null) {
+          if (orderLocation_ != null) {
+            orderLocation_ =
+              protos.LocationServiceOuterClass.gLocation.newBuilder(orderLocation_).mergeFrom(value).buildPartial();
+          } else {
+            orderLocation_ = value;
+          }
+          onChanged();
+        } else {
+          orderLocationBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public Builder clearOrderLocation() {
+        if (orderLocationBuilder_ == null) {
+          orderLocation_ = null;
+          onChanged();
+        } else {
+          orderLocation_ = null;
+          orderLocationBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public protos.LocationServiceOuterClass.gLocation.Builder getOrderLocationBuilder() {
+        
+        onChanged();
+        return getOrderLocationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      public protos.LocationServiceOuterClass.gLocationOrBuilder getOrderLocationOrBuilder() {
+        if (orderLocationBuilder_ != null) {
+          return orderLocationBuilder_.getMessageOrBuilder();
+        } else {
+          return orderLocation_ == null ?
+              protos.LocationServiceOuterClass.gLocation.getDefaultInstance() : orderLocation_;
+        }
+      }
+      /**
+       * <code>.Protos.gLocation orderLocation = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protos.LocationServiceOuterClass.gLocation, protos.LocationServiceOuterClass.gLocation.Builder, protos.LocationServiceOuterClass.gLocationOrBuilder> 
+          getOrderLocationFieldBuilder() {
+        if (orderLocationBuilder_ == null) {
+          orderLocationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protos.LocationServiceOuterClass.gLocation, protos.LocationServiceOuterClass.gLocation.Builder, protos.LocationServiceOuterClass.gLocationOrBuilder>(
+                  getOrderLocation(),
+                  getParentForChildren(),
+                  isClean());
+          orderLocation_ = null;
+        }
+        return orderLocationBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -930,19 +1124,32 @@ public final class OrderServiceOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 OrderId = 1;</code>
+     * <code>int32 Id = 1;</code>
+     */
+    int getId();
+
+    /**
+     * <code>int32 OrderId = 2;</code>
      */
     int getOrderId();
 
     /**
-     * <code>int32 Amount = 2;</code>
+     * <code>int32 Amount = 3;</code>
      */
     int getAmount();
 
     /**
-     * <code>int32 ItemId = 3;</code>
+     * <code>.Protos.gItem Item = 4;</code>
      */
-    int getItemId();
+    boolean hasItem();
+    /**
+     * <code>.Protos.gItem Item = 4;</code>
+     */
+    protos.ItemServiceOuterClass.gItem getItem();
+    /**
+     * <code>.Protos.gItem Item = 4;</code>
+     */
+    protos.ItemServiceOuterClass.gItemOrBuilder getItemOrBuilder();
   }
   /**
    * Protobuf type {@code Protos.gOrderEntry}
@@ -957,9 +1164,9 @@ public final class OrderServiceOuterClass {
       super(builder);
     }
     private gOrderEntry() {
+      id_ = 0;
       orderId_ = 0;
       amount_ = 0;
-      itemId_ = 0;
     }
 
     @java.lang.Override
@@ -988,17 +1195,30 @@ public final class OrderServiceOuterClass {
               break;
             case 8: {
 
-              orderId_ = input.readInt32();
+              id_ = input.readInt32();
               break;
             }
             case 16: {
 
-              amount_ = input.readInt32();
+              orderId_ = input.readInt32();
               break;
             }
             case 24: {
 
-              itemId_ = input.readInt32();
+              amount_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              protos.ItemServiceOuterClass.gItem.Builder subBuilder = null;
+              if (item_ != null) {
+                subBuilder = item_.toBuilder();
+              }
+              item_ = input.readMessage(protos.ItemServiceOuterClass.gItem.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(item_);
+                item_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -1033,31 +1253,52 @@ public final class OrderServiceOuterClass {
               protos.OrderServiceOuterClass.gOrderEntry.class, protos.OrderServiceOuterClass.gOrderEntry.Builder.class);
     }
 
-    public static final int ORDERID_FIELD_NUMBER = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 Id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    public static final int ORDERID_FIELD_NUMBER = 2;
     private int orderId_;
     /**
-     * <code>int32 OrderId = 1;</code>
+     * <code>int32 OrderId = 2;</code>
      */
     public int getOrderId() {
       return orderId_;
     }
 
-    public static final int AMOUNT_FIELD_NUMBER = 2;
+    public static final int AMOUNT_FIELD_NUMBER = 3;
     private int amount_;
     /**
-     * <code>int32 Amount = 2;</code>
+     * <code>int32 Amount = 3;</code>
      */
     public int getAmount() {
       return amount_;
     }
 
-    public static final int ITEMID_FIELD_NUMBER = 3;
-    private int itemId_;
+    public static final int ITEM_FIELD_NUMBER = 4;
+    private protos.ItemServiceOuterClass.gItem item_;
     /**
-     * <code>int32 ItemId = 3;</code>
+     * <code>.Protos.gItem Item = 4;</code>
      */
-    public int getItemId() {
-      return itemId_;
+    public boolean hasItem() {
+      return item_ != null;
+    }
+    /**
+     * <code>.Protos.gItem Item = 4;</code>
+     */
+    public protos.ItemServiceOuterClass.gItem getItem() {
+      return item_ == null ? protos.ItemServiceOuterClass.gItem.getDefaultInstance() : item_;
+    }
+    /**
+     * <code>.Protos.gItem Item = 4;</code>
+     */
+    public protos.ItemServiceOuterClass.gItemOrBuilder getItemOrBuilder() {
+      return getItem();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1074,14 +1315,17 @@ public final class OrderServiceOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
       if (orderId_ != 0) {
-        output.writeInt32(1, orderId_);
+        output.writeInt32(2, orderId_);
       }
       if (amount_ != 0) {
-        output.writeInt32(2, amount_);
+        output.writeInt32(3, amount_);
       }
-      if (itemId_ != 0) {
-        output.writeInt32(3, itemId_);
+      if (item_ != null) {
+        output.writeMessage(4, getItem());
       }
       unknownFields.writeTo(output);
     }
@@ -1092,17 +1336,21 @@ public final class OrderServiceOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
       if (orderId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, orderId_);
+          .computeInt32Size(2, orderId_);
       }
       if (amount_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, amount_);
+          .computeInt32Size(3, amount_);
       }
-      if (itemId_ != 0) {
+      if (item_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, itemId_);
+          .computeMessageSize(4, getItem());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1120,12 +1368,17 @@ public final class OrderServiceOuterClass {
       protos.OrderServiceOuterClass.gOrderEntry other = (protos.OrderServiceOuterClass.gOrderEntry) obj;
 
       boolean result = true;
+      result = result && (getId()
+          == other.getId());
       result = result && (getOrderId()
           == other.getOrderId());
       result = result && (getAmount()
           == other.getAmount());
-      result = result && (getItemId()
-          == other.getItemId());
+      result = result && (hasItem() == other.hasItem());
+      if (hasItem()) {
+        result = result && getItem()
+            .equals(other.getItem());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1137,12 +1390,16 @@ public final class OrderServiceOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
       hash = (37 * hash) + ORDERID_FIELD_NUMBER;
       hash = (53 * hash) + getOrderId();
       hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
       hash = (53 * hash) + getAmount();
-      hash = (37 * hash) + ITEMID_FIELD_NUMBER;
-      hash = (53 * hash) + getItemId();
+      if (hasItem()) {
+        hash = (37 * hash) + ITEM_FIELD_NUMBER;
+        hash = (53 * hash) + getItem().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1276,12 +1533,18 @@ public final class OrderServiceOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        id_ = 0;
+
         orderId_ = 0;
 
         amount_ = 0;
 
-        itemId_ = 0;
-
+        if (itemBuilder_ == null) {
+          item_ = null;
+        } else {
+          item_ = null;
+          itemBuilder_ = null;
+        }
         return this;
       }
 
@@ -1308,9 +1571,14 @@ public final class OrderServiceOuterClass {
       @java.lang.Override
       public protos.OrderServiceOuterClass.gOrderEntry buildPartial() {
         protos.OrderServiceOuterClass.gOrderEntry result = new protos.OrderServiceOuterClass.gOrderEntry(this);
+        result.id_ = id_;
         result.orderId_ = orderId_;
         result.amount_ = amount_;
-        result.itemId_ = itemId_;
+        if (itemBuilder_ == null) {
+          result.item_ = item_;
+        } else {
+          result.item_ = itemBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -1359,14 +1627,17 @@ public final class OrderServiceOuterClass {
 
       public Builder mergeFrom(protos.OrderServiceOuterClass.gOrderEntry other) {
         if (other == protos.OrderServiceOuterClass.gOrderEntry.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
         if (other.getOrderId() != 0) {
           setOrderId(other.getOrderId());
         }
         if (other.getAmount() != 0) {
           setAmount(other.getAmount());
         }
-        if (other.getItemId() != 0) {
-          setItemId(other.getItemId());
+        if (other.hasItem()) {
+          mergeItem(other.getItem());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1397,15 +1668,41 @@ public final class OrderServiceOuterClass {
         return this;
       }
 
+      private int id_ ;
+      /**
+       * <code>int32 Id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 Id = 1;</code>
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 Id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
       private int orderId_ ;
       /**
-       * <code>int32 OrderId = 1;</code>
+       * <code>int32 OrderId = 2;</code>
        */
       public int getOrderId() {
         return orderId_;
       }
       /**
-       * <code>int32 OrderId = 1;</code>
+       * <code>int32 OrderId = 2;</code>
        */
       public Builder setOrderId(int value) {
         
@@ -1414,7 +1711,7 @@ public final class OrderServiceOuterClass {
         return this;
       }
       /**
-       * <code>int32 OrderId = 1;</code>
+       * <code>int32 OrderId = 2;</code>
        */
       public Builder clearOrderId() {
         
@@ -1425,13 +1722,13 @@ public final class OrderServiceOuterClass {
 
       private int amount_ ;
       /**
-       * <code>int32 Amount = 2;</code>
+       * <code>int32 Amount = 3;</code>
        */
       public int getAmount() {
         return amount_;
       }
       /**
-       * <code>int32 Amount = 2;</code>
+       * <code>int32 Amount = 3;</code>
        */
       public Builder setAmount(int value) {
         
@@ -1440,7 +1737,7 @@ public final class OrderServiceOuterClass {
         return this;
       }
       /**
-       * <code>int32 Amount = 2;</code>
+       * <code>int32 Amount = 3;</code>
        */
       public Builder clearAmount() {
         
@@ -1449,30 +1746,121 @@ public final class OrderServiceOuterClass {
         return this;
       }
 
-      private int itemId_ ;
+      private protos.ItemServiceOuterClass.gItem item_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protos.ItemServiceOuterClass.gItem, protos.ItemServiceOuterClass.gItem.Builder, protos.ItemServiceOuterClass.gItemOrBuilder> itemBuilder_;
       /**
-       * <code>int32 ItemId = 3;</code>
+       * <code>.Protos.gItem Item = 4;</code>
        */
-      public int getItemId() {
-        return itemId_;
+      public boolean hasItem() {
+        return itemBuilder_ != null || item_ != null;
       }
       /**
-       * <code>int32 ItemId = 3;</code>
+       * <code>.Protos.gItem Item = 4;</code>
        */
-      public Builder setItemId(int value) {
-        
-        itemId_ = value;
-        onChanged();
+      public protos.ItemServiceOuterClass.gItem getItem() {
+        if (itemBuilder_ == null) {
+          return item_ == null ? protos.ItemServiceOuterClass.gItem.getDefaultInstance() : item_;
+        } else {
+          return itemBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Protos.gItem Item = 4;</code>
+       */
+      public Builder setItem(protos.ItemServiceOuterClass.gItem value) {
+        if (itemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          item_ = value;
+          onChanged();
+        } else {
+          itemBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>int32 ItemId = 3;</code>
+       * <code>.Protos.gItem Item = 4;</code>
        */
-      public Builder clearItemId() {
-        
-        itemId_ = 0;
-        onChanged();
+      public Builder setItem(
+          protos.ItemServiceOuterClass.gItem.Builder builderForValue) {
+        if (itemBuilder_ == null) {
+          item_ = builderForValue.build();
+          onChanged();
+        } else {
+          itemBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <code>.Protos.gItem Item = 4;</code>
+       */
+      public Builder mergeItem(protos.ItemServiceOuterClass.gItem value) {
+        if (itemBuilder_ == null) {
+          if (item_ != null) {
+            item_ =
+              protos.ItemServiceOuterClass.gItem.newBuilder(item_).mergeFrom(value).buildPartial();
+          } else {
+            item_ = value;
+          }
+          onChanged();
+        } else {
+          itemBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Protos.gItem Item = 4;</code>
+       */
+      public Builder clearItem() {
+        if (itemBuilder_ == null) {
+          item_ = null;
+          onChanged();
+        } else {
+          item_ = null;
+          itemBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Protos.gItem Item = 4;</code>
+       */
+      public protos.ItemServiceOuterClass.gItem.Builder getItemBuilder() {
+        
+        onChanged();
+        return getItemFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Protos.gItem Item = 4;</code>
+       */
+      public protos.ItemServiceOuterClass.gItemOrBuilder getItemOrBuilder() {
+        if (itemBuilder_ != null) {
+          return itemBuilder_.getMessageOrBuilder();
+        } else {
+          return item_ == null ?
+              protos.ItemServiceOuterClass.gItem.getDefaultInstance() : item_;
+        }
+      }
+      /**
+       * <code>.Protos.gItem Item = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          protos.ItemServiceOuterClass.gItem, protos.ItemServiceOuterClass.gItem.Builder, protos.ItemServiceOuterClass.gItemOrBuilder> 
+          getItemFieldBuilder() {
+        if (itemBuilder_ == null) {
+          itemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              protos.ItemServiceOuterClass.gItem, protos.ItemServiceOuterClass.gItem.Builder, protos.ItemServiceOuterClass.gItemOrBuilder>(
+                  getItem(),
+                  getParentForChildren(),
+                  isClean());
+          item_ = null;
+        }
+        return itemBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2815,20 +3203,22 @@ public final class OrderServiceOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\022OrderService.proto\022\006Protos\032\017ProtoUtil." +
-      "proto\"T\n\006gOrder\022\n\n\002Id\030\001 \001(\005\022\023\n\013OrderNumb" +
-      "er\030\002 \001(\005\022)\n\014orderEntries\030\003 \003(\0132\023.Protos." +
-      "gOrderEntry\">\n\013gOrderEntry\022\017\n\007OrderId\030\001 " +
-      "\001(\005\022\016\n\006Amount\030\002 \001(\005\022\016\n\006ItemId\030\003 \001(\005\",\n\ng" +
-      "OrderList\022\036\n\006orders\030\001 \003(\0132\016.Protos.gOrde" +
-      "r\"\033\n\010gOrderId\022\017\n\007orderId\030\001 \001(\0052\205\002\n\014Order" +
-      "Service\022/\n\rRegisterOrder\022\016.Protos.gOrder" +
-      "\032\016.Protos.gOrder\022,\n\010GetOrder\022\020.Protos.gO" +
-      "rderId\032\016.Protos.gOrder\0222\n\014GetAllOrders\022\016" +
-      ".Protos.gOrder\032\022.Protos.gOrderList\022-\n\013Up" +
-      "dateOrder\022\016.Protos.gOrder\032\016.Protos.gOrde" +
-      "r\0223\n\013RemoveOrder\022\020.Protos.gOrderId\032\022.Pro" +
-      "tos.gBoolValueB\021\n\006protos\252\002\006myGrpcb\006proto" +
-      "3"
+      "proto\032\025LocationService.proto\032\021ItemServic" +
+      "e.proto\"~\n\006gOrder\022\n\n\002Id\030\001 \001(\005\022\023\n\013OrderNu" +
+      "mber\030\002 \001(\005\022)\n\014orderEntries\030\003 \003(\0132\023.Proto" +
+      "s.gOrderEntry\022(\n\rorderLocation\030\004 \001(\0132\021.P" +
+      "rotos.gLocation\"W\n\013gOrderEntry\022\n\n\002Id\030\001 \001" +
+      "(\005\022\017\n\007OrderId\030\002 \001(\005\022\016\n\006Amount\030\003 \001(\005\022\033\n\004I" +
+      "tem\030\004 \001(\0132\r.Protos.gItem\",\n\ngOrderList\022\036" +
+      "\n\006orders\030\001 \003(\0132\016.Protos.gOrder\"\033\n\010gOrder" +
+      "Id\022\017\n\007orderId\030\001 \001(\0052\205\002\n\014OrderService\022/\n\r" +
+      "RegisterOrder\022\016.Protos.gOrder\032\016.Protos.g" +
+      "Order\022,\n\010GetOrder\022\020.Protos.gOrderId\032\016.Pr" +
+      "otos.gOrder\0222\n\014GetAllOrders\022\016.Protos.gOr" +
+      "der\032\022.Protos.gOrderList\022-\n\013UpdateOrder\022\016" +
+      ".Protos.gOrder\032\016.Protos.gOrder\0223\n\013Remove" +
+      "Order\022\020.Protos.gOrderId\032\022.Protos.gBoolVa" +
+      "lueB\021\n\006protos\252\002\006myGrpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2842,19 +3232,21 @@ public final class OrderServiceOuterClass {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           Protos.ProtoUtil.getDescriptor(),
+          protos.LocationServiceOuterClass.getDescriptor(),
+          protos.ItemServiceOuterClass.getDescriptor(),
         }, assigner);
     internal_static_Protos_gOrder_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_Protos_gOrder_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Protos_gOrder_descriptor,
-        new java.lang.String[] { "Id", "OrderNumber", "OrderEntries", });
+        new java.lang.String[] { "Id", "OrderNumber", "OrderEntries", "OrderLocation", });
     internal_static_Protos_gOrderEntry_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Protos_gOrderEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Protos_gOrderEntry_descriptor,
-        new java.lang.String[] { "OrderId", "Amount", "ItemId", });
+        new java.lang.String[] { "Id", "OrderId", "Amount", "Item", });
     internal_static_Protos_gOrderList_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Protos_gOrderList_fieldAccessorTable = new
@@ -2868,6 +3260,8 @@ public final class OrderServiceOuterClass {
         internal_static_Protos_gOrderId_descriptor,
         new java.lang.String[] { "OrderId", });
     Protos.ProtoUtil.getDescriptor();
+    protos.LocationServiceOuterClass.getDescriptor();
+    protos.ItemServiceOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -4,7 +4,7 @@ import com.group5.sep3.BusinessLogic.LogicModels.LocationModel;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class LocationModelImpl implements LocationModel {
 	private final RestManager<Location> locationRestManager;
@@ -28,7 +28,7 @@ public class LocationModelImpl implements LocationModel {
 	}
 
 	@Override
-	public List<Location> getAll() {
+	public ArrayList<Location> getAll() {
 		return locationRestManager.getAll();
 	}
 

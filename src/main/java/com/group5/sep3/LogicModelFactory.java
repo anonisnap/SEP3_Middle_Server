@@ -6,6 +6,7 @@ import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.BusinessLogic.model.Order;
 import com.group5.sep3.DataBaseCommunication.RestManagers.InventoryRestManager;
+import com.group5.sep3.DataBaseCommunication.RestManagers.OrderRestManager;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.DataBaseCommunication.RestManagers.UserRestManager;
 import com.group5.sep3.util.EntityTypes;
@@ -27,7 +28,7 @@ public class LogicModelFactory {
 		modelMap.put(EntityTypes.ITEM, new ItemModelImpl((RestManager<Item>) RestManagerFactory.getInstance().getRestManager(EntityTypes.ITEM)));
 		modelMap.put(EntityTypes.LOCATION, new LocationModelImpl((RestManager<Location>) RestManagerFactory.getInstance().getRestManager(EntityTypes.LOCATION)));
 		modelMap.put(EntityTypes.INVENTORY, new InventoryModelImpl((InventoryRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.INVENTORY)));
-		modelMap.put(EntityTypes.ORDER, new OrderModelImpl((RestManager<Order>) RestManagerFactory.getInstance().getRestManager(EntityTypes.ORDER)));
+		modelMap.put(EntityTypes.ORDER, new OrderModelImpl((OrderRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.ORDER)));
 		modelMap.put(EntityTypes.USER, new UserModelImpl((UserRestManager) RestManagerFactory.getInstance().getRestManager(EntityTypes.USER)));
 
 		StringBuilder debug = new StringBuilder();

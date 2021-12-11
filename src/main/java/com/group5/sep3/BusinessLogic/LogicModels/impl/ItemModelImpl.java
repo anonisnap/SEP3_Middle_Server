@@ -4,7 +4,7 @@ import com.group5.sep3.BusinessLogic.LogicModels.ItemModel;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ItemModelImpl implements ItemModel {
 
@@ -30,7 +30,7 @@ public class ItemModelImpl implements ItemModel {
 	}
 
 	@Override
-	public List<Item> getAll() {
+	public ArrayList<Item> getAll() {
 		return itemRestManager.getAll();
 	}
 

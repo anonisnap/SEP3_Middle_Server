@@ -3,15 +3,18 @@ package com.group5.sep3.DataBaseCommunication.RestManagers.Impl;
 import com.google.gson.reflect.TypeToken;
 import com.group5.sep3.BusinessLogic.model.Order;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
+import com.group5.sep3.DataBaseCommunication.RestManagers.OrderRestManager;
 import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.JsonHelper;
+import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
-public class OrderRestManagerImpl implements RestManager<Order> {
+public class OrderRestManagerImpl implements OrderRestManager {
+
+    public static final String LATEST_ORDER_NUMBER = "/latestOrderNumber";
 
     @Override
     public Order create(Order order) throws RestClientException {
@@ -35,7 +38,7 @@ public class OrderRestManagerImpl implements RestManager<Order> {
     }
 
     @Override
-    public List<Order> getAll() throws RestClientException {
+    public ArrayList<Order> getAll() throws RestClientException {
         String restUrl = Order.class.getSimpleName();
 
         String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
@@ -53,4 +56,12 @@ public class OrderRestManagerImpl implements RestManager<Order> {
         return RestClientImpl.getInstance().delete(restUrl);
     }
 
+    @Override
+    public int getLatestOrderNumber() {
+        String restUrl =  Order.class.getSimpleName() + LATEST_ORDER_NUMBER;
+
+        String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
+
+        return  JsonHelper.fromJson(jsonString, Integer.class);
+    }
 }

@@ -8,7 +8,6 @@ import com.group5.sep3.util.JsonHelper;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ItemRestManagerImpl implements RestManager<Item> {
 
@@ -37,7 +36,7 @@ public class ItemRestManagerImpl implements RestManager<Item> {
 	}
 
 	@Override
-	public List<Item> getAll() {
+	public ArrayList<Item> getAll() {
 		String restUrl = Item.class.getSimpleName();
 		String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
 		Type type = new TypeToken<ArrayList<Item>>() {
