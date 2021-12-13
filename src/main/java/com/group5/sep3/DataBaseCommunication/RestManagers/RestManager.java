@@ -3,7 +3,6 @@ package com.group5.sep3.DataBaseCommunication.RestManagers;
 import org.springframework.web.client.RestClientException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface RestManager<T> {
 
