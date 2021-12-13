@@ -147,10 +147,7 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 			responseObserver.onError(e);
 			e.printStackTrace();
 		}
-
-
 	}
-
 
 	@Override
 	public void removeInventory(gInventoryId request, StreamObserver<gBoolValue> responseObserver) {
@@ -253,7 +250,12 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 	}
 
 	private gItem.Builder parseAndMergeItem(gItem.Builder builder, Item item) {
-		return builder.setId(item.getId()).setItemName(item.getItemName()).setHeight(item.getHeight()).setLength(item.getLength()).setWidth(item.getWidth()).setWeight(item.getWeight());
+		return builder.setId(item.getId())
+				.setItemName(item.getItemName())
+				.setHeight(item.getHeight())
+				.setLength(item.getLength())
+				.setWidth(item.getWidth())
+				.setWeight(item.getWeight());
 	}
 
 	private gLocation.Builder parseAndMergeLocation(gLocation.Builder builder, Location location) {
