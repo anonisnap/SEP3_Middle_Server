@@ -99,7 +99,8 @@ public class InventoryModelImpl implements InventoryModel {
         }
 
         //Same amount moved as on old Location, just update location
-        return inventoryRestManager.update(inventory);
+        inventoryRestManager.delete(inventory.getId());
+        return inventoryRestManager.create(inventory);
 }
 
     @Override

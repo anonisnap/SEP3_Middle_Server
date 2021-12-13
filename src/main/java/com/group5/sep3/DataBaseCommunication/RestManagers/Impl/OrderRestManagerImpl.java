@@ -2,9 +2,9 @@ package com.group5.sep3.DataBaseCommunication.RestManagers.Impl;
 
 import com.google.gson.reflect.TypeToken;
 import com.group5.sep3.BusinessLogic.model.Order;
+import com.group5.sep3.BusinessLogic.model.OrderEntry;
 import com.group5.sep3.DataBaseCommunication.RestClientImpl;
 import com.group5.sep3.DataBaseCommunication.RestManagers.OrderRestManager;
-import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
 import com.group5.sep3.util.JsonHelper;
 import com.group5.sep3.util.ProjectUtil;
 import org.springframework.web.client.RestClientException;
@@ -19,15 +19,18 @@ public class OrderRestManagerImpl implements OrderRestManager {
     @Override
     public Order create(Order order) throws RestClientException {
         String restUrl = order.getClass().getSimpleName() + RestClientImpl.ADD_URL;
-        String restRespone = (String) RestClientImpl.getInstance().post(restUrl,order);
+        String restRespone = (String) RestClientImpl.getInstance().post(restUrl, order);
         return JsonHelper.fromJson(restRespone, Order.class);
     }
 
     @Override
     public Order update(Order order) throws RestClientException {
+
+
         String restUrl = order.getClass().getSimpleName() + RestClientImpl.UPDATE_URL;
-        String restRespone = (String) RestClientImpl.getInstance().post(restUrl,order);
+        String restRespone = (String) RestClientImpl.getInstance().post(restUrl, order);
         return JsonHelper.fromJson(restRespone, Order.class);
+
     }
 
     @Override
@@ -58,10 +61,10 @@ public class OrderRestManagerImpl implements OrderRestManager {
 
     @Override
     public int getLatestOrderNumber() {
-        String restUrl =  Order.class.getSimpleName() + LATEST_ORDER_NUMBER;
+        String restUrl = Order.class.getSimpleName() + LATEST_ORDER_NUMBER;
 
         String jsonString = (String) RestClientImpl.getInstance().get(restUrl);
 
-        return  JsonHelper.fromJson(jsonString, Integer.class);
+        return JsonHelper.fromJson(jsonString, Integer.class);
     }
 }

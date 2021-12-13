@@ -1,5 +1,8 @@
 package com.group5.sep3.DataBaseCommunication;
 
+import com.group5.sep3.BusinessLogic.model.Order;
+import com.group5.sep3.BusinessLogic.model.OrderEntry;
+import com.group5.sep3.util.JsonHelper;
 import com.group5.sep3.util.ProjectUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
@@ -38,7 +41,6 @@ public class RestClientImpl implements RestClient {
 	@Override
 	public Object post(String restUrl, Object obj) throws RestClientException {
 		try {
-			//return rest.postForObject(ROOT + restUrl, obj, obj.getClass());
 			return rest.postForEntity(ROOT + restUrl, obj, String.class).getBody();
 		} catch (RestClientException e) {
 			e.printStackTrace();
@@ -52,7 +54,7 @@ public class RestClientImpl implements RestClient {
 
 			return rest.getForEntity(ROOT + restUrl, String.class).getBody();
 		} catch (RestClientException e) {
-			ProjectUtil.testPrint("Could not get item " + e.getMessage());
+			ProjectUtil.testPrint("Could not get " + e.getMessage());
 			e.printStackTrace();
 			return null;
 		}

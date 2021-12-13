@@ -1,9 +1,7 @@
 package com.group5.sep3.GrpcCommunication.Services;
 
-import com.group5.sep3.BusinessLogic.model.Item;
-import com.group5.sep3.BusinessLogic.model.Location;
-import com.group5.sep3.BusinessLogic.model.Order;
-import com.group5.sep3.BusinessLogic.model.OrderEntry;
+import com.group5.sep3.BusinessLogic.model.*;
+import protos.InventoryServiceOuterClass.*;
 import protos.ItemServiceOuterClass.*;
 import protos.LocationServiceOuterClass.*;
 import protos.OrderServiceOuterClass.*;
@@ -12,21 +10,21 @@ import java.util.ArrayList;
 
 public class GrpcEntityConverter {
 
-    
-    public static class FromGEntity{
 
-        public static Order convertToOrder(gOrder requestGOrder) {
+    public static class FromGEntity {
+
+        public static Order toOrder(gOrder requestGOrder) {
             Order order = new Order(requestGOrder.getOrderNumber());
             order.setOrderNumber(requestGOrder.getOrderNumber());
             order.setId(requestGOrder.getId());
-            Location location = new Location(requestGOrder.getOrderLocation().getId(), requestGOrder.getOrderLocation().getDescription());
+            Location location = new Location(requestGOrder.getLocation().getId(), requestGOrder.getLocation().getDescription());
             order.setLocation(location);
 
             ArrayList<OrderEntry> orderEntries = new ArrayList<>();
             for (gOrderEntry gOrderEntry : requestGOrder.getOrderEntriesList()) {
 
                 OrderEntry orderEntry =
-                        new OrderEntry(gOrderEntry.getOrderId(), gOrderEntry.getAmount(), convertToItem(gOrderEntry.getItem()));
+                        new OrderEntry(gOrderEntry.getId(), gOrderEntry.getOrderId(), gOrderEntry.getAmount(), gOrderEntry.getIsPicked(), toItem(gOrderEntry.getItem()));
 
                 orderEntries.add(orderEntry);
             }
@@ -36,7 +34,7 @@ public class GrpcEntityConverter {
         }
 
 
-        public static Item convertToItem(gItem requestGItem){
+        public static Item toItem(gItem requestGItem) {
             return new Item(requestGItem.getId(),
                     requestGItem.getItemName(),
                     requestGItem.getLength(),
@@ -45,11 +43,23 @@ public class GrpcEntityConverter {
                     requestGItem.getWeight());
         }
 
-    }
-    
-    public static class FromEntity{
+        public static Location toLocation(gLocation gLocation) {
+            return new Location(gLocation.getId(), gLocation.getDescription());
+        }
 
-        public static gOrder convertToGOrder(Order order) {
+        public static Inventory toInventory(gInventory gInventory) {
+
+            return new Inventory(gInventory.getId(), toLocation(gInventory.getLocation()),
+                    toItem(gInventory.getItem()), gInventory.getAmount());
+
+        }
+
+
+    }
+
+    public static class FromEntity {
+
+        public static gOrder toGOrder(Order order) {
             // list for generated gOrder entries
             ArrayList<gOrderEntry> gOrderEntries = new ArrayList<>();
 
@@ -58,9 +68,11 @@ public class GrpcEntityConverter {
                 // building ever gOrder entry from order entry
                 gOrderEntry buildGOrderEntry = gOrderEntry
                         .newBuilder()
+                        .setId(orderEntry.getId())
+                        .setIsPicked(orderEntry.getIsPicked())
                         .setOrderId(orderEntry.getOrderId())
                         .setAmount(orderEntry.getAmount())
-                        .setItem(convertToGItem(orderEntry.getItem()))
+                        .setItem(toGItem(orderEntry.getItem()))
                         .build();
 
                 // add to list
@@ -72,12 +84,12 @@ public class GrpcEntityConverter {
                     .setId(order.getId())
                     .addAllOrderEntries(gOrderEntries)
                     .setOrderNumber(order.getOrderNumber())
-                    .setOrderLocation(GrpcEntityConverter.FromEntity.convertToGLocation(order.getLocation()))
+                    .setLocation(GrpcEntityConverter.FromEntity.toGLocation(order.getLocation()))
                     .build();
         }
 
 
-        public static gItem convertToGItem(Item item){
+        public static gItem toGItem(Item item) {
             return gItem.newBuilder()
                     .setId(item.getId())
                     .setItemName(item.getItemName())
@@ -88,16 +100,12 @@ public class GrpcEntityConverter {
 
         }
 
-        public static gLocation convertToGLocation(Location location){
+        public static gLocation toGLocation(Location location) {
             return gLocation.newBuilder().setId(location.getId()).setDescription(location.getDescription()).build();
         }
 
-        
+
     }
 
-    
 
-    
-    
-    
 }

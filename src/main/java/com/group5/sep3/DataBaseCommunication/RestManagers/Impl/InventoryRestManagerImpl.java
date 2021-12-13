@@ -38,7 +38,7 @@ public class InventoryRestManagerImpl implements InventoryRestManager {
 
 	@Override
 	public Inventory get(int objId) {
-ProjectUtil.testPrint("ItemLocation ID: " + objId);
+
 		String restUrl = Inventory.class.getSimpleName() + "/" + objId;
 		String restResponse = (String) RestClientImpl.getInstance().get(restUrl);
 

@@ -187,6 +187,38 @@ public final class OrderServiceGrpc {
      return getRemoveOrderMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<protos.OrderServiceOuterClass.gOrderProcess,
+      Protos.ProtoUtil.gBoolValue> getProcessOrderMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ProcessOrder",
+      requestType = protos.OrderServiceOuterClass.gOrderProcess.class,
+      responseType = Protos.ProtoUtil.gBoolValue.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<protos.OrderServiceOuterClass.gOrderProcess,
+      Protos.ProtoUtil.gBoolValue> getProcessOrderMethod() {
+    io.grpc.MethodDescriptor<protos.OrderServiceOuterClass.gOrderProcess, Protos.ProtoUtil.gBoolValue> getProcessOrderMethod;
+    if ((getProcessOrderMethod = OrderServiceGrpc.getProcessOrderMethod) == null) {
+      synchronized (OrderServiceGrpc.class) {
+        if ((getProcessOrderMethod = OrderServiceGrpc.getProcessOrderMethod) == null) {
+          OrderServiceGrpc.getProcessOrderMethod = getProcessOrderMethod = 
+              io.grpc.MethodDescriptor.<protos.OrderServiceOuterClass.gOrderProcess, Protos.ProtoUtil.gBoolValue>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "Protos.OrderService", "ProcessOrder"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  protos.OrderServiceOuterClass.gOrderProcess.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Protos.ProtoUtil.gBoolValue.getDefaultInstance()))
+                  .setSchemaDescriptor(new OrderServiceMethodDescriptorSupplier("ProcessOrder"))
+                  .build();
+          }
+        }
+     }
+     return getProcessOrderMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -249,6 +281,13 @@ public final class OrderServiceGrpc {
       asyncUnimplementedUnaryCall(getRemoveOrderMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void processOrder(protos.OrderServiceOuterClass.gOrderProcess request,
+        io.grpc.stub.StreamObserver<Protos.ProtoUtil.gBoolValue> responseObserver) {
+      asyncUnimplementedUnaryCall(getProcessOrderMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -286,6 +325,13 @@ public final class OrderServiceGrpc {
                 protos.OrderServiceOuterClass.gOrderId,
                 Protos.ProtoUtil.gBoolValue>(
                   this, METHODID_REMOVE_ORDER)))
+          .addMethod(
+            getProcessOrderMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                protos.OrderServiceOuterClass.gOrderProcess,
+                Protos.ProtoUtil.gBoolValue>(
+                  this, METHODID_PROCESS_ORDER)))
           .build();
     }
   }
@@ -347,6 +393,14 @@ public final class OrderServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getRemoveOrderMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void processOrder(protos.OrderServiceOuterClass.gOrderProcess request,
+        io.grpc.stub.StreamObserver<Protos.ProtoUtil.gBoolValue> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getProcessOrderMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -400,6 +454,13 @@ public final class OrderServiceGrpc {
     public Protos.ProtoUtil.gBoolValue removeOrder(protos.OrderServiceOuterClass.gOrderId request) {
       return blockingUnaryCall(
           getChannel(), getRemoveOrderMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public Protos.ProtoUtil.gBoolValue processOrder(protos.OrderServiceOuterClass.gOrderProcess request) {
+      return blockingUnaryCall(
+          getChannel(), getProcessOrderMethod(), getCallOptions(), request);
     }
   }
 
@@ -460,6 +521,14 @@ public final class OrderServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getRemoveOrderMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<Protos.ProtoUtil.gBoolValue> processOrder(
+        protos.OrderServiceOuterClass.gOrderProcess request) {
+      return futureUnaryCall(
+          getChannel().newCall(getProcessOrderMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTER_ORDER = 0;
@@ -467,6 +536,7 @@ public final class OrderServiceGrpc {
   private static final int METHODID_GET_ALL_ORDERS = 2;
   private static final int METHODID_UPDATE_ORDER = 3;
   private static final int METHODID_REMOVE_ORDER = 4;
+  private static final int METHODID_PROCESS_ORDER = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -503,6 +573,10 @@ public final class OrderServiceGrpc {
           break;
         case METHODID_REMOVE_ORDER:
           serviceImpl.removeOrder((protos.OrderServiceOuterClass.gOrderId) request,
+              (io.grpc.stub.StreamObserver<Protos.ProtoUtil.gBoolValue>) responseObserver);
+          break;
+        case METHODID_PROCESS_ORDER:
+          serviceImpl.processOrder((protos.OrderServiceOuterClass.gOrderProcess) request,
               (io.grpc.stub.StreamObserver<Protos.ProtoUtil.gBoolValue>) responseObserver);
           break;
         default:
@@ -571,6 +645,7 @@ public final class OrderServiceGrpc {
               .addMethod(getGetAllOrdersMethod())
               .addMethod(getUpdateOrderMethod())
               .addMethod(getRemoveOrderMethod())
+              .addMethod(getProcessOrderMethod())
               .build();
         }
       }

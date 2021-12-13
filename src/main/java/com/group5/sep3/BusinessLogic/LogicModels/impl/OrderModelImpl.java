@@ -1,13 +1,18 @@
 package com.group5.sep3.BusinessLogic.LogicModels.impl;
 
+import com.group5.sep3.BusinessLogic.LogicModels.InventoryModel;
 import com.group5.sep3.BusinessLogic.LogicModels.OrderModel;
+import com.group5.sep3.BusinessLogic.model.Inventory;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.BusinessLogic.model.Order;
+import com.group5.sep3.BusinessLogic.model.OrderEntry;
 import com.group5.sep3.DataBaseCommunication.RestManagers.OrderRestManager;
-import com.group5.sep3.DataBaseCommunication.RestManagers.RestManager;
+import com.group5.sep3.LogicModelFactory;
+import com.group5.sep3.util.EntityTypes;
 import com.group5.sep3.util.ProjectUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderModelImpl implements OrderModel {
 
@@ -57,4 +62,25 @@ public class OrderModelImpl implements OrderModel {
         return ++i;
     }
 
+    @Override
+    public boolean processOrder(Order order, List<Inventory> pickInventories) throws Exception {
+
+
+        InventoryModel inventoryModel = (InventoryModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.INVENTORY);
+
+        int orderLocationId = order.getLocation().getId();
+        for (Inventory pickInventory : pickInventories) {
+            pickInventory.getLocation().setId(orderLocationId);
+            try {
+                inventoryModel.update(pickInventory);
+            } catch (Exception e) {
+                // Possible to make custom exception here
+                throw new Exception("Could not pick items to order.");
+            }
+        }
+
+        Order updated =  orderRestManager.update(order);
+
+        return true;
+    }
 }

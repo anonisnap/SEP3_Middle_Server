@@ -2,12 +2,10 @@ package com.group5.sep3.GrpcCommunication.Services;
 
 import Protos.ProtoUtil.*;
 import com.group5.sep3.BusinessLogic.LogicModels.OrderModel;
-import com.group5.sep3.BusinessLogic.model.Item;
-import com.group5.sep3.BusinessLogic.model.Location;
-import com.group5.sep3.BusinessLogic.model.Order;
-import com.group5.sep3.BusinessLogic.model.OrderEntry;
+import com.group5.sep3.BusinessLogic.model.*;
 import com.group5.sep3.util.ProjectUtil;
 import io.grpc.stub.StreamObserver;
+import protos.InventoryServiceOuterClass.*;
 import protos.OrderServiceGrpc.*;
 import protos.OrderServiceOuterClass.*;
 
@@ -27,14 +25,36 @@ public class OrderService extends OrderServiceImplBase {
 
     @Override
     public void registerOrder(gOrder request, StreamObserver<gOrder> responseObserver) {
-        Order order = GrpcEntityConverter.FromGEntity.convertToOrder(request);
+        Order order = GrpcEntityConverter.FromGEntity.toOrder(request);
 
         try {
             Order result = orderModel.register(order);
-            gOrder gResult = GrpcEntityConverter.FromEntity.convertToGOrder(result);
+            gOrder gResult = GrpcEntityConverter.FromEntity.toGOrder(result);
             responseObserver.onNext(gResult);
             responseObserver.onCompleted();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void processOrder(gOrderProcess request, StreamObserver<gBoolValue> responseObserver) {
+
+        Order order = GrpcEntityConverter.FromGEntity.toOrder(request.getOrder());
+
+        List<Inventory> pickInventories = new ArrayList<>();
+        for (gInventory pickGInventory : request.getPickInventories().getInventorysList()) {
+            pickInventories.add(GrpcEntityConverter.FromGEntity.toInventory(pickGInventory));
+        }
+
+        try{
+            boolean result = orderModel.processOrder(order, pickInventories);
+            gBoolValue gResult = gBoolValue.newBuilder().setValue(result).build();
+            responseObserver.onNext(gResult);
+            responseObserver.onCompleted();
+
+        }catch (Exception e){
             e.printStackTrace();
         }
 
@@ -47,7 +67,7 @@ public class OrderService extends OrderServiceImplBase {
         try {
             Order result = orderModel.get(orderId);
 
-            gOrder gResult = GrpcEntityConverter.FromEntity.convertToGOrder(result);
+            gOrder gResult = GrpcEntityConverter.FromEntity.toGOrder(result);
             responseObserver.onNext(gResult);
             responseObserver.onCompleted();
         } catch (Exception e) {
@@ -67,7 +87,7 @@ public class OrderService extends OrderServiceImplBase {
             List<gOrder> gOrders = new ArrayList<>();
 
             for (Order order : orders) {
-                gOrders.add(GrpcEntityConverter.FromEntity.convertToGOrder(order));
+                gOrders.add(GrpcEntityConverter.FromEntity.toGOrder(order));
             }
 
             gOrderList returnOrderList = gOrderList.newBuilder().addAllOrders(gOrders).build();
@@ -84,11 +104,11 @@ public class OrderService extends OrderServiceImplBase {
 
     @Override
     public void updateOrder(gOrder request, StreamObserver<gOrder> responseObserver) {
-        Order orderToUpdate = GrpcEntityConverter.FromGEntity.convertToOrder(request);
+        Order orderToUpdate = GrpcEntityConverter.FromGEntity.toOrder(request);
         try {
             Order result = orderModel.update(orderToUpdate);
 
-            gOrder gOrder = GrpcEntityConverter.FromEntity.convertToGOrder(result);
+            gOrder gOrder = GrpcEntityConverter.FromEntity.toGOrder(result);
 
             responseObserver.onNext(gOrder);
             responseObserver.onCompleted();
