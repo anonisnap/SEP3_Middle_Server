@@ -33,7 +33,6 @@ public class GrpcEntityConverter {
             return order;
         }
 
-
         public static Item toItem(gItem requestGItem) {
             return new Item(requestGItem.getId(),
                     requestGItem.getItemName(),
@@ -53,8 +52,6 @@ public class GrpcEntityConverter {
                     toItem(gInventory.getItem()), gInventory.getAmount());
 
         }
-
-
     }
 
     public static class FromEntity {
@@ -88,7 +85,6 @@ public class GrpcEntityConverter {
                     .build();
         }
 
-
         public static gItem toGItem(Item item) {
             return gItem.newBuilder()
                     .setId(item.getId())
@@ -104,6 +100,11 @@ public class GrpcEntityConverter {
             return gLocation.newBuilder().setId(location.getId()).setDescription(location.getDescription()).build();
         }
 
+        public static gInventory toGInventory(Inventory inventory){
+            gLocation gLocation = toGLocation(inventory.getLocation());
+            gItem gItem = toGItem(inventory.getItem());
+            return gInventory.newBuilder().setId(inventory.getId()).setLocation(gLocation).setItem(gItem).setAmount(inventory.getAmount()).build();
+        }
 
     }
 

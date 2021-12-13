@@ -5,6 +5,7 @@ import com.group5.sep3.BusinessLogic.LogicModels.InventoryModel;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.BusinessLogic.model.Inventory;
 import com.group5.sep3.BusinessLogic.model.Location;
+import com.group5.sep3.util.ProjectUtil;
 import io.grpc.stub.StreamObserver;
 import protos.InventoryServiceGrpc;
 import protos.InventoryServiceOuterClass.*;
@@ -78,8 +79,6 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 			responseObserver.onError(e);
 			e.printStackTrace();
 		}
-
-
 	}
 
 	@Override
@@ -135,26 +134,21 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 	@Override
 	public void updateInventory(gInventory request, StreamObserver<gInventory> responseObserver) {
 		// Fetch Inventory
-		Inventory requestInventory = getInventoryFromRequest(request);
+		Inventory requestInventory = GrpcEntityConverter.FromGEntity.toInventory(request);
 		// Update Inventory on Server
-		Inventory returnInventory = null;
 		try {
-			returnInventory = model.update(requestInventory);
+			Inventory returnInventory = model.update(requestInventory);
+
+			gInventory returnGInventory = GrpcEntityConverter.FromEntity.toGInventory(returnInventory);
+
+			responseObserver.onNext(returnGInventory);
+			responseObserver.onCompleted();
 		} catch (Exception e) {
+			responseObserver.onError(e);
 			e.printStackTrace();
 		}
-		// Ensure ReturnInventory is not Null | Consider throwing an Error Instead
-		if (returnInventory == null) {
-			returnInventory = requestInventory;
-		}
-		// Create Response Object
-		gInventory.Builder response = gInventory.newBuilder();
-		// Add the gInventorys to the Response
-		parseAndMergeInventory(response, returnInventory);
-		// Link the Response to the Observer
-		responseObserver.onNext(response.build());
-		// Tell Observer the Method is finished, and let it return the Response
-		responseObserver.onCompleted();
+
+
 	}
 
 
@@ -171,7 +165,6 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 			if (!result) {
 				responseObserver.onError(new Throwable("Item Location was not removed"));
 			}
-
 
 			// Link the Response to the Observer
 			//responseObserver.onNext();

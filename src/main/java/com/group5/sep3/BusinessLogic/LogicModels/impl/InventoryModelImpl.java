@@ -2,7 +2,9 @@ package com.group5.sep3.BusinessLogic.LogicModels.impl;
 
 import com.group5.sep3.BusinessLogic.LogicModels.InventoryModel;
 import com.group5.sep3.BusinessLogic.model.Inventory;
+import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.DataBaseCommunication.RestManagers.InventoryRestManager;
+import com.group5.sep3.util.ProjectUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class InventoryModelImpl implements InventoryModel {
     }
 
     @Override
-    public Inventory register(Inventory inventory) throws Exception {
+    public Inventory register(Inventory inventory) {
         //Get all itemLocations used Location, to see if item already exists on location
         List<Inventory> inventories = getByLocationId(inventory.getId());
 
@@ -37,21 +39,6 @@ public class InventoryModelImpl implements InventoryModel {
     @Override
     public Inventory update(Inventory inventory) throws Exception {
 
-        /*
-            //Getting Location data, from old location
-        ItemLocation oldItemLocation = get(itemLocation);
-        System.out.println("Found old item location" + oldItemLocation);
-        //Get AmountToMove for If statements
-        int amountToMove = itemLocation.getAmount();
-
-        System.out.println("All items were moved " + itemLocation);
-        oldItemLocation.setAmount(-amountToMove);
-        itemLocationRestManager.create(oldItemLocation);
-
-        System.out.println("Create new itemlocation"+itemLocation);
-        return itemLocationRestManager.create(itemLocation);
-        */
-
         //Getting Location data, from old location
         Inventory oldInventory = get(inventory.getId());
         //Getting Location Amount, from old location
@@ -60,27 +47,28 @@ public class InventoryModelImpl implements InventoryModel {
         //Get AmountToMove for If statements
         int amountToMove = inventory.getAmount();
 
-        //Grabbing list of itemLocations with current Location
-        List<Inventory> inventories = getByLocationId(inventory.getId());
-
         //If List contains item with same itemId, then add this amount to that.
-        for (Inventory itemLoc : inventories) {
-            if (itemLoc.getItem().getId() == inventory.getItem().getId()) {
-                //Updating new ItemLocation Amount
-                itemLoc.setAmount(itemLoc.getAmount()+amountToMove);
+        Inventory currentInventory =
+                checkForItemInInventoriesOnLocation(inventory.getLocation().getId(), inventory.getItem());
 
-                //Updating old ItemLocation Amount
-                oldInventory.setAmount(oldLocationAmount-amountToMove);
+        if(currentInventory != null){
 
-                if (amountToMove < oldLocationAmount) {
-                    //Update New ItemLocation
-                    inventoryRestManager.update(itemLoc);
-                    //Update Old ItemLocation
-                    return inventoryRestManager.update(oldInventory);
-                }
-                //If amount on location = moved amount
-                return inventoryRestManager.update(inventory);
+            //Updating new ItemLocation Amount
+            currentInventory.setAmount(currentInventory.getAmount() + amountToMove);
+
+            //Updating old ItemLocation Amount
+            oldInventory.setAmount(oldLocationAmount - amountToMove);
+
+            if (amountToMove < oldLocationAmount) {
+                //Update New ItemLocation
+                inventoryRestManager.update(currentInventory);
+                //Update Old ItemLocation
+                return inventoryRestManager.update(oldInventory);
             }
+
+            inventoryRestManager.delete(oldInventory.getId());
+            //If amount on location = moved amount
+            return inventoryRestManager.update(currentInventory);
         }
 
         //Item doesn't exist on new Location
@@ -101,7 +89,7 @@ public class InventoryModelImpl implements InventoryModel {
         //Same amount moved as on old Location, just update location
         inventoryRestManager.delete(inventory.getId());
         return inventoryRestManager.create(inventory);
-}
+    }
 
     @Override
     public ArrayList<Inventory> getAll() throws Exception {
@@ -125,13 +113,26 @@ public class InventoryModelImpl implements InventoryModel {
     }
 
     @Override
-    public List<Inventory> getByLocationId(int locationId){
+    public List<Inventory> getByLocationId(int locationId) {
         return inventoryRestManager.getByLocationId(locationId);
     }
 
     @Override
     public List<Inventory> getInventoryStock() {
         return inventoryRestManager.GetInventoryStock();
+    }
+
+
+    private Inventory checkForItemInInventoriesOnLocation(int locationId, Item item) {
+        //Grabbing list of inventories with current Location
+        List<Inventory> inventories = getByLocationId(locationId);
+
+        for (Inventory inventory : inventories) {
+            if (inventory.getItem().getId() == item.getId()) {
+                return inventory;
+            }
+        }
+        return null;
     }
 
 }
