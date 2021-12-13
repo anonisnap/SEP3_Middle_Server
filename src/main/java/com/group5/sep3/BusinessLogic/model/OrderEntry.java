@@ -25,6 +25,19 @@ public class OrderEntry {
         return amount;
     }
 
+    public Item getItem() {
+        return item;
+    }
+
+    // because of spring the methode name HAS to be start with get
+    public boolean getIsPicked() {
+        return isPicked;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
@@ -33,25 +46,12 @@ public class OrderEntry {
         this.amount = amount;
     }
 
-    public Item getItem() {
-        return item;
-    }
-
     public void setItem(Item item) {
         this.item = item;
     }
 
-    // because of spring the methode name HAS to be start with get
-    public boolean getIsPicked() {
-        return isPicked;
-    }
-
     public void setIsPicked(boolean picked) {
         isPicked = picked;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public void setId(int id) {

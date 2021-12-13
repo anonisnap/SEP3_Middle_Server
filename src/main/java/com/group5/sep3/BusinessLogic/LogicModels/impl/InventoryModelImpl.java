@@ -118,7 +118,6 @@ public class InventoryModelImpl implements InventoryModel {
         return inventoryRestManager.delete(itemLocationId);
     }
 
-    // TODO: Mangler der ikke PROTO filer for disse?
     @Override
     public List<Inventory> getByItemId(int itemId) {
         return inventoryRestManager.getByItemId(itemId);
