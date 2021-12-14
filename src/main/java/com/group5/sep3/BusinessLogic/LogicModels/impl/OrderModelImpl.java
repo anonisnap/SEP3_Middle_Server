@@ -5,11 +5,9 @@ import com.group5.sep3.BusinessLogic.LogicModels.OrderModel;
 import com.group5.sep3.BusinessLogic.model.Inventory;
 import com.group5.sep3.BusinessLogic.model.Location;
 import com.group5.sep3.BusinessLogic.model.Order;
-import com.group5.sep3.BusinessLogic.model.OrderEntry;
 import com.group5.sep3.DataBaseCommunication.RestManagers.OrderRestManager;
 import com.group5.sep3.LogicModelFactory;
 import com.group5.sep3.util.EntityTypes;
-import com.group5.sep3.util.ProjectUtil;
 
 import java.util.ArrayList;
 import java.util.List;
