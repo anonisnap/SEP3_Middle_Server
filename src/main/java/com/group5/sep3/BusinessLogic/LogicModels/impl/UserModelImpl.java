@@ -20,7 +20,5 @@ public class UserModelImpl implements UserModel {
 	@Override
 	public User logout(User user) {
 		// Can be used for logging work-times
-		ProjectUtil.notImplemented();
-		return user;
-	}
+		ProjectUtil.notImplemented();return user;}
 }

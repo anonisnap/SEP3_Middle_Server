@@ -1,7 +1,6 @@
 package com.group5.sep3.BusinessLogic.LogicModels;
-import java.awt.*;
+
 import java.util.ArrayList;
-import java.util.Collection;
 
 public interface EntityLogicModel<TEntity> extends LogicModel{
 

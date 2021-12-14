@@ -4,7 +4,6 @@ import com.group5.sep3.BusinessLogic.LogicModels.InventoryModel;
 import com.group5.sep3.BusinessLogic.model.Inventory;
 import com.group5.sep3.BusinessLogic.model.Item;
 import com.group5.sep3.DataBaseCommunication.RestManagers.InventoryRestManager;
-import com.group5.sep3.util.ProjectUtil;
 
 import java.util.ArrayList;
 import java.util.List;
