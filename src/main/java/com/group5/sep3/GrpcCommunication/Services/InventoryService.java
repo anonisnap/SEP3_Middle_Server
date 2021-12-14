@@ -88,13 +88,13 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 		try {
 			Inventorys = model.getAll();
 			for (Inventory Inventory : Inventorys) {
-				gInventory.Builder builder = gInventory.newBuilder();
-				parseAndMergeInventory(builder, Inventory);
-				returnInventorys.add(builder.build()); // THIS LIKELY WON'T WORK. UNSURE OF HOW PARSEFROM IS IMPLEMENTED
+
+				returnInventorys.add(GrpcEntityConverter.FromEntity.toGInventory(Inventory));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		// Create Response Object
 		gInventoryList.Builder response = gInventoryList.newBuilder();
 		// Add the gInventorys to the Response

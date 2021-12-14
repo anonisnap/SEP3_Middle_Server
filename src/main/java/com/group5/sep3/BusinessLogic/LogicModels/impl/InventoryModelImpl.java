@@ -113,8 +113,10 @@ public class InventoryModelImpl implements InventoryModel {
 
     @Override
     public List<Inventory> getByLocationId(int locationId) {
+
         return inventoryRestManager.getByLocationId(locationId);
     }
+
 
     @Override
     public List<Inventory> getInventoryStock() {
