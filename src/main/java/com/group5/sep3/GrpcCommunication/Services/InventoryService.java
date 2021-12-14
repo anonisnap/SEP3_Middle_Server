@@ -51,7 +51,6 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 		responseObserver.onCompleted();
 	}
 
-
 	@Override
 	public void getInventory(gInventoryId request, StreamObserver<gInventory> responseObserver) {
 		// Fetch the Inventory from Request
