@@ -55,6 +55,5 @@ public class LogicModelFactory {
 		return modelMap.get(type);
 	}
 
-
 }
 

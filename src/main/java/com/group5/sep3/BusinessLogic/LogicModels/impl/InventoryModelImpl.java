@@ -55,18 +55,18 @@ public class InventoryModelImpl implements InventoryModel {
             //Updating new ItemLocation Amount
             currentInventory.setAmount(currentInventory.getAmount() + amountToMove);
 
-            //Updating old ItemLocation Amount
-            oldInventory.setAmount(oldLocationAmount - amountToMove);
-
+            // Not all items are moved
             if (amountToMove < oldLocationAmount) {
+                //Updating old ItemLocation Amount
+                oldInventory.setAmount(oldLocationAmount - amountToMove);
                 //Update New ItemLocation
-                inventoryRestManager.update(currentInventory);
+                inventoryRestManager.update(oldInventory);
                 //Update Old ItemLocation
-                return inventoryRestManager.update(oldInventory);
+                return inventoryRestManager.update(currentInventory);
             }
 
+            //Full amount moved, remove the old inventory and update the current one
             inventoryRestManager.delete(oldInventory.getId());
-            //If amount on location = moved amount
             return inventoryRestManager.update(currentInventory);
         }
 
@@ -79,14 +79,14 @@ public class InventoryModelImpl implements InventoryModel {
             inventory.setId(0);
 
             //Putting to new Location
-            inventoryRestManager.create(inventory);
+            inventoryRestManager.update(oldInventory);
 
             //Updating Old Location
-            return inventoryRestManager.update(oldInventory);
+            return inventoryRestManager.create(inventory);
         }
 
-        //Same amount moved as on old Location, just update location
-        inventoryRestManager.delete(inventory.getId());
+        //Full amount moved by replacing the old inventory
+        inventoryRestManager.delete(oldInventory.getId());
         return inventoryRestManager.create(inventory);
     }
 
