@@ -63,7 +63,8 @@ public class OrderModelImpl implements OrderModel {
     @Override
     public boolean processOrder(Order order, List<Inventory> pickInventories) throws Exception {
 
-
+        //Anti design princip (Ikke polymorphism korrekt)
+        //Mister lidt sikkerhed, måske have givet typen med i stedet for. (Måske ikke så skalerbart i længden)
         InventoryModel inventoryModel = (InventoryModel) LogicModelFactory.getInstance().getLogicModel(EntityTypes.INVENTORY);
 
         int orderLocationId = order.getLocation().getId();
