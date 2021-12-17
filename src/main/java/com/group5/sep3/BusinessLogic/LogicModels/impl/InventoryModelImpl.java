@@ -17,20 +17,17 @@ public class InventoryModelImpl implements InventoryModel {
 
     @Override
     public Inventory register(Inventory inventory) {
-        //Get all itemLocations used Location, to see if item already exists on location
-        List<Inventory> inventories = getByLocationId(inventory.getId());
+        //Check if any inventories on location, exists with item
+        Inventory currentInventory =
+                checkForItemInInventoriesOnLocation(inventory.getLocation().getId(), inventory.getItem());
 
-        //Rotate through locations to check items
-        for (Inventory itemLoc : inventories) {
-            //Check if item already exists on location
-            if (itemLoc.getItem().getId() == inventory.getItem().getId()) {
-                //If item exists on location, update amount
-                inventory.setAmount(inventory.getAmount() + itemLoc.getAmount());
-                //Set ItemLocation Id to Id on new ItemLocation, so Database knows it exists
-                inventory.setId(itemLoc.getId());
-                return inventoryRestManager.update(inventory);
-            }
+        //If an inventory exists go here
+        if(currentInventory != null){
+                //update amount
+                currentInventory.setAmount(inventory.getAmount() + currentInventory.getAmount());
+                return inventoryRestManager.update(currentInventory);
         }
+
         //If item doesn't exist on location, create itemLocation
         return inventoryRestManager.create(inventory);
     }
