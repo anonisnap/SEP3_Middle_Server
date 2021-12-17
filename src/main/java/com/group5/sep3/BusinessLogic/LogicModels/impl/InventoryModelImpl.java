@@ -17,7 +17,7 @@ public class InventoryModelImpl implements InventoryModel {
 
     @Override
     public Inventory register(Inventory inventory) {
-        //Check if any inventories on location, exists with item
+        //Check if same item already exists on location
         Inventory currentInventory =
                 checkForItemInInventoriesOnLocation(inventory.getLocation().getId(), inventory.getItem());
 
